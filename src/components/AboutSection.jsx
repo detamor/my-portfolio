@@ -1,5 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
+// Import gambar dengan cara ES6 import
+import hoodie from "../assets/images/hoodie.jpg"; // sesuaikan path relatif dari file ini
 
 const AboutSection = () => {
   return (
@@ -19,7 +21,6 @@ const AboutSection = () => {
           <span className="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-[3px] bg-gradient-to-r from-blue-400 to-emerald-400"></span>
         </motion.h2>
         
-        {/* About content with image and slightly centered position */}
         <div className="flex flex-wrap items-center justify-between max-w-5xl mx-auto">
           {/* About text */}
           <motion.div 
@@ -29,19 +30,15 @@ const AboutSection = () => {
             className="flex-1 min-w-[300px] pr-0 md:pr-10 mb-10 md:mb-0"
           >
             <h3 className="text-3xl font-bold text-white mb-6">Hello, I'm Nael!</h3>
-            
             <p className="text-[#ccc] mb-4">
               "Hello, My Name is Natanael, a 6th semester student in Informatics Engineering at Universitas Advent Indonesia. Originally from Medan, I am currently studying in Bandung."
             </p>
-            
             <p className="text-[#ccc] mb-4">
               I enjoy the challenge of solving complex problems and turning ideas into reality through clean and efficient code. My goal is to create digital experiences that not only look great but also provide real value to users.
             </p>
-            
             <p className="text-[#ccc] mb-6">
               "With a deep interest in technology, especially in Javascript Framework and Go-lang, I strive to continuously learn and develop myself as Software Engineering Intern."
             </p>
-            
             <motion.a
               href="#contact"
               whileHover={{ y: -3, backgroundColor: "rgba(59, 130, 246, 0.1)" }}
@@ -61,7 +58,7 @@ const AboutSection = () => {
           >
             <div className="relative w-full max-w-[400px]">
               <img 
-                src="src/assets/images/hoodie.jpg" 
+                src={hoodie} 
                 alt="Natanael Detamor" 
                 className="w-full rounded-lg border-[3px] relative z-10"
                 style={{ borderImage: 'linear-gradient(to right, #60a5fa, #34d399) 1' }}
@@ -76,4 +73,3 @@ const AboutSection = () => {
 };
 
 export default AboutSection;
-
