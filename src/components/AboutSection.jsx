@@ -61,7 +61,7 @@ const AboutSection = () => {
           >
             <div className="relative w-full max-w-[400px]">
               <img 
-                src="src/assets/images/my_photo1.jpg" 
+                src="src/assets/images/hoodie.jpg" 
                 alt="Natanael Detamor" 
                 className="w-full rounded-lg border-[3px] relative z-10"
                 style={{ borderImage: 'linear-gradient(to right, #60a5fa, #34d399) 1' }}
