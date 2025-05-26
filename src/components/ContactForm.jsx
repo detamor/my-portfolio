@@ -1,272 +1,438 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { Send, Phone, Instagram, Linkedin, Github, CheckCircle, AlertCircle } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import {
+  Send,
+  ArrowRight,
+  User,
+  Mail,
+  Briefcase,
+  DollarSign,
+  Clock,
+  MessageCircle,
+  CheckCircle,
+  ChevronLeft,
+  Sparkles
+} from "lucide-react";
 
-const ContactForm = () => {
+const ElegantContactForm = () => {
+  const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "",
+    project: "",
+    budget: "",
+    timeline: "",
     message: "",
   });
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
-  const [formStatus, setFormStatus] = useState({
-    isSubmitting: false,
-    isSubmitted: false,
-    error: null,
-  });
+  const questions = [
+    {
+      id: "name",
+      icon: <User className="w-6 h-6" />,
+      title: "Personal Information",
+      question: "What's your name?",
+      subtitle: "Let's start with a proper introduction",
+      placeholder: "Enter your full name",
+      type: "text",
+      quickReplies: []
+    },
+    {
+      id: "email",
+      icon: <Mail className="w-6 h-6" />,
+      title: "Contact Details",
+      question: "Your professional email?",
+      subtitle: "Where I can reach you with updates",
+      placeholder: "your.email@company.com",
+      type: "email",
+      quickReplies: []
+    },
+    {
+      id: "project",
+      icon: <Briefcase className="w-6 h-6" />,
+      title: "Project Scope",
+      question: "What type of project do you need?",
+      subtitle: "Define your technical requirements",
+      placeholder: "Describe your project type...",
+      type: "text",
+      quickReplies: [
+        { text: "Web Application", value: "Modern Web Application", icon: "💻" },
+        { text: "SaaS Platform", value: "SaaS Platform Development", icon: "🚀" },
+        { text: "Mobile App", value: "Mobile Application", icon: "📱" },
+        { text: "E-commerce", value: "E-commerce Platform", icon: "🛍️" },
+        { text: "Data Analytics", value: "Data Analytics Solution", icon: "📊" },
+        { text: "Custom Solution", value: "Custom Development", icon: "⚡" }
+      ]
+    },
+    {
+      id: "budget",
+      icon: <div className="w-6 h-6 flex items-center justify-center text-sm font-bold border rounded">Rp</div>,
+      title: "Budget Range",
+      question: "What's your project budget?",
+      subtitle: "Investment range for your solution",
+      placeholder: "Your budget range",
+      type: "text",
+      quickReplies: [
+        { text: "Under Rp 1,000.000", value: "Under Rp 1,000.000", icon: "💚" },
+        { text: "Rp 1,000.000 - Rp 5,000.000", value: "RP 1,000.000 - Rp 5,000.000", icon: "💙" },
+        { text: "Rp 5,000.000 - Rp 15,000.000", value: "Rp 5,000.000 - Rp 15,000.000", icon: "💜" },
+        { text: "Rp 15,000.000+", value: "Rp 15,000.000 or more", icon: "🖤" },
+        { text: "Let's Discuss", value: "Flexible Budget", icon: "💬" }
+      ]
+    },
+    {
+      id: "timeline",
+      icon: <Clock className="w-6 h-6" />,
+      title: "Timeline",
+      question: "When do you need this completed?",
+      subtitle: "Project delivery expectations",
+      placeholder: "Your preferred timeline",
+      type: "text",
+      quickReplies: [
+        { text: "2-3 weeks", value: "Rush delivery (2-3 weeks)", icon: "⚡" },
+        { text: "1-2 months", value: "Standard timeline (1-2 months)", icon: "⏰" },
+        { text: "2-3 months", value: "Extended timeline (2-3 months)", icon: "📅" },
+        { text: "3+ months", value: "Long-term project (3+ months)", icon: "🗓️" },
+        { text: "Flexible", value: "Quality focused timeline", icon: "💎" }
+      ]
+    },
+    {
+      id: "message",
+      icon: <MessageCircle className="w-6 h-6" />,
+      title: "Project Details",
+      question: "Tell me about your vision",
+      subtitle: "Detailed requirements and specifications",
+      placeholder: "Describe your project goals, required features, target audience, technical specifications, or any other important details...",
+      type: "textarea",
+      quickReplies: []
+    }
+  ];
 
-  const handleFormChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleInputChange = (value) => {
+    setFormData(prev => ({
+      ...prev,
+      [questions[currentStep].id]: value
+    }));
   };
 
-  // Formspree handling
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setFormStatus({ isSubmitting: true, isSubmitted: false, error: null });
+  const handleQuickReply = (value) => {
+    setFormData(prev => ({
+      ...prev,
+      [questions[currentStep].id]: value
+    }));
+  };
 
-    try {
-      // Ganti "YOUR_FORMSPREE_FORM_ID" dengan ID Formspree Anda
-      // Misalnya: https://formspree.io/f/abcdefgh -> ID-nya adalah "abcdefgh"
-      const response = await fetch('https://formspree.io/f/xanedvpy', {
-        method: 'POST',
-        body: new FormData(e.target),
-        headers: {
-          Accept: 'application/json',
-        },
-      });
-      
-      if (response.ok) {
-        console.log('SUCCESS!', response);
-        
-        setFormStatus({ isSubmitting: false, isSubmitted: true, error: null });
-        setFormData({ name: "", email: "", subject: "", message: "" });
-        
-        // Reset success message after 5 seconds
-        setTimeout(() => {
-          setFormStatus({ isSubmitting: false, isSubmitted: false, error: null });
-        }, 5000);
-      } else {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Form submission failed');
-      }
-    } catch (error) {
-      console.error('Form error:', error);
-      
-      setFormStatus({
-        isSubmitting: false,
-        isSubmitted: false,
-        error: "Failed to send message. Please try again.",
-      });
+  const handleNext = () => {
+    if (currentStep < questions.length - 1) {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setCurrentStep(prev => prev + 1);
+        setIsAnimating(false);
+      }, 400);
+    } else {
+      handleSubmit();
     }
   };
 
-  const socialLinks = [
-    {
-      name: "WhatsApp",
-      icon: <Phone className="w-5 h-5" />,
-      url: "https://wa.me/+6282162054193",
-      color: "from-green-500 to-green-700",
-      hoverColor: "group-hover:from-green-600 group-hover:to-green-800",
-    },
-    {
-      name: "Instagram",
-      icon: <Instagram className="w-5 h-5" />,
-      url: "https://instagram.com/nael_detamor/",
-      color: "from-rose-500 to-violet-500",
-      hoverColor: "group-hover:from-rose-600 group-hover:to-violet-600",
-    },
-    {
-      name: "LinkedIn",
-      icon: <Linkedin className="w-5 h-5" />,
-      url: "https://linkedin.com/in/natanael-detamor-karo-karo-567b86318/",
-      color: "from-blue-500 to-blue-700",
-      hoverColor: "group-hover:from-blue-600 group-hover:to-blue-800",
-    },
-    {
-      name: "GitHub",
-      icon: <Github className="w-5 h-5" />,
-      url: "https://github.com/detamor",
-      color: "from-gray-700 to-gray-900",
-      hoverColor: "group-hover:from-gray-800 group-hover:to-black",
-    },
-  ];
+  const handlePrevious = () => {
+    if (currentStep > 0) {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setCurrentStep(prev => prev - 1);
+        setIsAnimating(false);
+      }, 400);
+    }
+  };
+
+  const handleSubmit = async () => {
+    const message = `🎯 *New Project Inquiry*
+
+👤 *Name:* ${formData.name}
+📧 *Email:* ${formData.email}
+💡 *Project:* ${formData.project}
+💰 *Budget:* ${formData.budget}
+⏰ *Timeline:* ${formData.timeline}
+
+📝 *Project Details:*
+${formData.message}
+
+---
+*Sent via Professional Contact Form*`;
+
+    const whatsappURL = `https://wa.me/+6282162054193?text=${encodeURIComponent(message)}`;
+    
+    setShowSuccess(true);
+    setTimeout(() => {
+      window.open(whatsappURL, "_blank");
+    }, 1500);
+  };
+
+  const isStepValid = () => {
+    const currentValue = formData[questions[currentStep].id];
+    if (questions[currentStep].type === "email") {
+      return currentValue && currentValue.includes("@") && currentValue.includes(".");
+    }
+    return currentValue && currentValue.trim().length > 0;
+  };
+
+  const currentQuestion = questions[currentStep];
+  const progress = ((currentStep + 1) / questions.length) * 100;
+
+  if (showSuccess) {
+    return (
+      <section className="py-24 px-6 md:px-12 relative overflow-hidden bg-zinc-950">
+        {/* Background */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/50 via-zinc-950 to-black" />
+          <div 
+            className="absolute inset-0 opacity-[0.02]"
+            style={{
+              backgroundImage: `
+                linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+              `,
+              backgroundSize: '100px 100px'
+            }}
+          />
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-white/[0.01] rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-white/[0.008] rounded-full blur-3xl" />
+        </div>
+
+        <div className="container mx-auto max-w-2xl relative z-10 flex items-center justify-center min-h-[80vh]">
+          <div className="bg-zinc-900/30 border border-zinc-800/50 rounded-3xl p-12 shadow-2xl shadow-black/20 text-center max-w-lg w-full">
+            <div className="w-20 h-20 bg-white/5 border border-white/10 rounded-full flex items-center justify-center mx-auto mb-8">
+              <CheckCircle className="w-10 h-10 text-white" />
+            </div>
+            
+            <h3 className="text-3xl font-extralight text-white mb-4">
+              Message Sent Successfully
+            </h3>
+            
+            <p className="text-zinc-400 mb-8 leading-relaxed">
+              Your project inquiry has been sent. I'll review your requirements and respond within 2-4 hours with a detailed proposal.
+            </p>
+
+            <div className="bg-zinc-900/50 border border-zinc-800/50 rounded-2xl p-6 mb-8">
+              <div className="text-sm space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 bg-zinc-400 rounded-full"></div>
+                  <span className="text-zinc-300">Requirements analysis</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 bg-zinc-400 rounded-full"></div>
+                  <span className="text-zinc-300">Custom proposal preparation</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 bg-zinc-400 rounded-full"></div>
+                  <span className="text-zinc-300">Timeline and pricing details</span>
+                </div>
+              </div>
+            </div>
+
+            <button
+              onClick={() => window.location.reload()}
+              className="px-8 py-3 bg-white/5 border border-white/10 text-white rounded-xl hover:bg-white/10 hover:border-white/20 transition-all duration-300 font-medium"
+            >
+              Send Another Message
+            </button>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
-    <section id="contact" className="py-16 sm:py-20 px-4 relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-40 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald-600/10 rounded-full blur-3xl"></div>
+    <section id="contact" className="py-24 px-6 md:px-12 relative overflow-hidden bg-zinc-950">
+      {/* Background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/50 via-zinc-950 to-black" />
+        <div 
+          className="absolute inset-0 opacity-[0.02]"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: '100px 100px'
+          }}
+        />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-white/[0.01] rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-white/[0.008] rounded-full blur-3xl" />
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-3xl sm:text-4xl font-bold text-center mb-12"
+      <div className="container mx-auto max-w-4xl relative z-10">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div className="flex items-center justify-center space-x-3 mb-6">
+            <div className="w-2 h-2 bg-white/20 rounded-full" />
+            <span className="text-sm font-mono text-zinc-400 tracking-wider uppercase">
+              Project Consultation
+            </span>
+          </div>
+          
+          <h2 className="text-5xl lg:text-7xl font-extralight tracking-tight text-white leading-none mb-4">
+            Let's Build
+            <br />
+            <span className="text-zinc-400">Something Great</span>
+          </h2>
+          
+          <div className="w-16 h-px bg-gradient-to-r from-transparent via-zinc-600 to-transparent mx-auto mb-6" />
+          
+          <p className="text-lg text-zinc-400 max-w-2xl mx-auto leading-relaxed font-light">
+            Professional consultation for your next project
+          </p>
+        </div>
+
+        {/* Progress */}
+        <div className="mb-12">
+          <div className="flex justify-between items-center mb-4">
+            <span className="text-sm font-mono text-zinc-500 tracking-wider">
+              STEP {String(currentStep + 1).padStart(2, '0')} / {String(questions.length).padStart(2, '0')}
+            </span>
+            <span className="text-sm font-mono text-zinc-500 tracking-wider">
+              {Math.round(progress)}% COMPLETE
+            </span>
+          </div>
+          <div className="h-px bg-zinc-800 relative overflow-hidden">
+            <div 
+              className="h-full bg-white/20 transition-all duration-700 ease-out"
+              style={{ width: `${progress}%` }}
+            />
+          </div>
+        </div>
+
+        {/* Main Form */}
+        <div 
+          className={`bg-zinc-900/30 border border-zinc-800/50 rounded-3xl p-12 shadow-2xl shadow-black/20 transition-all duration-400 ${
+            isAnimating ? 'opacity-60 scale-[0.98]' : 'opacity-100 scale-100'
+          }`}
         >
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
-            Get in Touch
-          </span>
-        </motion.h2>
-
-        <div className="grid md:grid-cols-5 gap-8 sm:gap-12 max-w-5xl mx-auto">
-          {/* Social Links Section */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="space-y-6 md:col-span-2"
-          >
-            <div className="bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm">
-              <h3 className="text-2xl font-semibold mb-3">Let's Connect</h3>
-              <p className="text-gray-400 mb-6">
-                Feel free to reach out for collaborations or just a friendly hello. I'm always open to discussing new projects and opportunities.
+          {/* Question Header */}
+          <div className="flex items-start gap-6 mb-10">
+            <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-white flex-shrink-0">
+              {currentQuestion.icon}
+            </div>
+            <div className="flex-1">
+              <div className="text-sm font-mono text-zinc-500 tracking-wider uppercase mb-2">
+                {currentQuestion.title}
+              </div>
+              <h3 className="text-2xl font-extralight text-white mb-2">
+                {currentQuestion.question}
+              </h3>
+              <p className="text-zinc-400 font-light">
+                {currentQuestion.subtitle}
               </p>
+            </div>
+          </div>
 
-              <div className="space-y-3">
-                {socialLinks.map((link, index) => (
-                  <motion.a
+          {/* Input Field */}
+          <div className="mb-10">
+            {currentQuestion.type === "textarea" ? (
+              <textarea
+                value={formData[currentQuestion.id]}
+                onChange={(e) => handleInputChange(e.target.value)}
+                placeholder={currentQuestion.placeholder}
+                rows={6}
+                className="w-full p-6 bg-zinc-900/50 border border-zinc-800/50 rounded-2xl focus:outline-none focus:border-zinc-700 focus:bg-zinc-900/70 transition-all duration-300 text-white placeholder-zinc-500 resize-none font-light"
+              />
+            ) : (
+              <input
+                type={currentQuestion.type}
+                value={formData[currentQuestion.id]}
+                onChange={(e) => handleInputChange(e.target.value)}
+                placeholder={currentQuestion.placeholder}
+                className="w-full p-6 bg-zinc-900/50 border border-zinc-800/50 rounded-2xl focus:outline-none focus:border-zinc-700 focus:bg-zinc-900/70 transition-all duration-300 text-white placeholder-zinc-500 font-light"
+              />
+            )}
+          </div>
+
+          {/* Quick Replies */}
+          {currentQuestion.quickReplies.length > 0 && (
+            <div className="mb-12">
+              <p className="text-sm font-mono text-zinc-500 tracking-wider uppercase mb-6">
+                Quick Options
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {currentQuestion.quickReplies.map((reply, index) => (
+                  <button
                     key={index}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="flex items-center gap-4 p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-all duration-300 group relative overflow-hidden"
+                    onClick={() => handleQuickReply(reply.value)}
+                    className={`p-4 text-left text-sm rounded-xl border transition-all duration-300 ${
+                      formData[currentQuestion.id] === reply.value
+                        ? "bg-white/10 border-white/20 text-white"
+                        : "bg-zinc-900/30 border-zinc-800/50 text-zinc-400 hover:bg-zinc-900/50 hover:border-zinc-700/70 hover:text-zinc-200"
+                    }`}
                   >
-                    {/* Background gradient that appears on hover */}
-                    <div className={`absolute inset-0 bg-gradient-to-r ${link.color} ${link.hoverColor} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
-                    
-                    <div className={`p-3 bg-gradient-to-r ${link.color} rounded-lg text-white relative z-10`}>
-                      {link.icon}
+                    <div className="flex items-center gap-3">
+                      <span className="text-base opacity-60">{reply.icon}</span>
+                      <span className="font-light">{reply.text}</span>
                     </div>
-                    <div className="relative z-10">
-                      <span className="font-medium">{link.name}</span>
-                      <p className="text-xs text-gray-400 mt-1">Connect with me</p>
-                    </div>
-                  </motion.a>
+                  </button>
                 ))}
               </div>
             </div>
-          </motion.div>
+          )}
 
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="md:col-span-3"
-          >
-            <div className="bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm h-full">
-              <h3 className="text-2xl font-semibold mb-3">Send a Message</h3>
-              <p className="text-gray-400 mb-6">
-                Have a question or proposal? Fill out the form below and I'll get back to you as soon as possible.
-              </p>
+          {/* Navigation */}
+          <div className="flex items-center justify-between">
+            <button
+              onClick={handlePrevious}
+              disabled={currentStep === 0}
+              className={`flex items-center gap-2 px-6 py-3 rounded-xl border transition-all duration-300 ${
+                currentStep === 0
+                  ? "border-zinc-800/30 text-zinc-600 cursor-not-allowed"
+                  : "border-zinc-800/50 text-zinc-400 hover:border-zinc-700/70 hover:text-zinc-200 hover:bg-zinc-900/30"
+              }`}
+            >
+              <ChevronLeft className="w-4 h-4" />
+              <span className="text-sm font-light">Previous</span>
+            </button>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-1">
-                    <label className="block text-gray-300 text-sm mb-1">Name</label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleFormChange}
-                      className="w-full p-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
-                      required
-                    />
-                  </div>
-                  <div className="space-y-1">
-                    <label className="block text-gray-300 text-sm mb-1">Email</label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleFormChange}
-                      className="w-full p-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-1">
-                  <label className="block text-gray-300 text-sm mb-1">Subject</label>
-                  <input
-                    type="text"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleFormChange}
-                    className="w-full p-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
-                    required
-                  />
-                </div>
-
-                <div className="space-y-1">
-                  <label className="block text-gray-300 text-sm mb-1">Message</label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleFormChange}
-                    rows="5"
-                    className="w-full p-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors resize-none"
-                    required
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={formStatus.isSubmitting}
-                  className={`w-full py-3 px-6 rounded-lg bg-gradient-to-r from-blue-500 to-emerald-500 text-white font-medium flex items-center justify-center gap-2 
-                    ${formStatus.isSubmitting ? "opacity-75 cursor-not-allowed" : "hover:from-blue-600 hover:to-emerald-600 hover:shadow-lg"} 
-                    transition-all duration-300`}
-                >
-                  {formStatus.isSubmitting ? (
-                    <>
-                      <div className="animate-spin h-5 w-5 border-2 border-white border-t-transparent rounded-full"></div>
-                      <span>Sending...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-5 h-5" />
-                      <span>Send Message</span>
-                    </>
-                  )}
-                </button>
-
-                {/* Success/Error Messages */}
-                {formStatus.isSubmitted && (
-                  <motion.div 
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="flex items-center gap-2 text-green-400 bg-green-400/10 p-3 rounded-lg"
-                  >
-                    <CheckCircle className="w-5 h-5" />
-                    <span>Message sent successfully! I'll get back to you soon.</span>
-                  </motion.div>
-                )}
-
-                {formStatus.error && (
-                  <motion.div 
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="flex items-center gap-2 text-red-400 bg-red-400/10 p-3 rounded-lg"
-                  >
-                    <AlertCircle className="w-5 h-5" />
-                    <span>{formStatus.error}</span>
-                  </motion.div>
-                )}
-              </form>
+            <div className="flex items-center gap-3">
+              {questions.map((_, index) => (
+                <div
+                  key={index}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    index === currentStep
+                      ? "bg-white/40 scale-125"
+                      : index < currentStep
+                      ? "bg-white/20"
+                      : "bg-zinc-800"
+                  }`}
+                />
+              ))}
             </div>
-          </motion.div>
+
+            <button
+              onClick={handleNext}
+              disabled={!isStepValid()}
+              className={`flex items-center gap-2 px-6 py-3 rounded-xl border transition-all duration-300 ${
+                isStepValid()
+                  ? "bg-white/5 border-white/20 text-white hover:bg-white/10 hover:border-white/30"
+                  : "border-zinc-800/30 text-zinc-600 cursor-not-allowed"
+              }`}
+            >
+              <span className="text-sm font-light">
+                {currentStep === questions.length - 1 ? "Send Message" : "Continue"}
+              </span>
+              {currentStep === questions.length - 1 ? (
+                <Send className="w-4 h-4" />
+              ) : (
+                <ArrowRight className="w-4 h-4" />
+              )}
+            </button>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="text-center mt-12">
+          <p className="text-sm font-mono text-zinc-600 tracking-wider uppercase">
+            Professional Development Services
+          </p>
         </div>
       </div>
     </section>
   );
 };
 
-export default ContactForm;
+export default ElegantContactForm;

@@ -1,69 +1,162 @@
 import React from "react";
 import { motion } from "framer-motion";
-// Import gambar dengan cara ES6 import
-import hoodie from "../assets/images/hoodie.jpg"; // sesuaikan path relatif dari file ini
+import hoodie from "../assets/images/hoodie.jpg";
 
 const AboutSection = () => {
   return (
-    <section id="about" className="py-20 px-4 relative overflow-hidden">
-      {/* Gradient background effects */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+    <section id="about" className="py-24 px-6 md:px-12 relative overflow-hidden bg-gradient-to-b from-black via-gray-900 to-slate-900">
+      {/* Subtle background effects */}
+      <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-blue-500/3 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-emerald-500/3 rounded-full blur-3xl"></div>
       
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
+      {/* Subtle grid pattern */}
+      <div className="absolute inset-0 opacity-[0.02]">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+          backgroundSize: '50px 50px'
+        }}></div>
+      </div>
+      
+      <div className="container mx-auto max-w-7xl relative z-10">
+        {/* Section header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-4xl font-bold text-center mb-10 relative text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400"
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-20"
         >
-          About Me
-          <span className="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-[3px] bg-gradient-to-r from-blue-400 to-emerald-400"></span>
-        </motion.h2>
-        
-        <div className="flex flex-wrap items-center justify-between max-w-5xl mx-auto">
-          {/* About text */}
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex-1 min-w-[300px] pr-0 md:pr-10 mb-10 md:mb-0"
+          <motion.span 
+            className="inline-block px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-sm text-gray-400 font-medium mb-6"
           >
-            <h3 className="text-3xl font-bold text-white mb-6">Hello, I'm Nael!</h3>
-            <p className="text-[#ccc] mb-4">
-              "Hello, My Name is Natanael, a 6th semester student in Informatics Engineering at Universitas Advent Indonesia. Originally from Medan, I am currently studying in Bandung."
-            </p>
-            <p className="text-[#ccc] mb-4">
-              I enjoy the challenge of solving complex problems and turning ideas into reality through clean and efficient code. My goal is to create digital experiences that not only look great but also provide real value to users.
-            </p>
-            <p className="text-[#ccc] mb-6">
-              "With a deep interest in technology, especially in Javascript Framework and Go-lang, I strive to continuously learn and develop myself as Software Engineering Intern."
-            </p>
-            <motion.a
-              href="#contact"
-              whileHover={{ y: -3, backgroundColor: "rgba(59, 130, 246, 0.1)" }}
-              transition={{ duration: 0.3 }}
-              className="inline-block bg-transparent border-2 py-3 px-8 text-base font-medium rounded mt-4 cursor-pointer border-gradient-to-r from-blue-400 to-emerald-400 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400"
+            Get to know me
+          </motion.span>
+          
+          <h2 className="text-4xl md:text-5xl font-light text-white mb-4 tracking-tight">
+            About <span className="font-medium bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Natanael</span>
+          </h2>
+          
+          <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent mx-auto"></div>
+        </motion.div>
+        
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+          {/* Content */}
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="space-y-8"
+          >
+            {/* Introduction */}
+            <div>
+              <h3 className="text-2xl md:text-3xl font-light text-white mb-6 leading-relaxed">
+                Hello, I'm <span className="font-medium bg-gradient-to-r from-blue-200 to-emerald-200 bg-clip-text text-transparent">Nael</span>
+              </h3>
+              
+              <div className="space-y-6 text-gray-400 leading-relaxed">
+                <p className="text-lg font-light">
+                  A 6th semester Informatics Engineering student at Universitas Advent Indonesia. 
+                  Originally from Medan, currently based in Bandung, where I'm pursuing my passion 
+                  for technology and software development.
+                </p>
+                
+                <p>
+                  I find joy in transforming complex problems into elegant solutions through 
+                  clean, efficient code. My approach focuses on creating digital experiences 
+                  that seamlessly blend functionality with thoughtful design.
+                </p>
+                
+                <p>
+                  With a deep fascination for modern web technologies, particularly JavaScript 
+                  frameworks and Java, I'm constantly evolving as a FullStack Developer 
+                  professional, always eager to explore new possibilities.
+                </p>
+              </div>
+            </div>
+
+            {/* Skills highlights */}
+            <div className="pt-8 border-t border-white/10">
+              <h4 className="text-lg font-medium text-white mb-4">What I bring to the table</h4>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <div className="text-white font-medium">Problem Solving</div>
+                  <div className="text-gray-500 text-sm">Complex challenges, elegant solutions</div>
+                </div>
+                <div className="space-y-2">
+                  <div className="text-white font-medium">Clean Code</div>
+                  <div className="text-gray-500 text-sm">Maintainable, scalable architecture</div>
+                </div>
+                <div className="space-y-2">
+                  <div className="text-white font-medium">User Focus</div>
+                  <div className="text-gray-500 text-sm">Meaningful digital experiences</div>
+                </div>
+                <div className="space-y-2">
+                  <div className="text-white font-medium">Continuous Learning</div>
+                  <div className="text-gray-500 text-sm">Always exploring new technologies</div>
+                </div>
+              </div>
+            </div>
+
+            {/* CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              viewport={{ once: true }}
+              className="pt-8"
             >
-              Get in Touch
-            </motion.a>
+              <motion.a
+                href="#footer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300 text-white font-medium group"
+              >
+                Let's Connect
+                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </motion.a>
+            </motion.div>
           </motion.div>
           
-          {/* About image */}
+          {/* Image */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex-1 min-w-[300px] flex justify-center"
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="flex justify-center md:justify-end"
           >
-            <div className="relative w-full max-w-[400px]">
-              <img 
-                src={hoodie} 
-                alt="Natanael Detamor" 
-                className="w-full rounded-lg border-[3px] relative z-10"
-                style={{ borderImage: 'linear-gradient(to right, #60a5fa, #34d399) 1' }}
-              />
-              <div className="absolute w-full h-full rounded-lg top-6 left-6 z-0 bg-gradient-to-r from-blue-500/20 to-emerald-500/20"></div>
+            <div className="relative group">
+              {/* Elegant glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-400/10 to-emerald-400/10 rounded-3xl blur-2xl group-hover:blur-xl transition-all duration-500"></div>
+              
+              {/* Image container */}
+              <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-3 group-hover:border-white/20 transition-all duration-500">
+                <div className="relative overflow-hidden rounded-2xl">
+                  <img 
+                    src={hoodie} 
+                    alt="Natanael Detamor" 
+                    className="w-full max-w-sm h-auto object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  
+                  {/* Subtle overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                </div>
+              </div>
+              
+              {/* Floating badge */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                viewport={{ once: true }}
+                className="absolute -bottom-4 -right-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl px-4 py-3"
+              >
+                <div className="text-white font-medium text-sm">Based in</div>
+                <div className="text-gray-300 text-xs">Bandung, Indonesia</div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
