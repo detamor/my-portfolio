@@ -160,7 +160,7 @@ ${formData.message}
 *Sent via Professional Contact Form*`;
 
     const whatsappURL = `https://wa.me/+6282162054193?text=${encodeURIComponent(message)}`;
-    
+
     setShowSuccess(true);
     setTimeout(() => {
       window.open(whatsappURL, "_blank");
@@ -184,7 +184,7 @@ ${formData.message}
         {/* Background */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/50 via-zinc-950 to-black" />
-          <div 
+          <div
             className="absolute inset-0 opacity-[0.02]"
             style={{
               backgroundImage: `
@@ -203,11 +203,11 @@ ${formData.message}
             <div className="w-20 h-20 bg-white/5 border border-white/10 rounded-full flex items-center justify-center mx-auto mb-8">
               <CheckCircle className="w-10 h-10 text-white" />
             </div>
-            
+
             <h3 className="text-3xl font-extralight text-white mb-4">
               Message Sent Successfully
             </h3>
-            
+
             <p className="text-zinc-400 mb-8 leading-relaxed">
               Your project inquiry has been sent. I'll review your requirements and respond within 2-4 hours with a detailed proposal.
             </p>
@@ -246,7 +246,7 @@ ${formData.message}
       {/* Background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/50 via-zinc-950 to-black" />
-        <div 
+        <div
           className="absolute inset-0 opacity-[0.02]"
           style={{
             backgroundImage: `
@@ -263,23 +263,20 @@ ${formData.message}
       <div className="container mx-auto max-w-4xl relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="flex items-center justify-center space-x-3 mb-6">
-            <div className="w-2 h-2 bg-white/20 rounded-full" />
-            <span className="text-sm font-mono text-zinc-400 tracking-wider uppercase">
-              Project Consultation
-            </span>
+          <div className="inline-flex items-center gap-3 px-6 py-2 bg-white/[0.03] border border-zinc-800 rounded-full mb-8">
+            <span className="text-[11px] font-mono text-zinc-600 tracking-[0.2em] uppercase">Connect</span>
           </div>
-          
-          <h2 className="text-5xl lg:text-7xl font-extralight tracking-tight text-white leading-none mb-4">
-            Let's Build
+
+          <h2 className="text-4xl md:text-7xl font-bold tracking-tight text-white leading-none mb-8">
+            Let's build
             <br />
-            <span className="text-zinc-400">Something Great</span>
+            <span className="text-zinc-500">together</span>
           </h2>
-          
-          <div className="w-16 h-px bg-gradient-to-r from-transparent via-zinc-600 to-transparent mx-auto mb-6" />
-          
-          <p className="text-lg text-zinc-400 max-w-2xl mx-auto leading-relaxed font-light">
-            Professional consultation for your next project
+
+          <div className="w-12 h-px bg-zinc-800 mx-auto mb-8" />
+
+          <p className="text-sm md:text-base text-zinc-600 max-w-xl mx-auto leading-relaxed font-light">
+            Professional consultation for your next technical venture.
           </p>
         </div>
 
@@ -294,7 +291,7 @@ ${formData.message}
             </span>
           </div>
           <div className="h-px bg-zinc-800 relative overflow-hidden">
-            <div 
+            <div
               className="h-full bg-white/20 transition-all duration-700 ease-out"
               style={{ width: `${progress}%` }}
             />
@@ -302,10 +299,9 @@ ${formData.message}
         </div>
 
         {/* Main Form */}
-        <div 
-          className={`bg-zinc-900/30 border border-zinc-800/50 rounded-3xl p-12 shadow-2xl shadow-black/20 transition-all duration-400 ${
-            isAnimating ? 'opacity-60 scale-[0.98]' : 'opacity-100 scale-100'
-          }`}
+        <div
+          className={`bg-zinc-900/30 border border-zinc-800/50 rounded-3xl p-12 shadow-2xl shadow-black/20 transition-all duration-400 ${isAnimating ? 'opacity-60 scale-[0.98]' : 'opacity-100 scale-100'
+            }`}
         >
           {/* Question Header */}
           <div className="flex items-start gap-6 mb-10">
@@ -357,11 +353,10 @@ ${formData.message}
                   <button
                     key={index}
                     onClick={() => handleQuickReply(reply.value)}
-                    className={`p-4 text-left text-sm rounded-xl border transition-all duration-300 ${
-                      formData[currentQuestion.id] === reply.value
+                    className={`p-4 text-left text-sm rounded-xl border transition-all duration-300 ${formData[currentQuestion.id] === reply.value
                         ? "bg-white/10 border-white/20 text-white"
                         : "bg-zinc-900/30 border-zinc-800/50 text-zinc-400 hover:bg-zinc-900/50 hover:border-zinc-700/70 hover:text-zinc-200"
-                    }`}
+                      }`}
                   >
                     <div className="flex items-center gap-3">
                       <span className="text-base opacity-60">{reply.icon}</span>
@@ -378,11 +373,10 @@ ${formData.message}
             <button
               onClick={handlePrevious}
               disabled={currentStep === 0}
-              className={`flex items-center gap-2 px-6 py-3 rounded-xl border transition-all duration-300 ${
-                currentStep === 0
+              className={`flex items-center gap-2 px-6 py-3 rounded-xl border transition-all duration-300 ${currentStep === 0
                   ? "border-zinc-800/30 text-zinc-600 cursor-not-allowed"
                   : "border-zinc-800/50 text-zinc-400 hover:border-zinc-700/70 hover:text-zinc-200 hover:bg-zinc-900/30"
-              }`}
+                }`}
             >
               <ChevronLeft className="w-4 h-4" />
               <span className="text-sm font-light">Previous</span>
@@ -392,13 +386,12 @@ ${formData.message}
               {questions.map((_, index) => (
                 <div
                   key={index}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === currentStep
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentStep
                       ? "bg-white/40 scale-125"
                       : index < currentStep
-                      ? "bg-white/20"
-                      : "bg-zinc-800"
-                  }`}
+                        ? "bg-white/20"
+                        : "bg-zinc-800"
+                    }`}
                 />
               ))}
             </div>
@@ -406,11 +399,10 @@ ${formData.message}
             <button
               onClick={handleNext}
               disabled={!isStepValid()}
-              className={`flex items-center gap-2 px-6 py-3 rounded-xl border transition-all duration-300 ${
-                isStepValid()
+              className={`flex items-center gap-2 px-6 py-3 rounded-xl border transition-all duration-300 ${isStepValid()
                   ? "bg-white/5 border-white/20 text-white hover:bg-white/10 hover:border-white/30"
                   : "border-zinc-800/30 text-zinc-600 cursor-not-allowed"
-              }`}
+                }`}
             >
               <span className="text-sm font-light">
                 {currentStep === questions.length - 1 ? "Send Message" : "Continue"}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Github, Eye, ArrowUpRight, Star, Calendar, Code, Zap, Globe } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Github, Eye, ArrowUpRight, Calendar, ArrowRight, ExternalLink } from "lucide-react";
 import playstationImage from "../assets/images/RentalPlaystation.jpg";
 import menubandungImage from "../assets/images/menubandung.jpg";
 import WebTopUpImage from "../assets/images/WebTopUp.jpg";
@@ -7,296 +8,234 @@ import WebTopUpImage from "../assets/images/WebTopUp.jpg";
 const Projects = () => {
   const [hoveredProject, setHoveredProject] = useState(null);
   const [activeFilter, setActiveFilter] = useState("All");
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth) * 100,
-        y: (e.clientY / window.innerHeight) * 100
-      });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
 
   const projects = [
     {
       id: 1,
-      title: "PlayStation Rental Hub",
-      subtitle: "Gaming Console Management",
-      description: "Revolutionary platform transforming PlayStation rental experience with sophisticated booking algorithms, real-time availability tracking, and secure payment processing for seamless entertainment access.",
-      longDescription: "A comprehensive ecosystem featuring advanced user authentication, encrypted account management, dynamic pricing models, and intelligent recommendation systems.",
-      tech: ["Vue.js", "Node.js", "MySQL", "Laravel", "JWT"],
-      demoUrl: "https://ps-rental-demo.netlify.app",
-      codeUrl: "https://github.com/detamor/RentalAppPS",
+      title: "Flower Disease Expert System",
+      subtitle: "AI-Powered Diagnostic System",
+      description: "A comprehensive expert system designed to detect and diagnose diseases in flowers using a rule-based engine and advanced diagnostic logic.",
+      longDescription: "Built with a robust PHP/Vue frontend and a specialized Python-based diagnostic engine. This system helps agricultural experts and enthusiasts identify diseases early to prevent crop loss.",
+      tech: ["PHP", "Vue.js", "Python", "MySQL", "Tailwind"],
+      demoUrl: "#",
+      codeUrl: "https://github.com/detamor/backend_SistemPakar",
       image: playstationImage,
-      color: "blue",
       category: "Full Stack",
-      status: "Production Ready",
-      year: "2024",
+      status: "Production",
+      year: "2026",
       featured: true
     },
     {
       id: 2,
-      title: "Bandung UMKM Ecosystem",
-      subtitle: "Local Business Empowerment",
-      description: "Digital transformation platform empowering Bandung's creative economy through modern e-commerce solutions, analytics dashboards, and community-driven marketplace features.",
-      longDescription: "Comprehensive solution including vendor management, inventory tracking, payment gateway integration, and SEO-optimized storefronts for local businesses.",
-      tech: ["Vue.js", "Node.js", "Tailwind"],
-      demoUrl: "https://bandung-umkm.vercel.app",
-      codeUrl: "https://github.com/detamor/umkm-cemilkuynael/tree/master/case3",
+      title: "HRIS Management System",
+      subtitle: "Internal Enterprise Solution",
+      description: "A secure, internal Human Resource Information System built to streamline employee data management, leave applications, and HR workflows.",
+      longDescription: "Features an automated leave approval process, encrypted employee records, and real-time attendance tracking designed for high-security enterprise environments.",
+      tech: ["React", "Node.js", "PostgreSQL", "Tailwind"],
+      demoUrl: "#",
+      codeUrl: "https://github.com/detamor/frontend_hci_hrd",
       image: menubandungImage,
-      color: "emerald",
-      category: "E-commerce",
-      status: "Live",
-      year: "2024",
+      category: "Full Stack",
+      status: "Internal Live",
+      year: "2025",
       featured: true
     },
     {
       id: 3,
-      title: "GameVault Store",
-      subtitle: "Gaming Credit Marketplace",
-      description: "Next-generation gaming top-up platform featuring instant credit delivery, multi-game support, and gamified user experience with loyalty rewards and social features.",
-      longDescription: "Advanced payment processing, real-time transaction monitoring, automated delivery systems, and comprehensive admin dashboard for business intelligence.",
-      tech: ["HTML" , "CSS", "Javascript"],
-      demoUrl: "https://gamevault-store.netlify.app",
-      codeUrl: "https://github.com/natanael/gamevault",
+      title: "Music Program Workflow",
+      subtitle: "Broadcasting Solution",
+      description: "Specialized management system for music programs, handling scheduling, content workflows, and team collaboration for broadcasting.",
+      longDescription: "Optimized for speed and reliability, this system ensures seamless music programming and coordination between different production units.",
+      tech: ["Vue.js", "Laravel", "MySQL", "Vite"],
+      demoUrl: "#",
+      codeUrl: "https://github.com/detamor/fe_hopechannel",
       image: WebTopUpImage,
-      color: "purple",
       category: "Web App",
-      status: "Beta",
+      status: "Production Ready",
+      year: "2025",
+      featured: true
+    },
+    {
+      id: 4,
+      title: "PlayStation Rental Hub",
+      subtitle: "Gaming Management",
+      description: "Platform transforming PlayStation rental experience with booking algorithms and real-time availability tracking.",
+      longDescription: "A comprehensive ecosystem featuring advanced user authentication and dynamic pricing models.",
+      tech: ["Vue.js", "Node.js", "MySQL", "Laravel"],
+      demoUrl: "#",
+      codeUrl: "https://github.com/detamor/RentalAppPS",
+      image: playstationImage,
+      category: "Full Stack",
+      status: "Classic",
       year: "2024",
       featured: false
     }
   ];
 
   const filters = ["All", "Full Stack", "E-commerce", "Web App"];
-  const filteredProjects = activeFilter === "All" 
-    ? projects 
+  const filteredProjects = activeFilter === "All"
+    ? projects
     : projects.filter(project => project.category === activeFilter);
 
-  // Semua tema transparan
-  const getColorTheme = () => ({
-    gradient: "from-transparent via-transparent to-transparent",
-    border: "border-transparent",
-    text: "text-transparent",
-    glow: "shadow-transparent",
-    accent: "bg-transparent"
-  });
-
   return (
-    <section 
-      id="projects" 
-      className="relative min-h-screen py-32 px-6 overflow-hidden bg-gradient-to-br from-slate-950 via-gray-950 to-black"
-    >
-      {/* Dynamic background with mouse interaction */}
-      <div 
-        className="absolute inset-0 opacity-30 transition-all duration-1000"
-        style={{
-          background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(59, 130, 246, 0.1) 0%, rgba(147, 51, 234, 0.05) 50%, transparent 100%)`
-        }}
-      />
+    <section id="projects" className="py-32 px-6 md:px-12 lg:px-24 bg-[#020617] relative overflow-hidden">
+      {/* Background Glows */}
+      <div className="absolute top-[10%] left-[-10%] w-[40%] h-[40%] bg-indigo-600/5 blur-[120px] rounded-full pointer-events-none"></div>
+      <div className="absolute bottom-[10%] right-[-10%] w-[30%] h-[30%] bg-violet-600/5 blur-[120px] rounded-full pointer-events-none"></div>
 
-      {/* Animated background elements */}
-      <div className="absolute top-20 right-20 w-32 h-32 border border-white/5 rounded-full animate-spin" style={{ animationDuration: '30s' }}></div>
-      <div className="absolute bottom-32 left-20 w-24 h-24 border border-purple-400/10 rounded-lg rotate-45"></div>
-      <div className="absolute top-1/2 right-1/4 w-2 h-32 bg-gradient-to-b from-blue-400/20 to-transparent"></div>
+      {/* Background Branding */}
+      <div className="absolute top-20 right-10 text-[12rem] font-bold text-indigo-500/[0.01] select-none pointer-events-none leading-none hidden lg:block uppercase tracking-tighter">
+        PROJECTS
+      </div>
 
       <div className="container mx-auto max-w-7xl relative z-10">
-        
-        {/* Section header */}
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full mb-8 hover:bg-white/10 transition-all duration-500">
-            <Star className="w-4 h-4 text-yellow-400" />
-            <span className="text-sm font-medium text-gray-300 tracking-wide">Featured Work & Creative Solutions</span>
+        {/* Header Section */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-24">
+          <div className="max-w-2xl">
+            <motion.span
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-indigo-400/40 font-mono text-[10px] tracking-[0.3em] uppercase block mb-4"
+            >
+              Selected Work
+            </motion.span>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="text-5xl md:text-8x font-light text-white tracking-tighter leading-none"
+            >
+              Selected <span className="text-indigo-400/80 italic">Projects</span>
+            </motion.h2>
           </div>
-          
-          <h2 className="text-5xl md:text-7xl font-extralight tracking-tighter mb-6 leading-none">
-            <span className="text-white/40">Selected</span>
-            <br />
-            <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
-              Projects
-            </span>
-          </h2>
-          
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed mb-12">
-            Crafting digital experiences that push boundaries and create meaningful impact through innovative technology solutions.
-          </p>
-        </div>
 
-        {/* Filter tabs transparan */}
-        <div className="flex justify-center mb-16">
-          <div className="inline-flex p-1 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.3 }}
+            className="flex flex-wrap gap-2 p-1.5 bg-indigo-950/20 border border-indigo-500/10 rounded-xl backdrop-blur-sm"
+          >
             {filters.map((filter) => (
               <button
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
-                className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 bg-transparent
-                  ${activeFilter === filter
-                    ? 'text-white border border-white/20'
-                    : 'text-gray-400 border border-transparent hover:text-white'
+                className={`px-6 py-2 rounded-lg text-[10px] font-mono tracking-widest uppercase transition-all duration-500 ${activeFilter === filter
+                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20'
+                  : 'text-indigo-300/40 hover:text-indigo-200 hover:bg-white/5'
                   }`}
-                style={{ outline: 'none' }}
               >
                 {filter}
               </button>
             ))}
-          </div>
+          </motion.div>
         </div>
 
-        {/* Projects grid */}
-        <div className="grid gap-8">
-          {filteredProjects.map((project, index) => {
-            const theme = getColorTheme();
-            const isHovered = hoveredProject === project.id;
-            const isEven = index % 2 === 0;
-            
-            return (
-              <div
-                key={project.id}
-                onMouseEnter={() => setHoveredProject(project.id)}
-                onMouseLeave={() => setHoveredProject(null)}
-                className={`group relative ${isEven ? 'lg:pr-20' : 'lg:pl-20'}`}
-              >
-                {/* Project card */}
-                <div className={`grid lg:grid-cols-2 gap-8 items-center ${!isEven ? 'lg:grid-flow-col-dense' : ''}`}>
-                  {/* Image section */}
-                  <div className={`relative ${!isEven ? 'lg:col-start-2' : ''}`}>
-                    {/* Glow effect */}
-                    <div className={`absolute inset-0 bg-gradient-to-r ${theme.gradient} rounded-3xl blur-2xl transition-all duration-700 ${
-                      isHovered ? 'opacity-60 scale-105' : 'opacity-0'
-                    }`}></div>
-                    {/* Image container */}
-                    <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-2 hover:border-white/20 transition-all duration-500">
-                      <div className="relative h-80 rounded-2xl overflow-hidden">
-                        <img 
-                          src={project.image} 
-                          alt={project.title}
-                          className={`w-full h-full object-cover transition-transform duration-700 ${
-                            isHovered ? 'scale-105' : ''
-                          }`}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                        <div className={`absolute inset-0 flex items-center justify-center gap-4 transition-all duration-500 ${
-                          isHovered ? 'opacity-100' : 'opacity-0'
-                        }`}>
-                          <a
-                            href={project.demoUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group/btn flex items-center gap-2 px-6 py-3 bg-white/20 backdrop-blur-xl border border-white/30 rounded-full hover:bg-white/30 transition-all duration-300 text-white font-medium"
-                          >
-                            <Eye className="w-4 h-4" />
-                            Preview
-                            <ArrowUpRight className="w-4 h-4 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
-                          </a>
-                          <a
-                            href={project.codeUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 px-6 py-3 bg-black/50 backdrop-blur-xl border border-white/20 rounded-full hover:bg-black/70 transition-all duration-300 text-white font-medium"
-                          >
-                            <Github className="w-4 h-4" />
-                            Code
-                          </a>
-                        </div>
-                        {/* Project status badge */}
-                        <div className="absolute top-4 right-4">
-                          <div className={`flex items-center gap-2 px-3 py-1 ${theme.accent} backdrop-blur-xl border ${theme.border} rounded-full`}>
-                            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                            <span className="text-xs font-medium text-white">{project.status}</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  {/* Content section */}
-                  <div className={`space-y-6 ${!isEven ? 'lg:col-start-1' : ''}`}>
-                    <div className="flex items-center gap-4 text-sm text-gray-400">
-                      <div className="flex items-center gap-2">
-                        <Calendar className="w-4 h-4" />
-                        <span>{project.year}</span>
-                      </div>
-                      <div className="w-1 h-1 bg-gray-600 rounded-full"></div>
-                      <span className={theme.text}>{project.category}</span>
-                      {project.featured && (
-                        <>
-                          <div className="w-1 h-1 bg-gray-600 rounded-full"></div>
-                          <div className="flex items-center gap-1">
-                            <Star className="w-3 h-3 text-yellow-400 fill-current" />
-                            <span className="text-yellow-400">Featured</span>
-                          </div>
-                        </>
-                      )}
-                    </div>
-                    <div>
-                      <h3 className="text-3xl md:text-4xl font-light text-white mb-2 leading-tight">
-                        {project.title}
-                      </h3>
-                      <p className={`text-lg ${theme.text} font-light`}>
-                        {project.subtitle}
-                      </p>
-                    </div>
-                    <div className="space-y-4">
-                      <p className="text-gray-400 text-lg leading-relaxed">
-                        {project.description}
-                      </p>
-                      <p className="text-gray-500 leading-relaxed">
-                        {project.longDescription}
-                      </p>
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2 mb-4">
-                        <Zap className="w-4 h-4 text-yellow-400" />
-                        <span className="text-sm font-medium text-gray-300">Tech Stack</span>
-                      </div>
-                      <div className="flex flex-wrap gap-3">
-                        {project.tech.map((tech, techIndex) => (
-                          <span 
-                            key={techIndex}
-                            className="px-4 py-2 bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl text-sm font-medium text-gray-300 hover:bg-white/10 transition-all duration-300"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="pt-4">
-                      <a
-                        href={project.demoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`group/cta inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r ${theme.gradient} backdrop-blur-xl border ${theme.border} rounded-full hover:scale-105 transition-all duration-300 text-white font-medium`}
-                      >
-                        <Globe className="w-5 h-5" />
-                        Explore Project
-                        <ArrowUpRight className="w-5 h-5 group-hover/cta:translate-x-1 group-hover/cta:-translate-y-1 transition-transform" />
-                      </a>
-                    </div>
-                  </div>
+        {/* Projects Grid */}
+        <div className="space-y-40">
+          {filteredProjects.map((project, idx) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              className={`grid lg:grid-cols-12 gap-12 items-center ${idx % 2 !== 0 ? 'lg:direction-rtl' : ''}`}
+            >
+              {/* Project Info */}
+              <div className={`lg:col-span-12 xl:col-span-5 space-y-8 ${idx % 2 !== 0 ? 'lg:order-2 lg:text-right' : 'lg:order-1'}`}>
+                <div className={`flex items-center gap-4 text-[10px] font-mono tracking-[0.2em] text-indigo-400/50 uppercase ${idx % 2 !== 0 ? 'lg:justify-end' : ''}`}>
+                  <span>{project.year}</span>
+                  <span className="w-1 h-1 bg-indigo-500/20 rounded-full"></span>
+                  <span>{project.category}</span>
+                  {project.featured && (
+                    <>
+                      <span className="w-1 h-1 bg-indigo-500/20 rounded-full"></span>
+                      <span className="text-indigo-200/40">Featured</span>
+                    </>
+                  )}
                 </div>
-                {/* Project number */}
-                <div className={`absolute top-0 ${isEven ? 'right-0' : 'left-0'} text-8xl font-extralight text-white/5 select-none pointer-events-none`}>
-                  {String(index + 1).padStart(2, '0')}
+
+                <div>
+                  <h3 className="text-4xl md:text-6xl font-light text-white tracking-tighter mb-4 leading-tight">
+                    {project.title}
+                  </h3>
+                  <p className="text-zinc-400 text-lg font-light leading-relaxed max-w-xl ml-0 mr-auto lg:mx-0">
+                    {project.description}
+                  </p>
+                </div>
+
+                <div className={`flex flex-wrap gap-2 ${idx % 2 !== 0 ? 'lg:justify-end' : ''}`}>
+                  {project.tech.map((t) => (
+                    <span key={t} className="px-3 py-1.5 bg-indigo-950/20 border border-indigo-500/10 rounded-lg text-[10px] font-mono text-indigo-300/60 uppercase tracking-widest">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+                <div className={`flex items-center gap-8 pt-4 ${idx % 2 !== 0 ? 'lg:justify-end' : ''}`}>
+                  <a
+                    href={project.demoUrl}
+                    className="flex items-center gap-2 text-white text-[10px] font-mono tracking-widest uppercase group/link border-b border-indigo-900/50 pb-1 hover:border-white transition-colors"
+                  >
+                    View Project <ArrowUpRight className="w-3 h-3 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
+                  </a>
+                  <a
+                    href={project.codeUrl}
+                    className="flex items-center gap-2 text-indigo-400/50 hover:text-white text-[10px] font-mono tracking-widest uppercase transition-colors"
+                  >
+                    Source Code <Github className="w-3 h-3" />
+                  </a>
                 </div>
               </div>
-            );
-          })}
+
+              {/* Project Visual */}
+              <div className={`lg:col-span-12 xl:col-span-7 relative group ${idx % 2 !== 0 ? 'lg:order-1' : 'lg:order-2'}`}>
+                <div className="absolute -inset-4 border border-indigo-500/5 rounded-2xl -z-10 group-hover:scale-[1.02] transition-transform duration-1000 bg-indigo-500/[0.01]"></div>
+                <div className="relative aspect-[16/9] overflow-hidden rounded-xl bg-zinc-900 shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/5">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 scale-100 group-hover:scale-[1.02]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-1000"></div>
+
+                  {/* Project Meta Overlay */}
+                  <div className="absolute bottom-8 left-8 right-8 flex items-end justify-between opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-4 group-hover:translate-y-0">
+                    <div className="space-y-1">
+                      <div className="text-[10px] font-mono text-indigo-400/50 uppercase tracking-widest">Status</div>
+                      <div className="text-white text-xs font-medium tracking-tight uppercase">{project.status}</div>
+                    </div>
+                    <div className="text-8xl font-black text-white/[0.03] select-none leading-none">
+                      {String(idx + 1).padStart(2, '0')}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
-        {/* Call to action */}
-        <div className="text-center mt-20 pt-20 border-t border-white/5">
-          <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-            Ready to bring your vision to life? Let's collaborate on something extraordinary.
+
+        {/* Bottom CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="mt-40 text-center border-t border-indigo-950/30 pt-32"
+        >
+          <h4 className="text-3xl md:text-6xl font-light text-white tracking-tighter mb-8 italic">
+            Next Level <span className="text-indigo-400/80 not-italic font-normal">Collaboration?</span>
+          </h4>
+          <p className="text-zinc-500 mb-12 max-w-xl mx-auto font-light text-lg italic">
+            "Turning complex tech requirements into beautiful, scalable digital experiences that drive value."
           </p>
-          <button  className="group relative px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full font-medium text-white overflow-hidden hover:scale-105 transition-all duration-300 shadow-2xl">
-            <span className="relative z-10 flex items-center gap-2">
-             <a href="#contact">Start a Project</a> 
-              <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-            </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          </button>
-        </div>
+          <a
+            href="#contact"
+            className="group relative inline-flex items-center gap-6 bg-indigo-600 text-white px-12 py-6 text-[11px] font-mono tracking-[0.3em] uppercase hover:bg-indigo-500 transition-all duration-500 shadow-xl shadow-indigo-600/20"
+          >
+            Initiate Project <ArrowRight className="w-4 h-4 group-hover:translate-x-3 transition-transform duration-500" />
+          </a>
+        </motion.div>
       </div>
     </section>
   );

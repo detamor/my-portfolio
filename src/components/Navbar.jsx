@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { X, Menu } from "lucide-react";
+import { X, Menu, ArrowUpRight } from "lucide-react";
 
 const Navbar = ({ activeSection }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -8,7 +8,7 @@ const Navbar = ({ activeSection }) => {
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      const navbarHeight = 80;
+      const navbarHeight = 72;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
 
@@ -22,166 +22,163 @@ const Navbar = ({ activeSection }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 30);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navItems = [
-    { id: "about", label: "About", num: "01" },
-    { id: "projects", label: "Projects", num: "02" },
-    { id: "certificates", label: "Certificates", num: "03" },
-    { id: "skills", label: "Skills", num: "04" },
-    { id: "contact", label: "Contact", num: "05" }
+    { id: "about", label: "About" },
+    { id: "projects", label: "Projects" },
+    { id: "skills", label: "Skills" },
+    { id: "certificates", label: "Certificates" },
+    { id: "contact", label: "Contact" }
   ];
 
   return (
     <>
-      <nav className={`fixed w-full z-50 transition-all duration-700 ease-out ${
-        scrolled 
-          ? 'bg-black/80 backdrop-blur-2xl border-b border-white/5' 
-          : 'bg-transparent'
-      }`}>
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
+      <nav className={`fixed w-full z-50 transition-all duration-500 ease-out ${scrolled
+          ? 'py-3'
+          : 'py-5'
+        }`}>
+        {/* Background bar — only visible on scroll */}
+        <div className={`absolute inset-0 transition-all duration-500 ${scrolled
+            ? 'bg-zinc-950/70 backdrop-blur-2xl border-b border-zinc-800/50'
+            : 'bg-transparent'
+          }`}></div>
+
+        <div className="relative max-w-7xl mx-auto px-8 md:px-16 lg:px-20">
+          <div className="flex justify-between items-center">
+
             {/* Logo */}
-            <div 
+            <div
               onClick={() => scrollToSection('hero')}
-              className="cursor-pointer group"
+              className="cursor-pointer group flex items-center gap-3"
             >
-              <div className="flex items-center space-x-3">
-                <div className="relative">
-                  <div className="w-10 h-10 flex items-center justify-center relative overflow-hidden rounded-lg bg-white/5 border border-white/10 group-hover:bg-white/10 transition-all duration-300">
-                    <img 
-                      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' fill='%23000'/%3E%3Ctext x='256' y='340' text-anchor='middle' fill='white' font-size='300' font-family='Arial, sans-serif' font-weight='bold'%3END%3C/text%3E%3C/svg%3E"
-                      alt="ND Logo" 
-                      className="w-7 h-7 object-contain group-hover:scale-110 transition-transform duration-300"
-                    />
-                  </div>
-                  <div className="absolute inset-0 rounded-full bg-white/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                </div>
-                <div>
-                  <h1 className="text-xl font-light tracking-wide text-white">
-                    Natanael <span className="font-medium">Detamor</span>
-                  </h1>
-                  <div className="h-px bg-gradient-to-r from-white/60 to-transparent w-0 group-hover:w-full transition-all duration-500" />
-                </div>
+              {/* ND Monogram */}
+              <div className="relative w-9 h-9 flex items-center justify-center">
+                <div className="absolute inset-0 rounded-md bg-white/[0.06] border border-zinc-800 group-hover:border-zinc-700 transition-all duration-300"></div>
+                <span className="relative text-xs font-bold tracking-tight text-zinc-400 group-hover:text-zinc-300 transition-colors">ND</span>
+              </div>
+              {/* Name */}
+              <div className="hidden sm:block">
+                <span className="text-sm font-medium text-zinc-300 tracking-wide group-hover:text-white transition-colors duration-300">
+                  Natanael
+                </span>
+                <span className="text-sm font-light text-zinc-600 tracking-wide ml-1.5">
+                  Detamor
+                </span>
               </div>
             </div>
+
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-12">
-              {navItems.map((item, index) => (
-                <div
+            <div className="hidden lg:flex items-center gap-1">
+              {navItems.map((item) => (
+                <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="cursor-pointer group relative"
+                  className={`relative px-4 py-2 rounded-full text-[13px] tracking-wide transition-all duration-300 ${activeSection === item.id
+                      ? 'text-white bg-white/[0.07]'
+                      : 'text-zinc-500 hover:text-zinc-300'
+                    }`}
                 >
-                  <div className="flex items-center space-x-2">
-                    <span className="text-xs font-mono text-white/40 group-hover:text-white/60 transition-colors duration-300">
-                      {item.num}
-                    </span>
-                    <span className={`text-sm font-light tracking-wider transition-all duration-300 ${
-                      activeSection === item.id 
-                        ? 'text-white' 
-                        : 'text-white/70 group-hover:text-white'
-                    }`}>
-                      {item.label}
-                    </span>
-                  </div>
-                  <div className="absolute -bottom-2 left-0 right-0 h-px overflow-hidden">
-                    <div className={`h-full bg-white transition-all duration-500 ${
-                      activeSection === item.id 
-                        ? 'w-full' 
-                        : 'w-0 group-hover:w-full'
-                    }`} />
-                  </div>
-                </div>
+                  {item.label}
+                  {activeSection === item.id && (
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-white"></div>
+                  )}
+                </button>
               ))}
+
+              {/* CTA button */}
+              <div className="ml-4 pl-4 border-l border-zinc-800">
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  className="group flex items-center gap-1.5 px-4 py-2 text-[13px] text-zinc-400 hover:text-white border border-zinc-800 hover:border-zinc-600 rounded-full transition-all duration-300"
+                >
+                  Hire Me
+                  <ArrowUpRight size={12} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </button>
+              </div>
             </div>
+
             {/* Mobile Menu Button */}
             <button
-              className="lg:hidden relative w-10 h-10 flex items-center justify-center"
+              className="lg:hidden relative w-9 h-9 flex items-center justify-center rounded-md border border-zinc-800 hover:bg-white/5 transition-all duration-300"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              <div className="relative">
-                {isMenuOpen ? (
-                  <X className="w-5 h-5 text-white" />
-                ) : (
-                  <Menu className="w-5 h-5 text-white" />
-                )}
-              </div>
-              <div className="absolute inset-0 rounded-full border border-white/20" />
+              {isMenuOpen ? (
+                <X className="w-4 h-4 text-zinc-400" />
+              ) : (
+                <Menu className="w-4 h-4 text-zinc-400" />
+              )}
             </button>
           </div>
         </div>
       </nav>
+
       {/* Mobile Menu Overlay */}
-      <div className={`lg:hidden fixed inset-0 z-40 transition-all duration-500 ${
-        isMenuOpen ? 'visible' : 'invisible'
-      }`}>
+      <div className={`lg:hidden fixed inset-0 z-40 transition-all duration-500 ${isMenuOpen ? 'visible' : 'invisible'
+        }`}>
         {/* Backdrop */}
-        <div 
-          className={`absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-500 ${
-            isMenuOpen ? 'opacity-100' : 'opacity-0'
-          }`}
+        <div
+          className={`absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-500 ${isMenuOpen ? 'opacity-100' : 'opacity-0'
+            }`}
           onClick={() => setIsMenuOpen(false)}
         />
+
         {/* Menu Panel */}
-        <div className={`absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-black/95 backdrop-blur-2xl border-l border-white/10 transform transition-transform duration-500 ease-out ${
-          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}>
-          {/* Menu Header */}
-          <div className="p-8 border-b border-white/5">
-            <div className="flex items-center justify-between">
-              <h2 className="text-lg font-light text-white tracking-wider">Navigation</h2>
-              <button 
-                onClick={() => setIsMenuOpen(false)}
-                className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/5 transition-colors"
-              >
-                <X className="w-4 h-4 text-white" />
-              </button>
-            </div>
+        <div className={`absolute right-0 top-0 h-full w-72 max-w-[80vw] bg-zinc-950 border-l border-zinc-800/50 transform transition-transform duration-500 ease-out ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}>
+          {/* Header */}
+          <div className="flex items-center justify-between p-6 border-b border-zinc-800/50">
+            <span className="text-[11px] font-mono text-zinc-600 tracking-[0.2em] uppercase">Menu</span>
+            <button
+              onClick={() => setIsMenuOpen(false)}
+              className="w-7 h-7 rounded-md border border-zinc-800 flex items-center justify-center hover:bg-white/5 transition-colors"
+            >
+              <X className="w-3.5 h-3.5 text-zinc-500" />
+            </button>
           </div>
-          {/* Menu Items */}
-          <div className="py-8">
+
+          {/* Items */}
+          <div className="py-4">
             {navItems.map((item, index) => (
-              <div
+              <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`group px-8 py-4 cursor-pointer transition-all duration-300 ${
-                  activeSection === item.id ? 'bg-white/5' : 'hover:bg-white/5'
-                }`}
-                style={{ 
-                  animationDelay: `${index * 50}ms`,
+                className={`w-full text-left px-6 py-3.5 transition-all duration-300 ${activeSection === item.id
+                    ? 'bg-white/[0.04] text-white'
+                    : 'text-zinc-500 hover:text-zinc-300 hover:bg-white/[0.02]'
+                  }`}
+                style={{
                   opacity: isMenuOpen ? 1 : 0,
-                  transform: isMenuOpen ? 'translateX(0)' : 'translateX(20px)',
-                  transition: `all 0.4s ease-out ${index * 0.05}s`
+                  transform: isMenuOpen ? 'translateX(0)' : 'translateX(16px)',
+                  transition: `all 0.4s ease-out ${index * 0.06}s`
                 }}
               >
-                <div className="flex items-center space-x-4">
-                  <span className="text-xs font-mono text-white/40 w-6">
-                    {item.num}
-                  </span>
-                  <span className={`text-base font-light tracking-wide transition-colors ${
-                    activeSection === item.id ? 'text-white' : 'text-white/80 group-hover:text-white'
-                  }`}>
-                    {item.label}
-                  </span>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm tracking-wide">{item.label}</span>
+                  {activeSection === item.id && (
+                    <div className="w-1 h-1 rounded-full bg-white"></div>
+                  )}
                 </div>
-                {activeSection === item.id && (
-                  <div className="mt-2 ml-10 h-px bg-gradient-to-r from-white/60 to-transparent w-12" />
-                )}
-              </div>
+              </button>
             ))}
           </div>
-          {/* Menu Footer */}
-          <div className="absolute bottom-0 left-0 right-0 p-8 border-t border-white/5">
-            <div className="text-center">
-              <p className="text-xs font-mono text-white/40 tracking-widest mb-2">PORTFOLIO</p>
-              <p className="text-sm text-white/60 font-light">Software Engineer</p>
-            </div>
+
+          {/* Footer */}
+          <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-zinc-800/50">
+            <button
+              onClick={() => scrollToSection('contact')}
+              className="w-full flex items-center justify-center gap-2 px-4 py-3 text-sm text-zinc-400 border border-zinc-800 rounded-lg hover:border-zinc-700 hover:text-zinc-300 transition-all duration-300"
+            >
+              Let's Work Together
+              <ArrowUpRight size={14} />
+            </button>
+            <p className="text-center text-[10px] font-mono text-zinc-700 tracking-widest mt-4">
+              FULL STACK DEVELOPER
+            </p>
           </div>
         </div>
       </div>

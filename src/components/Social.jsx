@@ -40,7 +40,7 @@ const Social = () => {
           transition={{ delay: index * 0.1 }}
           className="flex items-center gap-4 p-3 sm:p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300"
         >
-          <div className="p-2 bg-blue-500/10 rounded-lg">{link.icon}</div>
+          <div className="p-2 bg-white/5 rounded-lg">{link.icon}</div>
           <span className="text-sm sm:text-base">{link.name}</span>
         </motion.a>
       ))}
