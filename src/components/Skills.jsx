@@ -40,7 +40,7 @@ const Skills = () => {
       icon: <Cpu className="w-5 h-5" />,
       description: "Server-side logic, Scalable API, and Database Architecture",
       techs: [
-        { name: "Golang", level: "Intermediate", image: VscodeLogo }, // Placeholder for Golang
+        { name: "Python", level: "Intermediate", image: VscodeLogo },
         { name: "PHP / Laravel", level: "Advanced", image: LaravelLogo },
         { name: "MySQL / Postgre", level: "Advanced", image: MySqlLogo },
         { name: "SQL", level: "Advanced", image: SqlLogo }
@@ -171,9 +171,9 @@ const Skills = () => {
         {/* Bottom Stats */}
         <div className="mt-32 grid grid-cols-2 md:grid-cols-4 gap-12 pt-16 border-t border-indigo-950/20">
           {[
-            { value: "20+", label: "Technologies" },
-            { value: "04+", label: "Avg Years" },
-            { value: "40+", label: "Total Projects" },
+            { value: "10+", label: "Technologies" },
+            { value: "2+", label: "Years Coding" },
+            { value: "13+", label: "Projects" },
             { value: "02", label: "Specializations" }
           ].map((stat, i) => (
             <div key={i} className="text-center">

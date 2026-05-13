@@ -152,8 +152,8 @@ const HeroSection = () => {
             }}
           >
             {[
-              { number: "2+", label: "Years" },
-              { number: "15+", label: "Projects" },
+              { number: "2+", label: "Years Coding" },
+              { number: "13+", label: "Projects" },
               { number: "3", label: "Specializations" }
             ].map((stat, index) => (
               <div key={index}>

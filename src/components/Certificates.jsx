@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Award, ChevronLeft, ChevronRight, ExternalLink, Calendar, Check, ArrowRight, Brain, Cloud, FileCode2, Terminal } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink, Calendar, Check, ArrowRight, Brain, Cloud, FileCode2, Terminal } from "lucide-react";
 
 const Certificates = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -42,6 +42,7 @@ const Certificates = () => {
       icon: <Terminal className="w-5 h-5" />,
       color: "emerald"
     },
+    // Tambah sertifikasi baru: salin satu objek di atas, ganti nama/issuer/dateIssued/fileLink/description, simpan PDF di public/certificates/
   ];
 
   const nextCertificate = () => {
@@ -67,9 +68,11 @@ const Certificates = () => {
   };
 
   return (
-    <section id="certificates" className="py-32 px-6 md:px-12 lg:px-24 relative overflow-hidden bg-zinc-950">
+    <section id="certificates" className="py-32 px-6 md:px-12 lg:px-24 relative overflow-hidden bg-[#020617]">
+      {/* Background Glow - konsisten dengan section lain */}
+      <div className="absolute top-[20%] right-[-10%] w-[30%] h-[30%] bg-indigo-600/5 blur-[120px] rounded-full pointer-events-none"></div>
       {/* Editorial Background Element */}
-      <div className="absolute -top-10 left-1/2 -translate-x-1/2 text-[15rem] font-bold text-white/[0.01] select-none pointer-events-none leading-none hidden lg:block uppercase tracking-tighter">
+      <div className="absolute -top-10 left-1/2 -translate-x-1/2 text-[15rem] font-bold text-indigo-500/[0.02] select-none pointer-events-none leading-none hidden lg:block uppercase tracking-tighter">
         CERTIFICATIONS
       </div>
 
@@ -86,7 +89,7 @@ const Certificates = () => {
               Professional Growth
             </motion.span>
             <h2 className="text-4xl md:text-6xl font-light text-white tracking-tighter">
-              Technical <span className="text-zinc-500 italic">Expertise</span>
+              Sertifikasi & <span className="text-zinc-500 italic">Kualifikasi</span>
             </h2>
           </div>
           <p className="text-zinc-500 max-w-xs font-light text-sm italic leading-relaxed">

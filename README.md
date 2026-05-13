@@ -1,8 +1,13 @@
-# React + Vite
+# Portfolio — Natanael Detamor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portfolio website (React + Vite). Data disesuaikan dengan pengalaman mahasiswa akhir dan project nyata dari GitHub.
 
-Currently, two official plugins are available:
+## Update CV & Sertifikasi
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **CV:** Letakkan file CV PDF di `public/cv.pdf` — tombol "Download CV" di Hero akan mengarah ke file ini.
+- **Sertifikasi:** Tambah entri di `src/components/Certificates.jsx` (array `certificates`) dan simpan file PDF di `public/certificates/`.
+
+## Development
+
+- `npm install` lalu `npm run dev`
+- Build: `npm run build`

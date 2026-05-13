@@ -72,7 +72,7 @@ const AboutSection = () => {
                 <span className="text-xs font-mono uppercase tracking-widest text-indigo-300/60">Education</span>
               </div>
               <p className="text-zinc-500 text-sm leading-relaxed">
-                6th Semester Informatics Engineering<br />
+                Mahasiswa Akhir — Informatika<br />
                 <span className="text-indigo-200/40">Universitas Advent Indonesia</span>
               </p>
             </div>
@@ -80,11 +80,11 @@ const AboutSection = () => {
             <div className="space-y-6">
               <div className="flex items-center gap-3 text-indigo-400/40">
                 <MapPin className="w-4 h-4" />
-                <span className="text-xs font-mono uppercase tracking-widest text-indigo-300/60">Position</span>
+                <span className="text-xs font-mono uppercase tracking-widest text-indigo-300/60">Lokasi</span>
               </div>
               <p className="text-zinc-500 text-sm leading-relaxed">
-                Based in Bandung, Indonesia<br />
-                <span className="text-indigo-200/40">Open for global work</span>
+                Bandung, Indonesia<br />
+                <span className="text-indigo-200/40">Open for projects & kolaborasi</span>
               </p>
             </div>
           </motion.div>

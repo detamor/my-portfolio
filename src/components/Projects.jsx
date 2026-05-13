@@ -22,7 +22,7 @@ const Projects = () => {
       image: playstationImage,
       category: "Full Stack",
       status: "Production",
-      year: "2026",
+      year: "2025",
       featured: true
     },
     {
@@ -33,7 +33,7 @@ const Projects = () => {
       longDescription: "Features an automated leave approval process, encrypted employee records, and real-time attendance tracking designed for high-security enterprise environments.",
       tech: ["React", "Node.js", "PostgreSQL", "Tailwind"],
       demoUrl: "#",
-      codeUrl: "https://github.com/detamor/frontend_hci_hrd",
+      codeUrl: "https://github.com/joemichaelsomopawiro/frontend_hci_hrd",
       image: menubandungImage,
       category: "Full Stack",
       status: "Internal Live",
@@ -69,10 +69,70 @@ const Projects = () => {
       status: "Classic",
       year: "2024",
       featured: false
+    },
+    {
+      id: 5,
+      title: "Yapi — API Project",
+      subtitle: "Frontend & Backend",
+      description: "Full-stack API project with TypeScript frontend and JavaScript backend for structured data and workflows.",
+      longDescription: "Built with modern stack for scalability and type safety.",
+      tech: ["TypeScript", "JavaScript", "Node.js"],
+      demoUrl: "#",
+      codeUrl: "https://github.com/detamor/YapiFe",
+      image: WebTopUpImage,
+      category: "Full Stack",
+      status: "Archive",
+      year: "2025",
+      featured: false
+    },
+    {
+      id: 6,
+      title: "UMKM Cemilkuynael",
+      subtitle: "Web UMKM",
+      description: "Website untuk UMKM Cemilkuynael — pemasaran dan informasi produk berbasis web.",
+      longDescription: "Proyek pengembangan web untuk usaha kecil menengah.",
+      tech: ["JavaScript", "HTML", "CSS"],
+      demoUrl: "#",
+      codeUrl: "https://github.com/detamor/umkm-cemilkuynael",
+      image: menubandungImage,
+      category: "Web App",
+      status: "Archive",
+      year: "2025",
+      featured: false
+    },
+    {
+      id: 7,
+      title: "WPS Internship",
+      subtitle: "PHP & Web",
+      description: "Proyek magang — pengembangan web dengan PHP. Dokumentasi dan tugas internship.",
+      longDescription: "Pengalaman magang dalam pengembangan sistem berbasis web.",
+      tech: ["PHP", "Web"],
+      demoUrl: "#",
+      codeUrl: "https://github.com/detamor/wps_intern_NatanaelDetamorKaroKaro",
+      image: playstationImage,
+      category: "Full Stack",
+      status: "Archive",
+      year: "2025",
+      featured: false
+    },
+    {
+      id: 8,
+      title: "Project Akhir Backend",
+      subtitle: "Backend API",
+      description: "Backend untuk project akhir perkuliahan — API dan logika server.",
+      longDescription: "Bagian backend dari project akhir studi.",
+      tech: ["Backend", "API"],
+      demoUrl: "#",
+      codeUrl: "https://github.com/detamor/ProjectAkhir_BE",
+      image: menubandungImage,
+      category: "Full Stack",
+      status: "Archive",
+      year: "2025",
+      featured: false
     }
   ];
 
-  const filters = ["All", "Full Stack", "E-commerce", "Web App"];
+  const filters = ["All", "Full Stack", "Web App"];
   const filteredProjects = activeFilter === "All"
     ? projects
     : projects.filter(project => project.category === activeFilter);
@@ -104,7 +164,7 @@ const Projects = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-5xl md:text-8x font-light text-white tracking-tighter leading-none"
+              className="text-5xl md:text-7xl font-light text-white tracking-tighter leading-none"
             >
               Selected <span className="text-indigo-400/80 italic">Projects</span>
             </motion.h2>
