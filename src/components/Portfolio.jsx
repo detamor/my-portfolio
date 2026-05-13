@@ -7,7 +7,6 @@ import AboutSection from "./AboutSection";
 import Projects from "./Projects";
 import Certificates from "./Certificates";
 import Skills from "./Skills";
-import ContactForm from "./ContactForm";
 import Footer from "./Footer";
 import ScrollToTop from "./ScrollToTop";
 
@@ -36,7 +35,7 @@ const Portfolio = () => {
       const scrollThreshold = window.innerHeight * 0.8;
       setIsVisible(window.pageYOffset > scrollThreshold);
 
-      const sections = ["hero", "about", "projects", "certificates", "skills", "contact"];
+      const sections = ["hero", "about", "projects", "certificates", "skills"];
       const navbarHeight = 64;
 
       let currentSection = "hero";
@@ -91,7 +90,7 @@ const Portfolio = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#020617] text-white relative overflow-x-hidden selection:bg-indigo-500/30">
+    <div className="min-h-screen bg-[#0a0c14] text-white relative overflow-x-hidden selection:bg-indigo-500/30">
       {/* Subtle background texture */}
       <div className="fixed inset-0 opacity-[0.03] pointer-events-none">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(99,102,241,0.1)_1px,transparent_0)] bg-[length:40px_40px]"></div>
@@ -113,9 +112,6 @@ const Portfolio = () => {
 
         <div className="h-px bg-zinc-900 mx-auto max-w-7xl"></div>
         <Skills />
-
-        <div className="h-px bg-zinc-900 mx-auto max-w-7xl"></div>
-        <ContactForm />
       </main>
 
       <Footer />

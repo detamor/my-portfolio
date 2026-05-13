@@ -7,7 +7,7 @@ const Social = () => {
     {
       name: "WhatsApp",
       icon: <Phone className="w-5 h-5" />,
-      url: "https://wa.me/+6282162054193",
+      url: "https://wa.me/6281376485766",
     },
     {
       name: "Instagram",

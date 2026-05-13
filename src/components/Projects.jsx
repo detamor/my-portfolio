@@ -1,301 +1,207 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Github, Eye, ArrowUpRight, Calendar, ArrowRight, ExternalLink } from "lucide-react";
-import playstationImage from "../assets/images/RentalPlaystation.jpg";
-import menubandungImage from "../assets/images/menubandung.jpg";
-import WebTopUpImage from "../assets/images/WebTopUp.jpg";
+import React, { useState, useRef } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { Github, Eye, ArrowUpRight, Calendar, ArrowRight, ExternalLink, Lock, ShieldCheck, Terminal } from "lucide-react";
+import LaravelLogo from "../assets/images/Laravel.jpg";
+import ReactLogo from "../assets/images/React.png";
+import VueLogo from "../assets/images/Vue.png";
+import MySqlLogo from "../assets/images/MySql.jpg";
+import PythonLogo from "../assets/images/Pythonicon.png";
+import NodeJsLogo from "../assets/images/NodeJs.png";
+import spakarImage from "../assets/images/S_pakar.webp";
+import hopemediaDashboard from "../assets/images/hopemedia_dashboard.webp";
+import hopemediaMusic from "../assets/images/hopemedia_music.webp";
 
-const Projects = () => {
-  const [hoveredProject, setHoveredProject] = useState(null);
-  const [activeFilter, setActiveFilter] = useState("All");
+const ProjectCard = ({ project, idx }) => {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
 
-  const projects = [
-    {
-      id: 1,
-      title: "Flower Disease Expert System",
-      subtitle: "AI-Powered Diagnostic System",
-      description: "A comprehensive expert system designed to detect and diagnose diseases in flowers using a rule-based engine and advanced diagnostic logic.",
-      longDescription: "Built with a robust PHP/Vue frontend and a specialized Python-based diagnostic engine. This system helps agricultural experts and enthusiasts identify diseases early to prevent crop loss.",
-      tech: ["PHP", "Vue.js", "Python", "MySQL", "Tailwind"],
-      demoUrl: "#",
-      codeUrl: "https://github.com/detamor/backend_SistemPakar",
-      image: playstationImage,
-      category: "Full Stack",
-      status: "Production",
-      year: "2025",
-      featured: true
-    },
-    {
-      id: 2,
-      title: "HRIS Management System",
-      subtitle: "Internal Enterprise Solution",
-      description: "A secure, internal Human Resource Information System built to streamline employee data management, leave applications, and HR workflows.",
-      longDescription: "Features an automated leave approval process, encrypted employee records, and real-time attendance tracking designed for high-security enterprise environments.",
-      tech: ["React", "Node.js", "PostgreSQL", "Tailwind"],
-      demoUrl: "#",
-      codeUrl: "https://github.com/joemichaelsomopawiro/frontend_hci_hrd",
-      image: menubandungImage,
-      category: "Full Stack",
-      status: "Internal Live",
-      year: "2025",
-      featured: true
-    },
-    {
-      id: 3,
-      title: "Music Program Workflow",
-      subtitle: "Broadcasting Solution",
-      description: "Specialized management system for music programs, handling scheduling, content workflows, and team collaboration for broadcasting.",
-      longDescription: "Optimized for speed and reliability, this system ensures seamless music programming and coordination between different production units.",
-      tech: ["Vue.js", "Laravel", "MySQL", "Vite"],
-      demoUrl: "#",
-      codeUrl: "https://github.com/detamor/fe_hopechannel",
-      image: WebTopUpImage,
-      category: "Web App",
-      status: "Production Ready",
-      year: "2025",
-      featured: true
-    },
-    {
-      id: 4,
-      title: "PlayStation Rental Hub",
-      subtitle: "Gaming Management",
-      description: "Platform transforming PlayStation rental experience with booking algorithms and real-time availability tracking.",
-      longDescription: "A comprehensive ecosystem featuring advanced user authentication and dynamic pricing models.",
-      tech: ["Vue.js", "Node.js", "MySQL", "Laravel"],
-      demoUrl: "#",
-      codeUrl: "https://github.com/detamor/RentalAppPS",
-      image: playstationImage,
-      category: "Full Stack",
-      status: "Classic",
-      year: "2024",
-      featured: false
-    },
-    {
-      id: 5,
-      title: "Yapi — API Project",
-      subtitle: "Frontend & Backend",
-      description: "Full-stack API project with TypeScript frontend and JavaScript backend for structured data and workflows.",
-      longDescription: "Built with modern stack for scalability and type safety.",
-      tech: ["TypeScript", "JavaScript", "Node.js"],
-      demoUrl: "#",
-      codeUrl: "https://github.com/detamor/YapiFe",
-      image: WebTopUpImage,
-      category: "Full Stack",
-      status: "Archive",
-      year: "2025",
-      featured: false
-    },
-    {
-      id: 6,
-      title: "UMKM Cemilkuynael",
-      subtitle: "Web UMKM",
-      description: "Website untuk UMKM Cemilkuynael — pemasaran dan informasi produk berbasis web.",
-      longDescription: "Proyek pengembangan web untuk usaha kecil menengah.",
-      tech: ["JavaScript", "HTML", "CSS"],
-      demoUrl: "#",
-      codeUrl: "https://github.com/detamor/umkm-cemilkuynael",
-      image: menubandungImage,
-      category: "Web App",
-      status: "Archive",
-      year: "2025",
-      featured: false
-    },
-    {
-      id: 7,
-      title: "WPS Internship",
-      subtitle: "PHP & Web",
-      description: "Proyek magang — pengembangan web dengan PHP. Dokumentasi dan tugas internship.",
-      longDescription: "Pengalaman magang dalam pengembangan sistem berbasis web.",
-      tech: ["PHP", "Web"],
-      demoUrl: "#",
-      codeUrl: "https://github.com/detamor/wps_intern_NatanaelDetamorKaroKaro",
-      image: playstationImage,
-      category: "Full Stack",
-      status: "Archive",
-      year: "2025",
-      featured: false
-    },
-    {
-      id: 8,
-      title: "Project Akhir Backend",
-      subtitle: "Backend API",
-      description: "Backend untuk project akhir perkuliahan — API dan logika server.",
-      longDescription: "Bagian backend dari project akhir studi.",
-      tech: ["Backend", "API"],
-      demoUrl: "#",
-      codeUrl: "https://github.com/detamor/ProjectAkhir_BE",
-      image: menubandungImage,
-      category: "Full Stack",
-      status: "Archive",
-      year: "2025",
-      featured: false
-    }
-  ];
+  const mouseXSpring = useSpring(x);
+  const mouseYSpring = useSpring(y);
 
-  const filters = ["All", "Full Stack", "Web App"];
-  const filteredProjects = activeFilter === "All"
-    ? projects
-    : projects.filter(project => project.category === activeFilter);
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const xPct = (e.clientX - rect.left) / rect.width - 0.5;
+    const yPct = (e.clientY - rect.top) / rect.height - 0.5;
+    x.set(xPct);
+    y.set(yPct);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
 
   return (
-    <section id="projects" className="py-32 px-6 md:px-12 lg:px-24 bg-[#020617] relative overflow-hidden">
-      {/* Background Glows */}
-      <div className="absolute top-[10%] left-[-10%] w-[40%] h-[40%] bg-indigo-600/5 blur-[120px] rounded-full pointer-events-none"></div>
-      <div className="absolute bottom-[10%] right-[-10%] w-[30%] h-[30%] bg-violet-600/5 blur-[120px] rounded-full pointer-events-none"></div>
-
-      {/* Background Branding */}
-      <div className="absolute top-20 right-10 text-[12rem] font-bold text-indigo-500/[0.01] select-none pointer-events-none leading-none hidden lg:block uppercase tracking-tighter">
-        PROJECTS
-      </div>
-
-      <div className="container mx-auto max-w-7xl relative z-10">
-        {/* Header Section */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-24">
-          <div className="max-w-2xl">
-            <motion.span
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-indigo-400/40 font-mono text-[10px] tracking-[0.3em] uppercase block mb-4"
-            >
-              Selected Work
-            </motion.span>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-5xl md:text-7xl font-light text-white tracking-tighter leading-none"
-            >
-              Selected <span className="text-indigo-400/80 italic">Projects</span>
-            </motion.h2>
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.3 }}
-            className="flex flex-wrap gap-2 p-1.5 bg-indigo-950/20 border border-indigo-500/10 rounded-xl backdrop-blur-sm"
-          >
-            {filters.map((filter) => (
-              <button
-                key={filter}
-                onClick={() => setActiveFilter(filter)}
-                className={`px-6 py-2 rounded-lg text-[10px] font-mono tracking-widest uppercase transition-all duration-500 ${activeFilter === filter
-                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20'
-                  : 'text-indigo-300/40 hover:text-indigo-200 hover:bg-white/5'
-                  }`}
-              >
-                {filter}
-              </button>
-            ))}
-          </motion.div>
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: idx * 0.1 }}
+      viewport={{ once: true, margin: "-100px" }}
+      className="grid lg:grid-cols-2 gap-24 items-center"
+    >
+      {/* Project Info - Left Side */}
+      <div className={`space-y-8 ${idx % 2 !== 0 ? 'lg:order-2' : 'lg:order-1'}`}>
+        <div className="flex items-center gap-6">
+          <span className="text-[10px] font-mono tracking-[0.4em] text-zinc-700 uppercase">{project.year}</span>
+          <div className="w-10 h-px bg-zinc-900"></div>
+          <span className="text-[10px] font-mono tracking-[0.4em] text-indigo-400/40 uppercase">{project.category}</span>
         </div>
 
-        {/* Projects Grid */}
-        <div className="space-y-40">
-          {filteredProjects.map((project, idx) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className={`grid lg:grid-cols-12 gap-12 items-center ${idx % 2 !== 0 ? 'lg:direction-rtl' : ''}`}
-            >
-              {/* Project Info */}
-              <div className={`lg:col-span-12 xl:col-span-5 space-y-8 ${idx % 2 !== 0 ? 'lg:order-2 lg:text-right' : 'lg:order-1'}`}>
-                <div className={`flex items-center gap-4 text-[10px] font-mono tracking-[0.2em] text-indigo-400/50 uppercase ${idx % 2 !== 0 ? 'lg:justify-end' : ''}`}>
-                  <span>{project.year}</span>
-                  <span className="w-1 h-1 bg-indigo-500/20 rounded-full"></span>
-                  <span>{project.category}</span>
-                  {project.featured && (
-                    <>
-                      <span className="w-1 h-1 bg-indigo-500/20 rounded-full"></span>
-                      <span className="text-indigo-200/40">Featured</span>
-                    </>
-                  )}
-                </div>
-
-                <div>
-                  <h3 className="text-4xl md:text-6xl font-light text-white tracking-tighter mb-4 leading-tight">
-                    {project.title}
-                  </h3>
-                  <p className="text-zinc-400 text-lg font-light leading-relaxed max-w-xl ml-0 mr-auto lg:mx-0">
-                    {project.description}
-                  </p>
-                </div>
-
-                <div className={`flex flex-wrap gap-2 ${idx % 2 !== 0 ? 'lg:justify-end' : ''}`}>
-                  {project.tech.map((t) => (
-                    <span key={t} className="px-3 py-1.5 bg-indigo-950/20 border border-indigo-500/10 rounded-lg text-[10px] font-mono text-indigo-300/60 uppercase tracking-widest">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-
-                <div className={`flex items-center gap-8 pt-4 ${idx % 2 !== 0 ? 'lg:justify-end' : ''}`}>
-                  <a
-                    href={project.demoUrl}
-                    className="flex items-center gap-2 text-white text-[10px] font-mono tracking-widest uppercase group/link border-b border-indigo-900/50 pb-1 hover:border-white transition-colors"
-                  >
-                    View Project <ArrowUpRight className="w-3 h-3 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
-                  </a>
-                  <a
-                    href={project.codeUrl}
-                    className="flex items-center gap-2 text-indigo-400/50 hover:text-white text-[10px] font-mono tracking-widest uppercase transition-colors"
-                  >
-                    Source Code <Github className="w-3 h-3" />
-                  </a>
-                </div>
+        <div className="space-y-8">
+          <h3 className="text-2xl md:text-3xl font-light text-white tracking-tight leading-tight group-hover:text-indigo-100 transition-colors">
+            {project.title}
+          </h3>
+          
+          <div className="space-y-10 max-w-xl">
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <span className="text-[9px] font-mono uppercase tracking-[0.4em] text-zinc-600">The Problem</span>
               </div>
-
-              {/* Project Visual */}
-              <div className={`lg:col-span-12 xl:col-span-7 relative group ${idx % 2 !== 0 ? 'lg:order-1' : 'lg:order-2'}`}>
-                <div className="absolute -inset-4 border border-indigo-500/5 rounded-2xl -z-10 group-hover:scale-[1.02] transition-transform duration-1000 bg-indigo-500/[0.01]"></div>
-                <div className="relative aspect-[16/9] overflow-hidden rounded-xl bg-zinc-900 shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/5">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 scale-100 group-hover:scale-[1.02]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-1000"></div>
-
-                  {/* Project Meta Overlay */}
-                  <div className="absolute bottom-8 left-8 right-8 flex items-end justify-between opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-4 group-hover:translate-y-0">
-                    <div className="space-y-1">
-                      <div className="text-[10px] font-mono text-indigo-400/50 uppercase tracking-widest">Status</div>
-                      <div className="text-white text-xs font-medium tracking-tight uppercase">{project.status}</div>
-                    </div>
-                    <div className="text-8xl font-black text-white/[0.03] select-none leading-none">
-                      {String(idx + 1).padStart(2, '0')}
-                    </div>
-                  </div>
-                </div>
+              <p className="text-zinc-500 text-sm md:text-base font-light leading-relaxed">
+                {project.challenge}
+              </p>
+            </div>
+            
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <span className="text-[9px] font-mono uppercase tracking-[0.4em] text-indigo-400/40">The Solution</span>
               </div>
-            </motion.div>
+              <p className="text-zinc-300 text-sm md:text-base font-light leading-relaxed border-l border-white/5 pl-6">
+                {project.solution}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Minimal Tech Stack - Thin Borders Only */}
+        <div className="flex flex-wrap gap-3 pt-4">
+          {project.techLogos.map((logo, i) => (
+            <div key={i} className="p-3 border border-white/5 rounded-xl hover:border-white/10 transition-all group">
+              <img src={logo} alt="tech" className="w-5 h-5 object-contain opacity-100 transition-opacity" />
+            </div>
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="mt-40 text-center border-t border-indigo-950/30 pt-32"
-        >
-          <h4 className="text-3xl md:text-6xl font-light text-white tracking-tighter mb-8 italic">
-            Next Level <span className="text-indigo-400/80 not-italic font-normal">Collaboration?</span>
-          </h4>
-          <p className="text-zinc-500 mb-12 max-w-xl mx-auto font-light text-lg italic">
-            "Turning complex tech requirements into beautiful, scalable digital experiences that drive value."
-          </p>
+        <div className="flex items-center gap-12 pt-10">
           <a
-            href="#contact"
-            className="group relative inline-flex items-center gap-6 bg-indigo-600 text-white px-12 py-6 text-[11px] font-mono tracking-[0.3em] uppercase hover:bg-indigo-500 transition-all duration-500 shadow-xl shadow-indigo-600/20"
+            href={project.demoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group/link flex items-center gap-3 text-white text-[10px] font-mono tracking-[0.4em] uppercase border-b border-white/5 pb-2 hover:border-white transition-all"
           >
-            Initiate Project <ArrowRight className="w-4 h-4 group-hover:translate-x-3 transition-transform duration-500" />
+            {project.isPrivate ? "Analyze Architecture" : "Live Simulation"} 
+            <ArrowUpRight size={12} className="group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
           </a>
-        </motion.div>
+          {project.isPrivate && (
+             <div className="flex items-center gap-3 opacity-60">
+                <div className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)] animate-pulse"></div>
+                <span className="text-[9px] font-mono text-zinc-600 uppercase tracking-[0.2em]">Secured System</span>
+             </div>
+          )}
+        </div>
+      </div>
+
+      {/* Project Visual - Right Side */}
+      <motion.div
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+        className={`relative group perspective-1000 ${idx % 2 !== 0 ? 'lg:order-1' : 'lg:order-2'}`}
+      >
+        <div className="relative aspect-[16/10] bg-zinc-900 rounded-[2rem] overflow-hidden transition-all duration-1000 group-hover:shadow-[0_60px_100px_-20px_rgba(0,0,0,0.7)]">
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover grayscale group-hover:grayscale-0 opacity-40 group-hover:opacity-100 transition-all duration-1000 scale-[1.05] group-hover:scale-100"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-60"></div>
+          
+          {/* Subtle Frame */}
+          <div className="absolute inset-0 border border-white/5 rounded-[2rem] pointer-events-none group-hover:border-white/10 transition-colors"></div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+const Projects = () => {
+  const projects = [
+    {
+      id: 1,
+      title: "ERP Core — Hopemedia.id",
+      year: "2025 - Present",
+      category: "Enterprise System",
+      challenge: "Legacy production workflows were fragmented across 20+ specialized roles, causing 5-second processing delays and communication overhead.",
+      solution: "Developed a centralized ERP system with role-based access control (RBAC), automated KPI tracking, and optimized database queries, reducing system-wide latency by 75%.",
+      techLogos: [LaravelLogo, VueLogo, MySqlLogo],
+      demoUrl: "https://hopemedia.id",
+      codeUrl: "#",
+      image: hopemediaDashboard,
+      isPrivate: true
+    },
+    {
+      id: 2,
+      title: "Plant Disease AI Diagnostic",
+      year: "2025 - 2026",
+      category: "AI & Microservices",
+      challenge: "Identifying plant diseases manually is slow and error-prone, requiring a system that can process complex diagnostic rules in real-time.",
+      solution: "Built an AI-driven diagnostic engine using Python Experta and FastAPI, integrated with a Laravel backend. Implemented secure OTP authentication and automated PDF reporting.",
+      techLogos: [PythonLogo, LaravelLogo, VueLogo, NodeJsLogo],
+      demoUrl: "#",
+      codeUrl: "#",
+      image: spakarImage,
+      isPrivate: false
+    },
+    {
+      id: 3,
+      title: "Workflow Hub — MusicOps",
+      year: "2025",
+      category: "Workflow Automation",
+      challenge: "Asynchronous music production cycles lacked a unified tracking layer, leading to significant delays and manual status updates.",
+      solution: "Architected a real-time workflow hub that propagates production status across teams, streamlining visibility and ensuring multi-phase episode deliveries.",
+      techLogos: [LaravelLogo, VueLogo, MySqlLogo],
+      demoUrl: "#",
+      codeUrl: "#",
+      image: hopemediaMusic,
+      isPrivate: true
+    }
+  ];
+
+  return (
+    <section id="projects" className="py-24 px-6 md:px-12 lg:px-24 bg-[#0a0c14] relative overflow-hidden">
+      {/* Editorial Background */}
+      <div className="absolute top-[10%] right-[-5%] w-[40%] h-[40%] bg-indigo-600/5 blur-[120px] rounded-full pointer-events-none"></div>
+      
+      <div className="container mx-auto max-w-7xl relative z-10">
+        <div className="max-w-3xl mb-24">
+          <motion.span
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-zinc-600 font-mono text-[9px] tracking-[0.4em] uppercase block mb-4"
+          >
+            Engineering Showcase
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-3xl md:text-4xl font-light text-white tracking-tighter leading-none mb-6"
+          >
+            High-Impact <br />
+            <span className="text-zinc-500 italic">Solutions</span>
+          </motion.h2>
+          <p className="text-zinc-500 text-sm md:text-base font-light leading-relaxed max-w-xl">
+             A collection of engineered systems designed for stability, performance, and professional scalability.
+          </p>
+        </div>
+
+        <div className="space-y-32">
+          {projects.map((project, idx) => (
+            <ProjectCard key={project.id} project={project} idx={idx} />
+          ))}
+        </div>
       </div>
     </section>
   );
