@@ -91,7 +91,7 @@ const ProjectCard = ({ project, idx }) => {
 
         <div className="flex flex-wrap items-center gap-8 pt-10">
           {/* Main Action: Case Study or Live Simulation */}
-          {project.isPrivate ? (
+          {(project.isPrivate || project.id === 2) ? (
             <button
               onClick={() => project.onOpenCaseStudy(project)}
               className="group/link flex items-center gap-3 text-white text-[10px] font-mono tracking-[0.4em] uppercase border-b border-white/5 pb-2 hover:border-white transition-all"
@@ -203,13 +203,14 @@ const Projects = () => {
     },
     {
       id: 2,
-      title: "Plant Disease AI Diagnostic",
+      title: "PlantAI — Diagnostic Expert System",
       year: "2025 - 2026",
-      category: "AI & Microservices",
-      challenge: "Identifying plant diseases manually is slow and error-prone, requiring a system that can process complex diagnostic rules in real-time.",
-      solution: "Built an AI-driven diagnostic engine using Python Experta and FastAPI, integrated with a Laravel backend. Implemented secure OTP authentication and automated PDF reporting.",
+      category: "AI & Decoupled Architecture",
+      challenge: "Processing complex diagnostic rules in real-time without compromising the performance of the core business logic or user experience.",
+      solution: "Engineered a Hybrid AI approach using a FastAPI-based Inference Engine (Python) for Certainty Factor (CF) calculations, decoupled from a Laravel core.",
       techLogos: [PythonLogo, LaravelLogo, VueLogo, NodeJsLogo],
       demoUrl: null,
+      status: "Research Validated",
       codeUrls: [
         { label: "Backend", url: "https://github.com/detamor/backend_SistemPakar" },
         { label: "Frontend", url: "https://github.com/detamor/frontend_SistemPakar" },
