@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Database, Workflow, Shield, Layout, Server, Cpu } from "lucide-react";
+import { X, Database, Workflow, Shield, Layout, Server, Cpu, Users, Zap, Key } from "lucide-react";
 
 const CaseStudyModal = ({ isOpen, onClose, project }) => {
   if (!project) return null;
@@ -15,7 +15,7 @@ const CaseStudyModal = ({ isOpen, onClose, project }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/90 backdrop-blur-sm z-[100] cursor-pointer"
+            className="fixed inset-0 bg-black/95 backdrop-blur-md z-[100] cursor-pointer"
           />
 
           {/* Modal Content */}
@@ -23,12 +23,15 @@ const CaseStudyModal = ({ isOpen, onClose, project }) => {
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="fixed inset-x-4 top-[5%] bottom-[5%] md:inset-x-12 lg:inset-x-24 bg-[#0a0c14] border border-white/5 rounded-[2rem] z-[101] overflow-hidden flex flex-col shadow-2xl shadow-black"
+            className="fixed inset-x-4 top-[5%] bottom-[5%] md:inset-x-12 lg:inset-x-24 bg-[#0a0c14] border border-white/5 rounded-[2.5rem] z-[101] overflow-hidden flex flex-col shadow-2xl shadow-black"
           >
             {/* Header */}
             <div className="flex items-center justify-between p-8 md:p-12 border-b border-white/5 bg-white/[0.01]">
               <div className="space-y-2">
-                <span className="text-[10px] font-mono tracking-[0.4em] text-indigo-400 uppercase">Technical Case Study</span>
+                <div className="flex items-center gap-3">
+                  <span className="text-[10px] font-mono tracking-[0.4em] text-indigo-400 uppercase">Technical Case Study</span>
+                  <div className="px-2 py-0.5 rounded-full border border-indigo-500/30 bg-indigo-500/5 text-[8px] font-mono text-indigo-300 uppercase tracking-widest">Enterprise Secured</div>
+                </div>
                 <h2 className="text-2xl md:text-4xl font-light text-white tracking-tight">{project.title}</h2>
               </div>
               <button 
@@ -40,104 +43,113 @@ const CaseStudyModal = ({ isOpen, onClose, project }) => {
             </div>
 
             {/* Body */}
-            <div className="flex-1 overflow-y-auto p-8 md:p-12 space-y-20 custom-scrollbar">
+            <div className="flex-1 overflow-y-auto p-8 md:p-12 space-y-24 custom-scrollbar">
               
-              {/* Architecture Section */}
-              <section className="grid lg:grid-cols-2 gap-12 items-start">
-                <div className="space-y-6">
+              {/* Architecture Section - Multi-Module Ecosystem */}
+              <section className="grid lg:grid-cols-2 gap-16 items-start">
+                <div className="space-y-8">
                   <div className="flex items-center gap-4 text-white">
-                    <div className="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center border border-indigo-500/20">
-                      <Cpu size={20} className="text-indigo-400" />
+                    <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center border border-indigo-500/20 shadow-[0_0_20px_rgba(99,102,241,0.1)]">
+                      <Cpu size={24} className="text-indigo-400" />
                     </div>
-                    <h3 className="text-xl font-light">System Architecture</h3>
+                    <h3 className="text-2xl font-light">Integrated Enterprise Ecosystem</h3>
                   </div>
-                  <p className="text-zinc-400 font-light leading-relaxed">
-                    Built on a highly modular architecture designed for high throughput and horizontal scalability. 
-                    The system utilizes a decoupled backend for complex business logic processing and a reactive frontend for real-time state management.
+                  <p className="text-zinc-400 font-light leading-relaxed text-lg">
+                    The platform is architected as a centralized ERP designed to integrate fragmented operational modules into a unified ecosystem. The "Hub & Spoke" model ensures that shared services like HRIS and Finance feed into specialized vertical modules like MusicOps.
                   </p>
-                  <ul className="space-y-4">
-                    <li className="flex items-start gap-4">
-                      <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-2"></div>
-                      <span className="text-zinc-500 text-sm font-light leading-relaxed">
-                        <strong className="text-zinc-300 block mb-1">State Synchrony:</strong> 
-                        Implemented real-time event broadcasting to ensure data consistency across multiple concurrent user sessions.
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-4">
-                      <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-2"></div>
-                      <span className="text-zinc-500 text-sm font-light leading-relaxed">
-                        <strong className="text-zinc-300 block mb-1">Latency Optimization:</strong> 
-                        Refactored legacy query patterns into optimized eager-loading relationships, resulting in a significant reduction in TTFB.
-                      </span>
-                    </li>
-                  </ul>
+                  <div className="p-6 border border-white/5 rounded-2xl bg-white/[0.02] space-y-4">
+                     <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block">Architecture Model</span>
+                     <div className="flex items-center gap-6">
+                        <div className="flex flex-col items-center gap-2">
+                           <div className="w-10 h-10 rounded-full border border-indigo-500/30 flex items-center justify-center text-indigo-400">Core</div>
+                        </div>
+                        <div className="w-12 h-px bg-zinc-800"></div>
+                        <div className="flex gap-3">
+                           {['HRIS', 'MusicOps', 'Inventory', 'Finance'].map(mod => (
+                             <div key={mod} className="px-3 py-1.5 rounded-lg bg-zinc-900 border border-white/5 text-[9px] font-mono text-zinc-400 uppercase">{mod}</div>
+                           ))}
+                        </div>
+                     </div>
+                  </div>
                 </div>
-                <div className="bg-zinc-900/50 border border-white/5 rounded-2xl p-8 aspect-video flex items-center justify-center relative overflow-hidden group">
-                   {/* Placeholder for Diagram */}
-                   <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-transparent"></div>
-                   <div className="text-center space-y-4 relative z-10">
-                      <Workflow size={48} className="mx-auto text-zinc-700 group-hover:text-indigo-400/40 transition-colors duration-700" />
-                      <span className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest block">Architecture Flow Diagram</span>
-                   </div>
+                <div className="bg-zinc-900/50 border border-white/5 rounded-3xl p-12 aspect-video flex flex-col items-center justify-center relative overflow-hidden group">
+                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.05),transparent)]"></div>
+                   <Workflow size={48} className="text-indigo-400/20 mb-6 group-hover:scale-110 transition-transform duration-700" />
+                   <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest text-center max-w-xs">Dynamic Module Synchronization Flow</span>
                 </div>
               </section>
 
-              {/* Database Section */}
-              <section className="grid lg:grid-cols-2 gap-12 items-start">
-                <div className="lg:order-2 space-y-6">
+              {/* RBAC Section - 20+ Roles */}
+              <section className="grid lg:grid-cols-2 gap-16 items-start">
+                <div className="lg:order-2 space-y-8">
                   <div className="flex items-center gap-4 text-white">
-                    <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20">
-                      <Database size={20} className="text-emerald-400" />
+                    <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20 shadow-[0_0_20px_rgba(52,211,153,0.1)]">
+                      <Key size={24} className="text-emerald-400" />
                     </div>
-                    <h3 className="text-xl font-light">Data Engineering</h3>
+                    <h3 className="text-2xl font-light">Advanced Hierarchical RBAC</h3>
                   </div>
                   <p className="text-zinc-400 font-light leading-relaxed">
-                    The database schema follows strict normalization standards (3NF) to maintain data integrity while utilizing JSON columns for flexible metadata storage in non-relational contexts.
+                    Managed 20+ specialized roles (Producers, Editors, HR, etc.) using a granular permission matrix. Security is enforced via highly optimized middleware layers and dynamic frontend navigation rendering.
                   </p>
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="p-4 border border-white/5 rounded-xl bg-white/[0.01]">
-                       <span className="text-[10px] font-mono text-zinc-600 uppercase block mb-1">Entities</span>
-                       <span className="text-white text-lg font-light">45+ Tables</span>
+                    <div className="p-5 border border-white/5 rounded-2xl bg-white/[0.02]">
+                       <Users size={16} className="text-emerald-400 mb-3" />
+                       <span className="text-white text-xl font-light">20+ Roles</span>
+                       <span className="text-[9px] font-mono text-zinc-600 uppercase block mt-1">Granular Control</span>
                     </div>
-                    <div className="p-4 border border-white/5 rounded-xl bg-white/[0.01]">
-                       <span className="text-[10px] font-mono text-zinc-600 uppercase block mb-1">Integrity</span>
-                       <span className="text-white text-lg font-light">ACID Compliant</span>
+                    <div className="p-5 border border-white/5 rounded-2xl bg-white/[0.02]">
+                       <Zap size={16} className="text-emerald-400 mb-3" />
+                       <span className="text-white text-xl font-light">75% Faster</span>
+                       <span className="text-[9px] font-mono text-zinc-600 uppercase block mt-1">Auth Latency</span>
                     </div>
                   </div>
                 </div>
-                <div className="lg:order-1 bg-zinc-900/50 border border-white/5 rounded-2xl p-8 aspect-square md:aspect-video flex items-center justify-center relative group">
+                <div className="lg:order-1 bg-zinc-900/50 border border-white/5 rounded-3xl aspect-square md:aspect-video flex items-center justify-center relative group overflow-hidden">
                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(52,211,153,0.03),transparent)]"></div>
-                   <div className="text-center space-y-4 relative z-10">
-                      <Database size={48} className="mx-auto text-zinc-700 group-hover:text-emerald-400/40 transition-colors duration-700" />
-                      <span className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest block">ERD Schematic (Censored)</span>
+                   <div className="grid grid-cols-4 gap-2 opacity-20 group-hover:opacity-40 transition-opacity duration-700 p-8">
+                      {Array.from({length: 12}).map((_, i) => (
+                        <div key={i} className="w-full h-8 rounded bg-zinc-800"></div>
+                      ))}
                    </div>
+                   <span className="absolute text-[10px] font-mono text-zinc-500 uppercase tracking-widest">RBAC Permission Matrix (Censored)</span>
                 </div>
               </section>
 
-              {/* UI & Privacy Section */}
+              {/* Core Features Integration */}
               <section className="space-y-12">
-                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                    <div className="space-y-2">
-                       <div className="flex items-center gap-4 text-white">
-                          <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center border border-amber-500/20">
-                            <Shield size={20} className="text-amber-400" />
-                          </div>
-                          <h3 className="text-xl font-light">Visual Identity & Privacy</h3>
-                       </div>
-                       <p className="text-zinc-500 text-sm font-light">As this is a confidential enterprise project, UI elements are presented with sensitive data obfuscated.</p>
+                 <div className="space-y-4">
+                    <div className="flex items-center gap-4 text-white">
+                      <div className="w-12 h-12 rounded-2xl bg-amber-500/10 flex items-center justify-center border border-amber-500/20 shadow-[0_0_20px_rgba(245,158,11,0.1)]">
+                        <Zap size={24} className="text-amber-400" />
+                      </div>
+                      <h3 className="text-2xl font-light">Critical Feature Integration</h3>
                     </div>
                  </div>
 
-                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {[1, 2].map((i) => (
-                       <div key={i} className="group relative rounded-2xl overflow-hidden border border-white/5 aspect-video bg-zinc-900">
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                          <div className="absolute inset-0 flex items-center justify-center grayscale opacity-20 group-hover:opacity-50 transition-all duration-700 group-hover:scale-110">
-                             <Layout size={64} className="text-zinc-600" />
+                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {[
+                      {
+                        title: "Zoom API Sync",
+                        desc: "Automated presence validation for morning devotionals, synchronized directly into core HR database.",
+                        icon: <Server className="w-5 h-5 text-amber-400" />
+                      },
+                      {
+                        title: "Digital Compliance",
+                        desc: "Digital Signature (TTD) system for leave requests, replacing manual paper workflows with verified digital paths.",
+                        icon: <Shield className="w-5 h-5 text-amber-400" />
+                      },
+                      {
+                        title: "Real-time Hub",
+                        desc: "Production status broadcasting across departments, ensuring multi-phase consistency in MusicOps.",
+                        icon: <Layout className="w-5 h-5 text-amber-400" />
+                      }
+                    ].map((feature, i) => (
+                       <div key={i} className="p-8 rounded-[2rem] border border-white/5 bg-zinc-900/50 hover:bg-zinc-900 transition-colors space-y-4">
+                          <div className="w-10 h-10 rounded-xl bg-white/[0.02] border border-white/5 flex items-center justify-center">
+                             {feature.icon}
                           </div>
-                          <div className="absolute bottom-6 left-6 z-20 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
-                             <span className="text-[10px] font-mono text-white uppercase tracking-widest">Dashboard Interface — Module {i}</span>
-                          </div>
+                          <h4 className="text-white font-light text-lg">{feature.title}</h4>
+                          <p className="text-zinc-500 text-sm font-light leading-relaxed">{feature.desc}</p>
                        </div>
                     ))}
                  </div>
@@ -146,13 +158,13 @@ const CaseStudyModal = ({ isOpen, onClose, project }) => {
             </div>
 
             {/* Footer */}
-            <div className="p-8 border-t border-white/5 bg-white/[0.01] flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="p-8 md:p-12 border-t border-white/5 bg-white/[0.01] flex flex-col md:flex-row items-center justify-between gap-6">
                <div className="flex items-center gap-4">
-                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                  <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Collaborator Access Verified</span>
+                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
+                  <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest italic">System Integrity Verified — Natanael Detamor // 2026</span>
                </div>
-               <div className="flex items-center gap-8">
-                  <span className="text-[10px] font-mono text-zinc-600 uppercase tracking-[0.3em]">Natanael Detamor // Engineering Portfolio</span>
+               <div className="px-6 py-3 rounded-full border border-white/5 bg-white/5 text-[10px] font-mono text-zinc-300 uppercase tracking-widest">
+                  Enterprise Grade Architecture
                </div>
             </div>
           </motion.div>

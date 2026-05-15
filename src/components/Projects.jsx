@@ -89,19 +89,72 @@ const ProjectCard = ({ project, idx }) => {
           ))}
         </div>
 
-        <div className="flex items-center gap-12 pt-10">
-          <button
-            onClick={() => project.isPrivate ? project.onOpenCaseStudy(project) : window.open(project.demoUrl, '_blank')}
-            className="group/link flex items-center gap-3 text-white text-[10px] font-mono tracking-[0.4em] uppercase border-b border-white/5 pb-2 hover:border-white transition-all"
-          >
-            {project.isPrivate ? "Technical Case Study" : "Live Simulation"} 
-            <ArrowUpRight size={12} className="group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
-          </button>
+        <div className="flex flex-wrap items-center gap-8 pt-10">
+          {/* Main Action: Case Study or Live Simulation */}
+          {project.isPrivate ? (
+            <button
+              onClick={() => project.onOpenCaseStudy(project)}
+              className="group/link flex items-center gap-3 text-white text-[10px] font-mono tracking-[0.4em] uppercase border-b border-white/5 pb-2 hover:border-white transition-all"
+            >
+              Technical Case Study
+              <ArrowUpRight size={12} className="group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
+            </button>
+          ) : project.demoUrl && project.demoUrl !== "#" && (
+            <button
+              onClick={() => window.open(project.demoUrl, '_blank')}
+              className="group/link flex items-center gap-3 text-white text-[10px] font-mono tracking-[0.4em] uppercase border-b border-white/5 pb-2 hover:border-white transition-all"
+            >
+              Live Simulation 
+              <ArrowUpRight size={12} className="group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
+            </button>
+          )}
+
+          {/* Secondary Action: Live Website for Private Projects */}
+          {project.isPrivate && project.demoUrl && project.demoUrl !== "#" && (
+            <button
+              onClick={() => window.open(project.demoUrl, '_blank')}
+              className="group/link flex items-center gap-3 text-indigo-400/80 hover:text-indigo-400 text-[10px] font-mono tracking-[0.4em] uppercase border-b border-white/5 pb-2 hover:border-white transition-all"
+            >
+              Live Website
+              <ExternalLink size={12} className="group-hover/link:scale-110 transition-transform" />
+            </button>
+          )}
+
+          {/* Source Code Links */}
+          {!project.isPrivate && project.codeUrls && project.codeUrls.length > 0 && (
+            <div className="flex flex-wrap gap-6">
+              {project.codeUrls.map((repo, i) => (
+                <a
+                  key={i}
+                  href={repo.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group/link flex items-center gap-2 text-zinc-500 hover:text-white text-[9px] font-mono tracking-[0.3em] uppercase border-b border-white/5 pb-1 hover:border-white transition-all"
+                >
+                  {repo.label}
+                  <Github size={10} className="group-hover/link:scale-110 transition-transform" />
+                </a>
+              ))}
+            </div>
+          )}
+
+          {!project.isPrivate && !project.codeUrls && project.codeUrl && project.codeUrl !== "#" && (
+            <a
+              href={project.codeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group/link flex items-center gap-3 text-zinc-500 hover:text-white text-[10px] font-mono tracking-[0.4em] uppercase border-b border-white/5 pb-2 hover:border-white transition-all"
+            >
+              Source Code
+              <Github size={12} className="group-hover/link:scale-110 transition-transform" />
+            </a>
+          )}
+
           {project.isPrivate && (
-             <div className="flex items-center gap-3 opacity-60">
-                <div className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)] animate-pulse"></div>
-                <span className="text-[9px] font-mono text-zinc-600 uppercase tracking-[0.2em]">Confidential Project</span>
-             </div>
+            <div className="flex items-center gap-3 opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-60 transition-all">
+              <Lock size={10} className="text-zinc-500" />
+              <span className="text-[9px] font-mono text-zinc-600 uppercase tracking-[0.2em]">Private Repository</span>
+            </div>
           )}
         </div>
       </div>
@@ -137,14 +190,14 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "ERP Core — Hopemedia.id",
+      title: "Hopemedia.id — Enterprise Ecosystem",
       year: "2025 - Present",
-      category: "Enterprise System",
-      challenge: "Legacy production workflows were fragmented across 20+ specialized roles, causing 5-second processing delays and communication overhead.",
-      solution: "Developed a centralized ERP system with role-based access control (RBAC), automated KPI tracking, and optimized database queries, reducing system-wide latency by 75%.",
+      category: "ERP & Management",
+      challenge: "Managing fragmented operational data across multiple departments, leading to critical communication bottlenecks and 5-second processing delays.",
+      solution: "Engineered a centralized Multi-Module ERP with Hierarchical RBAC managing 20+ roles. Integrated Zoom API for automated presence and Digital Signatures for HR compliance.",
       techLogos: [LaravelLogo, VueLogo, MySqlLogo],
       demoUrl: "https://hopemedia.id",
-      codeUrl: "#",
+      codeUrl: null,
       image: hopemediaDashboard,
       isPrivate: true
     },
@@ -156,21 +209,25 @@ const Projects = () => {
       challenge: "Identifying plant diseases manually is slow and error-prone, requiring a system that can process complex diagnostic rules in real-time.",
       solution: "Built an AI-driven diagnostic engine using Python Experta and FastAPI, integrated with a Laravel backend. Implemented secure OTP authentication and automated PDF reporting.",
       techLogos: [PythonLogo, LaravelLogo, VueLogo, NodeJsLogo],
-      demoUrl: "#",
-      codeUrl: "#",
+      demoUrl: null,
+      codeUrls: [
+        { label: "Backend", url: "https://github.com/detamor/backend_SistemPakar" },
+        { label: "Frontend", url: "https://github.com/detamor/frontend_SistemPakar" },
+        { label: "Engine", url: "https://github.com/detamor/engine_SistemPakar" }
+      ],
       image: spakarImage,
       isPrivate: false
     },
     {
       id: 3,
-      title: "Workflow Hub — MusicOps",
+      title: "MusicOps — Workflow Hub",
       year: "2025",
-      category: "Workflow Automation",
-      challenge: "Asynchronous music production cycles lacked a unified tracking layer, leading to significant delays and manual status updates.",
-      solution: "Architected a real-time workflow hub that propagates production status across teams, streamlining visibility and ensuring multi-phase episode deliveries.",
+      category: "Production Module",
+      challenge: "Asynchronous production cycles in music broadcasting lacked real-time visibility, causing significant delays in cross-departmental handoffs.",
+      solution: "Architected a real-time production hub as a vertical module within Hopemedia. Implemented event broadcasting for status synchronization across 20+ specialized production roles.",
       techLogos: [LaravelLogo, VueLogo, MySqlLogo],
-      demoUrl: "#",
-      codeUrl: "#",
+      demoUrl: "https://hopemedia.id",
+      codeUrl: null,
       image: hopemediaMusic,
       isPrivate: true
     },
