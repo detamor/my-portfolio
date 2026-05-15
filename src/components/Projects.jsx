@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Github, Eye, ArrowUpRight, Calendar, ArrowRight, ExternalLink, Lock, ShieldCheck, Terminal } from "lucide-react";
+import { Github, Eye, ArrowUpRight, Calendar, ArrowRight, ExternalLink, Lock, ShieldCheck, Terminal, Zap } from "lucide-react";
 import LaravelLogo from "../assets/images/Laravel.jpg";
 import ReactLogo from "../assets/images/React.png";
 import VueLogo from "../assets/images/Vue.png";
@@ -76,6 +76,13 @@ const ProjectCard = ({ project, idx }) => {
               <p className="text-zinc-300 text-sm md:text-base font-light leading-relaxed border-l border-white/5 pl-6">
                 {project.solution}
               </p>
+
+              {project.stats && (
+                <div className="flex items-center gap-3 px-5 py-2 rounded-xl bg-white/[0.02] border border-white/5 w-fit">
+                  <Zap size={10} className="text-amber-400" />
+                  <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest">{project.stats}</span>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -193,11 +200,13 @@ const Projects = () => {
       title: "Hopemedia.id — Enterprise Ecosystem",
       year: "2025 - Present",
       category: "ERP & Management",
-      challenge: "Managing fragmented operational data across multiple departments, leading to critical communication bottlenecks and 5-second processing delays.",
-      solution: "Engineered a centralized Multi-Module ERP with Hierarchical RBAC managing 20+ roles. Integrated Zoom API for automated presence and Digital Signatures for HR compliance.",
+      challenge: "Securing 20+ specialized roles across multiple departments while ensuring zero-downtime session management and legacy hardware integration.",
+      solution: "Architected a decoupled system with Laravel (Service Layer Pattern) and Vue.js. Implemented JWT Auth with automated Silent Token Refresh via Axios Interceptors and a Role Mapping Layer for granular access.",
       techLogos: [LaravelLogo, VueLogo, MySqlLogo],
       demoUrl: "https://hopemedia.id",
       codeUrl: null,
+      status: "Production Ready",
+      stats: "Security: JWT Auth & Automated Silent Token Refresh Management",
       image: hopemediaDashboard,
       isPrivate: true
     },
@@ -221,14 +230,16 @@ const Projects = () => {
     },
     {
       id: 3,
-      title: "MusicOps — Workflow Hub",
+      title: "MusicOps — Strategic Production ERP",
       year: "2025",
-      category: "Production Module",
-      challenge: "Asynchronous production cycles in music broadcasting lacked real-time visibility, causing significant delays in cross-departmental handoffs.",
-      solution: "Architected a real-time production hub as a vertical module within Hopemedia. Implemented event broadcasting for status synchronization across 20+ specialized production roles.",
+      category: "Production ERP & Logic",
+      challenge: "Managing a 53-week production cycle for 20+ specialized roles without manual scheduling errors or communication overhead.",
+      solution: "Engineered a Dynamic Episode Generator with Leap Year handling and relative deadline inheritance (T-7 logic), coupled with a Multi-Tier QC verification architecture.",
       techLogos: [LaravelLogo, VueLogo, MySqlLogo],
       demoUrl: "https://hopemedia.id",
       codeUrl: null,
+      status: "Production Ready",
+      stats: "Automated 53-Week Production Cycle & Leap Year Handling",
       image: hopemediaMusic,
       isPrivate: true
     },
