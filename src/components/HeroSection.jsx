@@ -65,16 +65,20 @@ const HeroSection = () => {
               transition={{ delay: 0.2 }}
               className="text-zinc-600 font-mono text-[9px] tracking-[0.4em] uppercase block mb-4"
             >
-              Junior Software Engineer // 2026
+              Software Engineer // 2026
             </motion.span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tighter leading-[1] text-white mb-6">
-              Natanael <br />
-              <span className="text-zinc-700 italic">Detamor</span>
-            </h1>
+            <div className="space-y-4">
+              <h1 className="text-4xl md:text-6xl font-light text-white tracking-tight leading-tight">
+                Natanael <span className="text-zinc-500">Detamor</span>
+              </h1>
+              <p className="text-sm md:text-lg text-zinc-400 font-light tracking-[0.2em] uppercase">
+                Software Engineer
+              </p>
+            </div>
           </div>
 
-          <p className="text-zinc-500 text-sm md:text-base font-light max-w-sm mb-12 leading-relaxed border-l border-white/5 pl-8">
-            Building <span className="text-zinc-300">scalable web systems</span> with a focus on clean business logic and performance. Practical experience in ERP development and AI-driven applications.
+          <p className="text-zinc-500 text-sm md:text-base max-w-md font-light leading-relaxed mb-12">
+            I enjoy bridging the gap between complex engineering challenges and elegant user experiences. Building <span className="text-zinc-300">scalable web systems</span> with a focus on clean business logic and performance. Practical experience in ERP development and AI-driven applications.
           </p>
 
           <div className="flex flex-wrap items-center gap-10">

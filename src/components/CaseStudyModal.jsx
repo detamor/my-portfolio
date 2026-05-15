@@ -74,8 +74,13 @@ const EnterpriseCaseStudy = () => (
               <p className="text-[12px] text-zinc-500 font-light">Balanced Speed (Carbon-based diff) & Quality scores with automated penalty logic.</p>
            </div>
         </div>
-        <div className="p-6 rounded-2xl border border-amber-500/10 bg-amber-500/5 font-mono text-[11px] text-amber-200/80 italic text-center">
-           Formula: Performance = ( (Base_Points + Bonus_Points) / Target_Points ) * Attendance_Multiplier
+        <div className="p-6 rounded-2xl border border-amber-500/10 bg-amber-500/5 space-y-4">
+           <div className="font-mono text-[11px] text-amber-200/80 italic text-center">
+              Formula: Performance = ( (Base_Points + Bonus_Points) / Target_Points ) * Attendance_Multiplier
+           </div>
+           <p className="text-[10px] font-mono text-amber-500/60 text-center uppercase tracking-wider">
+              KPI points are automatically recalculated upon QC Approval to ensure data integrity.
+           </p>
         </div>
       </div>
       <div className="bg-zinc-900/50 border border-white/5 rounded-3xl p-12 aspect-video flex flex-col items-center justify-center relative overflow-hidden group">
@@ -146,9 +151,8 @@ const EnterpriseCaseStudy = () => (
               <span className="text-[10px] font-mono text-blue-400 uppercase tracking-widest block">Role Mapping Layer</span>
               <p className="text-[12px] text-zinc-500">Normalization of variant role strings to ensure frontend access consistency.</p>
            </div>
-           <div className="p-6 rounded-2xl border border-white/5 bg-white/[0.02] space-y-2">
-              <span className="text-[10px] font-mono text-blue-400 uppercase tracking-widest block">Navigation Guards</span>
-              <p className="text-[12px] text-zinc-500">Vue Router implementation to block manual URL manipulation across departments.</p>
+           <div className="p-6 rounded-2xl border border-white/5 bg-white/[0.02] space-y-2 text-blue-300/80 italic font-light p-4 border-blue-500/20 bg-blue-500/5">
+              "Implemented a Dynamic Bypass Flag (has_any_music_assignment) for cross-departmental collaboration."
            </div>
            <div className="md:col-span-2 p-6 rounded-2xl border border-indigo-500/10 bg-indigo-500/5 space-y-3">
               <div className="flex items-center gap-3">
@@ -252,44 +256,17 @@ const MusicOpsCaseStudy = () => (
       </div>
     </section>
 
-    {/* QC & Workflow Section */}
-    <section className="grid lg:grid-cols-2 gap-16 items-start">
-      <div className="space-y-8">
-        <div className="flex items-center gap-4 text-white">
-          <div className="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center border border-blue-500/20">
-            <CheckCircle2 size={24} className="text-blue-400" />
-          </div>
-          <h3 className="text-2xl font-light">Multi-Tier QC Architecture</h3>
-        </div>
-        <p className="text-zinc-400 font-light leading-relaxed">
-          Implemented a strict verification loop between Producers, Promotion QC, and Distribution Managers. This ensures content integrity and compliance before the final broadcasting phase.
-        </p>
-        <div className="space-y-3">
-          {['Production Sync', 'Promotion QC', 'Final Distribution'].map((step, i) => (
-             <div key={i} className="flex items-center gap-3 p-4 rounded-xl border border-white/5 bg-white/[0.01]">
-                <div className="w-5 h-5 rounded-full border border-blue-500/30 flex items-center justify-center text-[10px] text-blue-400 font-mono">{i+1}</div>
-                <span className="text-sm font-light text-zinc-300">{step}</span>
-             </div>
-          ))}
-        </div>
-      </div>
-      <div className="bg-zinc-900/50 border border-white/5 rounded-3xl aspect-video flex flex-col items-center justify-center relative overflow-hidden group p-12">
-         <Workflow className="text-blue-400/20 w-16 h-16 mb-4 group-hover:rotate-12 transition-transform duration-700" />
-         <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest text-center px-8">Cross-Departmental Handoff Logic</span>
-      </div>
-    </section>
-
     {/* Hybrid Storage Section */}
     <section className="grid lg:grid-cols-2 gap-16 items-start">
        <div className="space-y-8">
           <div className="flex items-center gap-4 text-white">
-            <div className="w-12 h-12 rounded-2xl bg-amber-500/10 flex items-center justify-center border border-amber-500/20">
+            <div className="w-12 h-12 rounded-2xl bg-amber-500/10 flex items-center justify-center border border-amber-500/20 shadow-[0_0_20px_rgba(245,158,11,0.1)]">
               <HardDrive size={24} className="text-amber-400" />
             </div>
             <h3 className="text-2xl font-light">Hybrid Storage Strategy</h3>
           </div>
           <p className="text-zinc-400 font-light leading-relaxed">
-            Optimized system performance by implementing a <span className="text-amber-300">Reference-Link architecture</span>. Heavy media assets are stored on internal servers while the database maintains lightweight metadata, ensuring sub-second query latency.
+            Overcame <span className="text-amber-300">20GB hosting constraints</span> by architecting a hybrid metadata-storage system. Heavy assets are stored on internal servers while the database maintains lightweight metadata.
           </p>
           <div className="grid grid-cols-2 gap-4">
              <div className="p-5 border border-white/5 rounded-2xl bg-white/[0.02]">
@@ -298,13 +275,13 @@ const MusicOpsCaseStudy = () => (
              </div>
              <div className="p-5 border border-white/5 rounded-2xl bg-white/[0.02]">
                 <span className="text-white text-xl font-light">∞ Scalability</span>
-                <span className="text-[9px] font-mono text-zinc-600 uppercase block mt-1">Asset Storage</span>
+                <span className="text-[9px] font-mono text-zinc-600 uppercase block mt-1">Asset Strategy</span>
              </div>
           </div>
        </div>
        <div className="bg-zinc-900/50 border border-white/5 rounded-3xl aspect-video flex flex-col items-center justify-center relative overflow-hidden group p-12">
           <Database className="text-amber-400/20 w-16 h-16 mb-4" />
-          <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest text-center px-8">Media Metadata Optimization Scheme</span>
+          <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest text-center px-8">Decoupling Storage from Relational DB</span>
        </div>
     </section>
   </>
