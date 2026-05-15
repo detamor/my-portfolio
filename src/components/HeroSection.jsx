@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
-import cvFile from "/certificates/CV-Natanael Detamor .pdf";
 import LaravelLogo from "../assets/images/Laravel.jpg";
 import ReactLogo from "../assets/images/React.png";
 import VueLogo from "../assets/images/Vue.png";
@@ -10,6 +9,7 @@ import GithubLogo from "../assets/images/Github.png";
 import TailwindLogo from "../assets/images/Tailwindcss.png";
 
 const HeroSection = () => {
+  const cvFile = "/certificates/CV-Natanael Detamor.pdf";
   const particles = Array.from({ length: 15 });
   const techStack = [
     { name: "Laravel", logo: LaravelLogo },
@@ -34,16 +34,16 @@ const HeroSection = () => {
           <motion.div
             key={i}
             className="absolute w-0.5 h-0.5 bg-white rounded-full opacity-10"
-            initial={{ 
-              x: Math.random() * 100 + "%", 
-              y: Math.random() * 100 + "%" 
+            initial={{
+              x: Math.random() * 100 + "%",
+              y: Math.random() * 100 + "%"
             }}
-            animate={{ 
+            animate={{
               y: [0, -20, 0],
               opacity: [0.05, 0.2, 0.05]
             }}
-            transition={{ 
-              duration: 8 + Math.random() * 4, 
+            transition={{
+              duration: 8 + Math.random() * 4,
               repeat: Infinity,
               ease: "easeInOut"
             }}
@@ -59,7 +59,7 @@ const HeroSection = () => {
           transition={{ duration: 1.2 }}
         >
           <div className="mb-8">
-            <motion.span 
+            <motion.span
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -103,22 +103,22 @@ const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, delay: 0.4 }}
-          className="hidden lg:flex justify-end relative"
+          className="flex lg:justify-end relative mt-12 lg:mt-0"
         >
-          <div className="relative">
+          <div className="relative w-full lg:w-auto">
             {/* Structural Frame */}
             <div className="absolute inset-0 border border-white/[0.02] rounded-[2rem] rotate-3 scale-110 pointer-events-none"></div>
-            
+
             {/* Tech Nodes Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 relative z-10 max-w-xl">
+            <div className="grid grid-cols-2 md:grid-cols-2 gap-4 relative z-10 max-w-xl">
               {techStack.map((tech, idx) => (
                 <motion.div
                   key={tech.name}
                   animate={{ y: [0, -10, 0] }}
-                  transition={{ 
-                    duration: 5 + idx, 
-                    repeat: Infinity, 
-                    ease: "easeInOut" 
+                  transition={{
+                    duration: 5 + idx,
+                    repeat: Infinity,
+                    ease: "easeInOut"
                   }}
                   className="w-full p-4 bg-white/[0.01] border border-white/5 rounded-xl backdrop-blur-3xl flex items-center gap-4 group hover:border-white/10 transition-all duration-500"
                 >

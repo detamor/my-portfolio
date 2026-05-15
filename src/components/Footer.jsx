@@ -70,21 +70,18 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-40 pt-12 border-t border-indigo-950/30 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex flex-col md:flex-row items-center gap-10">
-            <span className="text-indigo-400/30 text-[10px] font-mono tracking-widest uppercase">
+            <span className="text-zinc-400 text-[10px] font-mono tracking-widest uppercase">
               © 2026 Natanael Detamor
             </span>
             <div className="flex gap-8">
-              <span className="text-indigo-900/40 text-[10px] font-mono tracking-widest uppercase italic">Bandung, INA</span>
-              <span className="text-indigo-900/40 text-[10px] font-mono tracking-widest uppercase flex items-center gap-2">
+              <span className="text-zinc-500 text-[10px] font-mono tracking-widest uppercase italic">Bandung, INA</span>
+              <span className="text-zinc-500 text-[10px] font-mono tracking-widest uppercase flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></div>
                 Available for work
               </span>
             </div>
           </div>
 
-          <div className="text-[10px] font-mono text-zinc-800 tracking-widest uppercase">
-            Built with React & Passion
-          </div>
         </div>
       </div>
     </footer>

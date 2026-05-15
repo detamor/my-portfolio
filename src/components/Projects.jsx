@@ -10,6 +10,10 @@ import NodeJsLogo from "../assets/images/NodeJs.png";
 import spakarImage from "../assets/images/S_pakar.webp";
 import hopemediaDashboard from "../assets/images/hopemedia_dashboard.webp";
 import hopemediaMusic from "../assets/images/hopemedia_music.webp";
+import PortoImage from "../assets/images/Porto.png";
+import JSLogo from "../assets/images/JS.png";
+import TailwindLogo from "../assets/images/Tailwindcss.png";
+import CaseStudyModal from "./CaseStudyModal";
 
 const ProjectCard = ({ project, idx }) => {
   const x = useMotionValue(0);
@@ -86,19 +90,17 @@ const ProjectCard = ({ project, idx }) => {
         </div>
 
         <div className="flex items-center gap-12 pt-10">
-          <a
-            href={project.demoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={() => project.isPrivate ? project.onOpenCaseStudy(project) : window.open(project.demoUrl, '_blank')}
             className="group/link flex items-center gap-3 text-white text-[10px] font-mono tracking-[0.4em] uppercase border-b border-white/5 pb-2 hover:border-white transition-all"
           >
-            {project.isPrivate ? "Analyze Architecture" : "Live Simulation"} 
+            {project.isPrivate ? "Technical Case Study" : "Live Simulation"} 
             <ArrowUpRight size={12} className="group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
-          </a>
+          </button>
           {project.isPrivate && (
              <div className="flex items-center gap-3 opacity-60">
                 <div className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)] animate-pulse"></div>
-                <span className="text-[9px] font-mono text-zinc-600 uppercase tracking-[0.2em]">Secured System</span>
+                <span className="text-[9px] font-mono text-zinc-600 uppercase tracking-[0.2em]">Confidential Project</span>
              </div>
           )}
         </div>
@@ -111,16 +113,20 @@ const ProjectCard = ({ project, idx }) => {
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
         className={`relative group perspective-1000 ${idx % 2 !== 0 ? 'lg:order-1' : 'lg:order-2'}`}
       >
-        <div className="relative aspect-[16/10] bg-zinc-900 rounded-[2rem] overflow-hidden transition-all duration-1000 group-hover:shadow-[0_60px_100px_-20px_rgba(0,0,0,0.7)]">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full object-cover grayscale group-hover:grayscale-0 opacity-40 group-hover:opacity-100 transition-all duration-1000 scale-[1.05] group-hover:scale-100"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-60"></div>
+        {/* External Frame - Slim Bezel for Maximum Image Size */}
+        <div className="relative aspect-[16/10] bg-zinc-900 rounded-[2rem] p-1.5 md:p-2 border border-white/5 overflow-hidden transition-all duration-1000 group-hover:shadow-[0_60px_100px_-20px_rgba(0,0,0,0.7)] group-hover:border-white/10">
           
-          {/* Subtle Frame */}
-          <div className="absolute inset-0 border border-white/5 rounded-[2rem] pointer-events-none group-hover:border-white/10 transition-colors"></div>
+          {/* Inner Image Container - Large and immersive */}
+          <div className="relative w-full h-full rounded-[1.5rem] overflow-hidden bg-zinc-950">
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-top object-cover transition-all duration-1000 scale-[1.02] group-hover:scale-100"
+            />
+          </div>
+
+          {/* Subtle Frame Highlight */}
+          <div className="absolute inset-0 border border-white/5 rounded-[2rem] pointer-events-none"></div>
         </div>
       </motion.div>
     </motion.div>
@@ -167,8 +173,29 @@ const Projects = () => {
       codeUrl: "#",
       image: hopemediaMusic,
       isPrivate: true
+    },
+    {
+      id: 4,
+      title: "Portfolio — Engineering Lab",
+      year: "2026",
+      category: "Frontend Architecture",
+      challenge: "Building a portfolio that doesn't just list skills, but proves engineering depth through modular architecture and advanced micro-interactions.",
+      solution: "Architected using React + Vite with a focus on performance (Framer Motion orchestration) and scalable component design. Implemented a custom Case Study system for confidential project transparency.",
+      techLogos: [ReactLogo, TailwindLogo, JSLogo],
+      demoUrl: "https://github.com/detamor/my-portfolio",
+      codeUrl: "https://github.com/detamor/my-portfolio",
+      image: PortoImage,
+      isPrivate: false
     }
   ];
+
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenCaseStudy = (project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
 
   return (
     <section id="projects" className="py-24 px-6 md:px-12 lg:px-24 bg-[#0a0c14] relative overflow-hidden">
@@ -199,9 +226,19 @@ const Projects = () => {
 
         <div className="space-y-32">
           {projects.map((project, idx) => (
-            <ProjectCard key={project.id} project={project} idx={idx} />
+            <ProjectCard 
+              key={project.id} 
+              project={{...project, onOpenCaseStudy: handleOpenCaseStudy}} 
+              idx={idx} 
+            />
           ))}
         </div>
+        
+        <CaseStudyModal 
+          isOpen={isModalOpen} 
+          onClose={() => setIsModalOpen(false)} 
+          project={selectedProject} 
+        />
       </div>
     </section>
   );
