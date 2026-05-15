@@ -44,10 +44,10 @@ const ProjectCard = ({ project, idx }) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: idx * 0.1 }}
       viewport={{ once: true, margin: "-100px" }}
-      className="grid lg:grid-cols-2 gap-24 items-center"
+      className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-32 items-center"
     >
       {/* Project Info - Left Side */}
-      <div className={`space-y-8 ${idx % 2 !== 0 ? 'lg:order-2' : 'lg:order-1'}`}>
+      <div className={`space-y-10 ${idx % 2 !== 0 ? 'lg:order-2' : 'lg:order-1'}`}>
         <div className="flex items-center gap-6">
           <span className="text-[10px] font-mono tracking-[0.4em] text-zinc-700 uppercase">{project.year}</span>
           <div className="w-10 h-px bg-zinc-900"></div>
@@ -55,79 +55,71 @@ const ProjectCard = ({ project, idx }) => {
         </div>
 
         <div className="space-y-8">
-          <h3 className="text-2xl md:text-3xl font-light text-white tracking-tight leading-tight group-hover:text-indigo-100 transition-colors">
+          <h3 className="text-3xl md:text-5xl font-light text-white tracking-tight leading-tight">
             {project.title}
           </h3>
-          
+
           <div className="space-y-10 max-w-xl">
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <span className="text-[9px] font-mono uppercase tracking-[0.4em] text-zinc-600">The Problem</span>
+                <span className="text-[9px] font-mono uppercase tracking-[0.4em] text-zinc-600">The Context</span>
               </div>
-              <p className="text-zinc-500 text-sm md:text-base font-light leading-relaxed">
-                {project.challenge}
+              <p className="text-zinc-500 text-base md:text-lg font-light leading-relaxed italic">
+                "{project.hook}"
               </p>
             </div>
-            
+
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <span className="text-[9px] font-mono uppercase tracking-[0.4em] text-indigo-400/40">The Solution</span>
+                <span className="text-[9px] font-mono uppercase tracking-[0.4em] text-indigo-400/40">The Engineering</span>
               </div>
-              <p className="text-zinc-300 text-sm md:text-base font-light leading-relaxed border-l border-white/5 pl-6">
+              <p className="text-zinc-300 text-sm md:text-base font-light leading-relaxed border-l border-white/10 pl-6">
                 {project.solution}
               </p>
 
               {project.stats && (
-                <div className="flex items-center gap-3 px-5 py-2 rounded-xl bg-white/[0.02] border border-white/5 w-fit">
-                  <Zap size={10} className="text-amber-400" />
-                  <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest">{project.stats}</span>
+                <div className="flex items-center gap-3 px-5 py-2 rounded-xl bg-indigo-500/5 border border-indigo-500/10 w-fit">
+                  <Zap size={10} className="text-indigo-400" />
+                  <span className="text-[9px] font-mono text-indigo-300 uppercase tracking-widest">{project.stats}</span>
                 </div>
               )}
             </div>
           </div>
         </div>
 
-        {/* Minimal Tech Stack - Thin Borders Only */}
-        <div className="flex flex-wrap gap-3 pt-4">
+        {/* Tech Stack */}
+        <div className="flex flex-wrap gap-4 pt-4">
           {project.techLogos.map((logo, i) => (
-            <div key={i} className="p-3 border border-white/5 rounded-xl hover:border-white/10 transition-all group">
-              <img src={logo} alt="tech" className="w-5 h-5 object-contain opacity-100 transition-opacity" />
+            <div key={i} className="p-4 border border-white/5 rounded-2xl bg-white/[0.01] hover:border-white/10 transition-all">
+              <img src={logo} alt="tech" className="w-6 h-6 object-contain" />
             </div>
           ))}
         </div>
 
-        <div className="flex flex-wrap items-center gap-8 pt-10">
-          {/* Main Action: Case Study or Live Simulation */}
-          {(project.isPrivate || project.id === 2) ? (
+        <div className="flex flex-wrap items-center gap-10 pt-10">
+          {/* Case Study Toggle */}
+          {(project.isPrivate || project.id === 2) && (
             <button
               onClick={() => project.onOpenCaseStudy(project)}
-              className="group/link flex items-center gap-3 text-white text-[10px] font-mono tracking-[0.4em] uppercase border-b border-white/5 pb-2 hover:border-white transition-all"
+              className="group/link flex items-center gap-3 text-white text-[10px] font-mono tracking-[0.4em] uppercase border-b border-white/10 pb-3 hover:border-white transition-all"
             >
-              Technical Case Study
-              <ArrowUpRight size={12} className="group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
-            </button>
-          ) : project.demoUrl && project.demoUrl !== "#" && (
-            <button
-              onClick={() => window.open(project.demoUrl, '_blank')}
-              className="group/link flex items-center gap-3 text-white text-[10px] font-mono tracking-[0.4em] uppercase border-b border-white/5 pb-2 hover:border-white transition-all"
-            >
-              Live Simulation 
-              <ArrowUpRight size={12} className="group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
+              Dive into the Lab
+              <ArrowUpRight size={14} className="group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
             </button>
           )}
 
-          {/* Secondary Action: Live Website for Private Projects */}
-          {project.isPrivate && project.demoUrl && project.demoUrl !== "#" && (
+          {/* Live Link Toggle */}
+          {project.demoUrl && project.demoUrl !== "#" && (
             <button
               onClick={() => window.open(project.demoUrl, '_blank')}
-              className="group/link flex items-center gap-3 text-indigo-400/80 hover:text-indigo-400 text-[10px] font-mono tracking-[0.4em] uppercase border-b border-white/5 pb-2 hover:border-white transition-all"
+              className={`group/link flex items-center gap-3 text-[10px] font-mono tracking-[0.4em] uppercase border-b border-white/10 pb-3 hover:border-white transition-all ${project.isPrivate ? 'text-indigo-400/80 hover:text-indigo-400' : 'text-white'}`}
             >
-              Live Website
-              <ExternalLink size={12} className="group-hover/link:scale-110 transition-transform" />
+              {project.isPrivate ? 'Live Website' : 'Explore Live'}
+              <ExternalLink size={14} className="group-hover/link:scale-110 transition-transform" />
             </button>
           )}
 
-          {/* Source Code Links */}
+          {/* Source Code Toggle */}
           {!project.isPrivate && project.codeUrls && project.codeUrls.length > 0 && (
             <div className="flex flex-wrap gap-6">
               {project.codeUrls.map((repo, i) => (
@@ -136,57 +128,39 @@ const ProjectCard = ({ project, idx }) => {
                   href={repo.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group/link flex items-center gap-2 text-zinc-500 hover:text-white text-[9px] font-mono tracking-[0.3em] uppercase border-b border-white/5 pb-1 hover:border-white transition-all"
+                  className="group/link flex items-center gap-2 text-zinc-500 hover:text-white text-[9px] font-mono tracking-[0.3em] uppercase border-b border-white/10 pb-1 hover:border-white transition-all"
                 >
                   {repo.label}
-                  <Github size={10} className="group-hover/link:scale-110 transition-transform" />
+                  <Github size={12} className="group-hover/link:scale-110 transition-transform" />
                 </a>
               ))}
             </div>
           )}
 
-          {!project.isPrivate && !project.codeUrls && project.codeUrl && project.codeUrl !== "#" && (
-            <a
-              href={project.codeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group/link flex items-center gap-3 text-zinc-500 hover:text-white text-[10px] font-mono tracking-[0.4em] uppercase border-b border-white/5 pb-2 hover:border-white transition-all"
-            >
-              Source Code
-              <Github size={12} className="group-hover/link:scale-110 transition-transform" />
-            </a>
-          )}
-
           {project.isPrivate && (
-            <div className="flex items-center gap-3 opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-60 transition-all">
-              <Lock size={10} className="text-zinc-500" />
-              <span className="text-[9px] font-mono text-zinc-600 uppercase tracking-[0.2em]">Private Repository</span>
+            <div className="flex items-center gap-3 opacity-30 grayscale">
+              <Lock size={12} className="text-zinc-500" />
+              <span className="text-[9px] font-mono text-zinc-600 uppercase tracking-[0.2em]">Confidential Protocol</span>
             </div>
           )}
         </div>
       </div>
 
-      {/* Project Visual - Right Side */}
+      {/* Project Visual */}
       <motion.div
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
         className={`relative group perspective-1000 ${idx % 2 !== 0 ? 'lg:order-1' : 'lg:order-2'}`}
       >
-        {/* External Frame - Slim Bezel for Maximum Image Size */}
-        <div className="relative aspect-[16/10] bg-zinc-900 rounded-[2rem] p-1.5 md:p-2 border border-white/5 overflow-hidden transition-all duration-1000 group-hover:shadow-[0_60px_100px_-20px_rgba(0,0,0,0.7)] group-hover:border-white/10">
-          
-          {/* Inner Image Container - Large and immersive */}
-          <div className="relative w-full h-full rounded-[1.5rem] overflow-hidden bg-zinc-950">
+        <div className="relative aspect-[16/10] bg-zinc-950 rounded-[3rem] p-2 md:p-3 border border-white/5 overflow-hidden group-hover:border-white/10 transition-all duration-1000 shadow-2xl">
+          <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden">
             <img
               src={project.image}
               alt={project.title}
-              className="w-full h-full object-top object-cover transition-all duration-1000 scale-[1.02] group-hover:scale-100"
+              className="w-full h-full object-top object-cover transition-all duration-1000 group-hover:scale-105"
             />
           </div>
-
-          {/* Subtle Frame Highlight */}
-          <div className="absolute inset-0 border border-white/5 rounded-[2rem] pointer-events-none"></div>
         </div>
       </motion.div>
     </motion.div>
@@ -197,16 +171,15 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "Hopemedia.id — Enterprise Ecosystem",
+      title: "Hopemedia.id — Enterprise System",
       year: "2025 - Present",
-      category: "ERP & Management",
-      challenge: "Securing 20+ specialized roles across multiple departments while ensuring zero-downtime session management and legacy hardware integration.",
-      solution: "Architected a decoupled system with Laravel (Service Layer Pattern) and Vue.js. Implemented JWT Auth with automated Silent Token Refresh via Axios Interceptors and a Role Mapping Layer for granular access.",
+      category: "Enterprise ERP",
+      hook: "I took on the challenge of securing 20+ specialized roles in a system that never sleeps, ensuring that every session is locked tight while maintaining legacy hardware compatibility.",
+      solution: "Architected using Laravel Service Layers and Vue.js. Implemented an automated Silent Token Refresh system that handles credential renewals without interrupting the user's flow.",
       techLogos: [LaravelLogo, VueLogo, MySqlLogo],
       demoUrl: "https://hopemedia.id",
       codeUrl: null,
-      status: "Production Ready",
-      stats: "Security: JWT Auth & Automated Silent Token Refresh Management",
+      stats: "Advanced JWT Integrity & Silent Refresh",
       image: hopemediaDashboard,
       isPrivate: true
     },
@@ -214,9 +187,9 @@ const Projects = () => {
       id: 2,
       title: "PlantAI — Diagnostic Expert System",
       year: "2025 - 2026",
-      category: "AI & Decoupled Architecture",
-      challenge: "Processing complex diagnostic rules in real-time without compromising the performance of the core business logic or user experience.",
-      solution: "Engineered a Hybrid AI approach using a FastAPI-based Inference Engine (Python) for Certainty Factor (CF) calculations, decoupled from a Laravel core.",
+      category: "Hybrid AI Architecture",
+      hook: "I wanted to see how far I could push real-time AI diagnostics. I decided to decouple the mathematical inference engine from the core system to achieve sub-second response times.",
+      solution: "Built a FastAPI-based Inference Engine for Certainty Factor (CF) calculations, isolated from the Laravel core to ensure mathematical heavy-lifting doesn't block the UI.",
       techLogos: [PythonLogo, LaravelLogo, VueLogo, NodeJsLogo],
       demoUrl: null,
       status: "Research Validated",
@@ -230,16 +203,15 @@ const Projects = () => {
     },
     {
       id: 3,
-      title: "MusicOps — Strategic Production ERP",
+      title: "MusicOps — Strategic Production",
       year: "2025",
-      category: "Production ERP & Logic",
-      challenge: "Managing a 53-week production cycle for 20+ specialized roles without manual scheduling errors or communication overhead.",
-      solution: "Engineered a Dynamic Episode Generator with Leap Year handling and relative deadline inheritance (T-7 logic), coupled with a Multi-Tier QC verification architecture.",
+      category: "Production Automation",
+      hook: "Production cycles are messy. I built this to turn a chaotic 53-week schedule into a predictable, automated workflow where leap years and deadlines are no longer a headache.",
+      solution: "Engineered a Dynamic Episode Generator with T-7 deadline inheritance and a multi-tier QC system to ensure every episode meets professional broadcasting standards.",
       techLogos: [LaravelLogo, VueLogo, MySqlLogo],
       demoUrl: "https://hopemedia.id",
       codeUrl: null,
-      status: "Production Ready",
-      stats: "Automated 53-Week Production Cycle & Leap Year Handling",
+      stats: "Automated 53-Week Strategic Timeline",
       image: hopemediaMusic,
       isPrivate: true
     },
@@ -248,8 +220,8 @@ const Projects = () => {
       title: "Portfolio — Engineering Lab",
       year: "2026",
       category: "Frontend Architecture",
-      challenge: "Building a portfolio that doesn't just list skills, but proves engineering depth through modular architecture and advanced micro-interactions.",
-      solution: "Architected using React + Vite with a focus on performance (Framer Motion orchestration) and scalable component design. Implemented a custom Case Study system for confidential project transparency.",
+      hook: "I built this space to experiment with modular architecture and micro-interactions, proving that even a personal portfolio can benefit from enterprise-grade component design.",
+      solution: "Developed using React + Vite with a focus on orchestration and scalable hooks. Features a custom Case Study system for deep technical transparency.",
       techLogos: [ReactLogo, TailwindLogo, JSLogo],
       demoUrl: "https://github.com/detamor/my-portfolio",
       codeUrl: "https://github.com/detamor/my-portfolio",
@@ -267,46 +239,45 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-24 px-6 md:px-12 lg:px-24 bg-[#0a0c14] relative overflow-hidden">
-      {/* Editorial Background */}
+    <section id="projects" className="py-40 px-6 md:px-12 lg:px-24 bg-[#0a0c14] relative overflow-hidden">
       <div className="absolute top-[10%] right-[-5%] w-[40%] h-[40%] bg-indigo-600/5 blur-[120px] rounded-full pointer-events-none"></div>
-      
+
       <div className="container mx-auto max-w-7xl relative z-10">
-        <div className="max-w-3xl mb-24">
+        <div className="max-w-4xl mb-40">
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-zinc-600 font-mono text-[9px] tracking-[0.4em] uppercase block mb-4"
+            className="text-zinc-600 font-mono text-[10px] tracking-[0.4em] uppercase block mb-6"
           >
             Engineering Showcase
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-3xl md:text-4xl font-light text-white tracking-tighter leading-none mb-6"
+            className="text-4xl md:text-7xl font-light text-white tracking-tighter leading-none mb-10"
           >
-            High-Impact <br />
-            <span className="text-zinc-500 italic">Solutions</span>
+            Turning Complexity into <br />
+            <span className="text-zinc-500 italic">Elegance</span>
           </motion.h2>
-          <p className="text-zinc-500 text-sm md:text-base font-light leading-relaxed max-w-xl">
-             A collection of engineered systems designed for stability, performance, and professional scalability.
+          <p className="text-zinc-500 text-lg md:text-xl font-light leading-relaxed max-w-2xl">
+            A documentation of my journey in building scalable, resilient systems that solve real-world operational puzzles.
           </p>
         </div>
 
-        <div className="space-y-32">
+        <div className="space-y-48">
           {projects.map((project, idx) => (
-            <ProjectCard 
-              key={project.id} 
-              project={{...project, onOpenCaseStudy: handleOpenCaseStudy}} 
-              idx={idx} 
+            <ProjectCard
+              key={project.id}
+              project={{ ...project, onOpenCaseStudy: handleOpenCaseStudy }}
+              idx={idx}
             />
           ))}
         </div>
-        
-        <CaseStudyModal 
-          isOpen={isModalOpen} 
-          onClose={() => setIsModalOpen(false)} 
-          project={selectedProject} 
+
+        <CaseStudyModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          project={selectedProject}
         />
       </div>
     </section>

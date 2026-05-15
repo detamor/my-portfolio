@@ -40,9 +40,9 @@ const AboutSection = () => {
       <div className="absolute top-[20%] right-[-10%] w-[40%] h-[40%] bg-indigo-600/[0.01] blur-[150px] rounded-full pointer-events-none"></div>
 
       <div className="container mx-auto max-w-7xl relative z-10">
-        
+
         {/* Stats Bar - High Visibility */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -58,7 +58,7 @@ const AboutSection = () => {
         </motion.div>
 
         <div className="grid lg:grid-cols-12 gap-20 items-start">
-          
+
           {/* Visual Side */}
           <div className="lg:col-span-5 relative">
             <motion.div
@@ -97,7 +97,7 @@ const AboutSection = () => {
               >
                 <span className="text-zinc-700 font-mono text-[9px] uppercase tracking-[0.4em] block mb-4">Personal Profile</span>
                 <h2 className="text-3xl md:text-4xl font-light text-white tracking-tighter leading-[1.1] mb-8 max-w-2xl">
-                   Solving Complexity with <span className="text-zinc-600 italic">Precision.</span>
+                  Solving Complexity with <span className="text-zinc-600 italic">Precision.</span>
                 </h2>
               </motion.div>
 
@@ -109,10 +109,10 @@ const AboutSection = () => {
                 className="space-y-6 text-slate-400 text-sm md:text-base font-light leading-relaxed max-w-[500px]"
               >
                 <p>
-                  As an <span className="text-white font-normal">Informatics Engineer</span>, I focus on building robust web applications that solve real-world business challenges. I enjoy bridge the gap between complex requirements and clean, maintainable code.
+                  I'm Natanael. I spend my days architecting complex systems and my nights wondering how to make them even faster. Currently focused on building the <span className="text-white font-normal">'Discovery Engine'</span> at Hopemedia.id.
                 </p>
                 <p>
-                  My experience ranges from developing <span className="text-indigo-400/80 italic">Enterprise ERP modules</span> with Laravel and Vue.js to building AI-driven diagnostic engines with Python. I prioritize efficient business logic and system stability in every project.
+                  My experience ranges from developing <span className="text-indigo-400/80 italic">Enterprise ERP modules</span> with Laravel and Vue.js to building AI-driven diagnostic engines with Python. I enjoy <span className="text-white">bridging the gap</span> between messy business requirements and clean, clockwork-like engineering solutions.
                 </p>
               </motion.div>
             </div>

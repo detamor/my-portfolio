@@ -33,7 +33,8 @@ const Navbar = ({ activeSection }) => {
     { id: "about", label: "01. Profile" },
     { id: "projects", label: "02. Projects" },
     { id: "skills", label: "03. Stack" },
-    { id: "certificates", label: "04. Certificates" }
+    { id: "certificates", label: "04. Certificates" },
+    { id: "notes", label: "05. Notes" }
   ];
 
   return (
@@ -41,8 +42,8 @@ const Navbar = ({ activeSection }) => {
       <nav className={`fixed w-full z-50 transition-all duration-700 ease-[cubic-bezier(0.16, 1, 0.3, 1)] ${scrolled ? 'py-4' : 'py-8'}`}>
         {/* Glass Bar */}
         <div className={`absolute inset-x-8 top-0 h-full transition-all duration-700 ${scrolled
-            ? 'bg-[#020617]/40 backdrop-blur-3xl border-b border-white/[0.05] opacity-100'
-            : 'bg-transparent opacity-0'
+          ? 'bg-[#020617]/40 backdrop-blur-3xl border-b border-white/[0.05] opacity-100'
+          : 'bg-transparent opacity-0'
           }`}></div>
 
         <div className="relative max-w-7xl mx-auto px-8 md:px-12 lg:px-16">
@@ -74,8 +75,8 @@ const Navbar = ({ activeSection }) => {
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
                   className={`relative px-6 py-2 text-[10px] font-mono tracking-[0.2em] uppercase transition-all duration-500 ${activeSection === item.id
-                      ? 'text-white'
-                      : 'text-zinc-500 hover:text-zinc-300'
+                    ? 'text-white'
+                    : 'text-zinc-500 hover:text-zinc-300'
                     }`}
                 >
                   {item.label}

@@ -77,8 +77,8 @@ const HeroSection = () => {
             </div>
           </div>
 
-          <p className="text-zinc-500 text-sm md:text-base max-w-md font-light leading-relaxed mb-12">
-            I enjoy bridging the gap between complex engineering challenges and elegant user experiences. Building <span className="text-zinc-300">scalable web systems</span> with a focus on clean business logic and performance. Practical experience in ERP development and AI-driven applications.
+          <p className="text-zinc-500 text-sm md:text-lg max-w-xl font-light leading-relaxed mb-12">
+            I have a deep fascination with <span className="text-zinc-300 italic">complex systems</span>. Whether it's architecting a 53-week production cycle or building a hybrid AI inference engine, I thrive on the puzzle of turning messy business requirements into elegant, clockwork-like engineering solutions.
           </p>
 
           <div className="flex flex-wrap items-center gap-10">
