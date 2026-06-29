@@ -8,15 +8,16 @@ import JSLogo from "../assets/images/JS.png";
 import GithubLogo from "../assets/images/Github.png";
 import TailwindLogo from "../assets/images/Tailwindcss.png";
 import PythonLogo from "../assets/images/Pythonicon.png";
+import NodeJsLogo from "../assets/images/NodeJs.png";
 
 const HeroSection = () => {
   const cvFile = "/certificates/CV_Natanael_Detamor_FullStack_Developer.pdf";
   const particles = Array.from({ length: 15 });
   const techStack = [
+    { name: "Go (Golang)", logo: NodeJsLogo, desc: "Scalable E-Commerce" },
+    { name: "React.js", logo: ReactLogo, desc: "YAPI Medan Platform" },
     { name: "Laravel", logo: LaravelLogo, desc: "Hopemedia.id ERP" },
-    { name: "Vue.js", logo: VueLogo, desc: "Hopemedia.id ERP" },
-    { name: "FastAPI", logo: PythonLogo, desc: "PlantAI AI Engine" },
-    { name: "React.js", logo: ReactLogo, desc: "Portfolio System" }
+    { name: "FastAPI", logo: PythonLogo, desc: "PlantAI AI Engine" }
   ];
 
   const stats = [
