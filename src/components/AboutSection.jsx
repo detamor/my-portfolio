@@ -18,7 +18,7 @@ const AboutSection = () => {
       icon: <Cpu className="w-5 h-5" />
     },
     {
-      title: "Full-Stack Precision",
+      title: "Engineering Precision",
       desc: "Enterprise Laravel & Modern Vue/React ecosystems",
       icon: <Code2 className="w-5 h-5" />
     },
@@ -201,7 +201,7 @@ const AboutSection = () => {
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div>
                     <span className="text-[9px] font-mono text-indigo-400 uppercase tracking-widest block">Hope Channel Indonesia</span>
-                    <h4 className="text-lg font-medium text-white tracking-tight">Full-Stack Developer (Intern & Freelance)</h4>
+                    <h4 className="text-lg font-medium text-white tracking-tight">Software Engineer (Intern & Freelance)</h4>
                     <span className="text-[9px] font-mono text-zinc-600 uppercase tracking-wider block mt-1">Jakarta Raya, Indonesia (Hybrid)</span>
                   </div>
                   <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider shrink-0">Jun 2025 – May 2026</span>

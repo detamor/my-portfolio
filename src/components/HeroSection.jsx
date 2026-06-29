@@ -79,13 +79,13 @@ const HeroSection = () => {
                 Natanael Detamor <span className="text-zinc-500 font-normal">Karo Karo</span>
               </h1>
               <p className="text-sm md:text-lg text-zinc-400 font-light tracking-[0.2em] uppercase">
-                Full-Stack Developer (React.js & Golang)
+                Software Engineer (React.js & Golang)
               </p>
             </div>
           </div>
 
           <p className="text-zinc-500 text-sm md:text-lg max-w-xl font-light leading-relaxed">
-            Full-Stack Developer with 1 year of production experience building ERP, HRIS, and AI-driven systems using Vue.js, Laravel, and MySQL, now extending the stack with React.js, Go, and the MERN stack.
+            Software Engineer with 1 year of production experience building ERP, HRIS, and AI-driven systems using Vue.js, Laravel, and MySQL, now extending the stack with React.js, Go, and the MERN stack.
           </p>
 
           {/* Contextual Tech Stack Cards */}
