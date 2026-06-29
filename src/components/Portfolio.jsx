@@ -9,6 +9,7 @@ import Certificates from "./Certificates";
 import Skills from "./Skills";
 import Footer from "./Footer";
 import ScrollToTop from "./ScrollToTop";
+import SocialSidebar from "./SocialSidebar";
 
 const Portfolio = () => {
   const [activeSection, setActiveSection] = useState("hero");
@@ -97,6 +98,8 @@ const Portfolio = () => {
       </div>
 
       <Navbar activeSection={activeSection} />
+
+      <SocialSidebar />
 
       <main className="relative z-10">
         <HeroSection />

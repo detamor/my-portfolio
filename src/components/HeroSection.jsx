@@ -7,17 +7,23 @@ import VueLogo from "../assets/images/Vue.png";
 import JSLogo from "../assets/images/JS.png";
 import GithubLogo from "../assets/images/Github.png";
 import TailwindLogo from "../assets/images/Tailwindcss.png";
+import PythonLogo from "../assets/images/Pythonicon.png";
 
 const HeroSection = () => {
   const cvFile = "/certificates/CV-Natanael Detamor.pdf";
   const particles = Array.from({ length: 15 });
   const techStack = [
-    { name: "Laravel", logo: LaravelLogo },
-    { name: "React", logo: ReactLogo },
-    { name: "Vue", logo: VueLogo },
-    { name: "JavaScript", logo: JSLogo },
-    { name: "GitHub", logo: GithubLogo },
-    { name: "Tailwind", logo: TailwindLogo },
+    { name: "Laravel", logo: LaravelLogo, desc: "Hopemedia.id ERP" },
+    { name: "Vue.js", logo: VueLogo, desc: "Hopemedia.id ERP" },
+    { name: "FastAPI", logo: PythonLogo, desc: "PlantAI AI Engine" },
+    { name: "React.js", logo: ReactLogo, desc: "Portfolio System" }
+  ];
+
+  const stats = [
+    { value: "32+ Staff", label: "Workforce Served", sublabel: "via Hopemedia.id" },
+    { value: "18 Phases", label: "Workflow Automated", sublabel: "via Hopemedia.id" },
+    { value: "94% Accuracy", label: "AI Diagnosis Rate", sublabel: "via PlantAI Engine" },
+    { value: "Jakarta", label: "Based In", sublabel: "Indonesia" }
   ];
 
   return (
@@ -51,19 +57,20 @@ const HeroSection = () => {
         ))}
       </div>
 
-      <div className="container mx-auto px-8 md:px-12 lg:px-24 relative z-10 grid lg:grid-cols-2 gap-20 items-center">
-        {/* Left Content */}
+      <div className="container mx-auto px-8 md:px-12 lg:px-24 relative z-10 grid lg:grid-cols-12 gap-20 items-center">
+        {/* Left Column (Content) */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1.2 }}
+          className="lg:col-span-7 space-y-10"
         >
-          <div className="mb-8">
+          <div className="space-y-4">
             <motion.span
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-zinc-600 font-mono text-[9px] tracking-[0.4em] uppercase block mb-4"
+              className="text-zinc-600 font-mono text-[9px] tracking-[0.4em] uppercase block mb-2"
             >
               Software Engineer // 2026
             </motion.span>
@@ -77,17 +84,32 @@ const HeroSection = () => {
             </div>
           </div>
 
-          <p className="text-zinc-500 text-sm md:text-lg max-w-xl font-light leading-relaxed mb-12">
+          <p className="text-zinc-500 text-sm md:text-lg max-w-xl font-light leading-relaxed">
             Full-Stack Engineer specializing in ERP, HRIS, and workflow automation with Laravel, Vue.js, and MySQL. Experienced in designing end-to-end production systems and decoupled AI engines, currently expanding into Go for back-end development.
           </p>
 
-          <div className="flex flex-wrap items-center gap-10">
+          {/* Contextual Tech Stack Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl">
+            {techStack.map((tech) => (
+              <div key={tech.name} className="flex items-center gap-4 p-4 bg-white/[0.01] border border-white/5 rounded-2xl hover:border-white/10 hover:bg-white/[0.02] transition-all duration-300 group">
+                <div className="w-10 h-10 rounded-xl bg-white/[0.03] flex items-center justify-center overflow-hidden shrink-0">
+                  <img src={tech.logo} alt={tech.name} className="w-6 h-6 object-contain opacity-100 transition-all duration-500 group-hover:scale-115" />
+                </div>
+                <div className="flex flex-col min-w-0">
+                  <span className="text-[10px] font-mono text-zinc-300 tracking-wider font-bold uppercase truncate">{tech.name}</span>
+                  <span className="text-[8px] font-mono text-zinc-600 uppercase tracking-widest leading-none truncate">{tech.desc}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap items-center gap-10 pt-4">
             <a
               href="#projects"
               className="group relative px-10 py-5 bg-white text-black text-[10px] font-mono tracking-[0.3em] uppercase overflow-hidden transition-all duration-500"
             >
               <span className="relative z-10 flex items-center gap-4">
-                Analyze Systems <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform" />
+                See my work <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform" />
               </span>
               <div className="absolute inset-0 bg-zinc-200 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
             </a>
@@ -102,43 +124,35 @@ const HeroSection = () => {
           </div>
         </motion.div>
 
-        {/* Right Side: Visual System */}
+        {/* Right Column (Impact Stats) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, delay: 0.4 }}
-          className="flex lg:justify-end relative mt-12 lg:mt-0"
+          className="lg:col-span-5 flex lg:justify-end relative w-full mt-12 lg:mt-0"
         >
-          <div className="relative w-full lg:w-auto">
-            {/* Structural Frame */}
-            <div className="absolute inset-0 border border-white/[0.02] rounded-[2rem] rotate-3 scale-110 pointer-events-none"></div>
-
-            {/* Tech Nodes Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-2 gap-4 relative z-10 max-w-xl">
-              {techStack.map((tech, idx) => (
-                <motion.div
-                  key={tech.name}
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{
-                    duration: 5 + idx,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                  className="w-full p-4 bg-white/[0.01] border border-white/5 rounded-xl backdrop-blur-3xl flex items-center gap-4 group hover:border-white/10 transition-all duration-500"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-white/[0.05] flex items-center justify-center overflow-hidden shrink-0">
-                    <img src={tech.logo} alt={tech.name} className="w-6 h-6 object-contain opacity-100 transition-all duration-700 group-hover:scale-110" />
+          <div className="space-y-4 w-full max-w-sm">
+            {stats.map((stat, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: idx * 0.15 }}
+                className="group relative p-6 bg-white/[0.01] border border-white/5 rounded-2xl backdrop-blur-3xl flex items-center justify-between hover:bg-white/[0.02] hover:border-white/10 transition-all duration-500"
+              >
+                <div className="space-y-1">
+                  <div className="text-3xl font-light text-white tracking-tighter group-hover:text-indigo-400 transition-colors">
+                    {stat.value}
                   </div>
-                  <div className="flex flex-col">
-                    <span className="text-[10px] font-mono text-zinc-300 tracking-widest uppercase">{tech.name}</span>
-                    <span className="text-[8px] font-mono text-zinc-700 uppercase tracking-widest">System Node</span>
+                  <div className="text-[9px] font-mono text-zinc-500 uppercase tracking-[0.2em]">
+                    {stat.label}
                   </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Decorative Connection Line */}
-            <div className="absolute top-1/2 -left-20 w-20 h-px bg-gradient-to-r from-transparent via-white/[0.05] to-transparent"></div>
+                </div>
+                <div className="text-[8px] font-mono text-zinc-700 uppercase tracking-widest text-right">
+                  {stat.sublabel}
+                </div>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>
