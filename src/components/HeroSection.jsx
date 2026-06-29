@@ -20,9 +20,9 @@ const HeroSection = () => {
   ];
 
   const stats = [
-    { value: "32+ Staff", label: "Workforce Served", sublabel: "via Hopemedia.id" },
-    { value: "18 Phases", label: "Workflow Automated", sublabel: "via Hopemedia.id" },
-    { value: "94% Accuracy", label: "AI Diagnosis Rate", sublabel: "via PlantAI Engine" },
+    { value: "6 Services", label: "Go Microservices", sublabel: "E-Commerce Backend" },
+    { value: "32+ Staff", label: "Workforce Served", sublabel: "via Hopemedia.id ERP" },
+    { value: "18 Phases", label: "Workflow Automated", sublabel: "via Hopemedia.id ERP" },
     { value: "Jakarta", label: "Based In", sublabel: "Indonesia" }
   ];
 
@@ -79,13 +79,13 @@ const HeroSection = () => {
                 Natanael Detamor <span className="text-zinc-500 font-normal">Karo Karo</span>
               </h1>
               <p className="text-sm md:text-lg text-zinc-400 font-light tracking-[0.2em] uppercase">
-                Full-Stack Engineer
+                Full-Stack Developer
               </p>
             </div>
           </div>
 
           <p className="text-zinc-500 text-sm md:text-lg max-w-xl font-light leading-relaxed">
-            Full-Stack Engineer specializing in ERP, HRIS, and workflow automation with Laravel, Vue.js, and MySQL. Experienced in designing end-to-end production systems and decoupled AI engines, currently expanding into Go for back-end development.
+            Full-Stack Developer with 1 year of production experience building ERP, HRIS, and AI-driven systems using Vue.js, Laravel, and MySQL, now extending the stack with React.js and Go (Golang).
           </p>
 
           {/* Contextual Tech Stack Cards */}

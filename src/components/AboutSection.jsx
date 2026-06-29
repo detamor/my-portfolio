@@ -120,12 +120,12 @@ const AboutSection = () => {
                   <span className="text-zinc-600 font-mono text-[9px] uppercase tracking-[0.3em] block">Technical Focus</span>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-zinc-400">
                     {[
-                      "Enterprise ERP Systems",
-                      "HRIS & Workforce Management",
-                      "Workflow Ingestion & Automated Parser",
-                      "Decoupled AI Inference Engines",
-                      "Performance & Query Optimizations (N+1)",
-                      "RESTful API Security (JWT & CSP)"
+                      "Go Microservices (Gin, GORM)",
+                      "Enterprise ERP Systems (Laravel, Vue)",
+                      "Workflow Ingestion & Automation",
+                      "DevOps & CI/CD Pipelines (Docker, Actions)",
+                      "Reliability & Resilience (Circuit Breaker)",
+                      "API Gateways & Message Brokers (Nginx, RabbitMQ)"
                     ].map((focus, i) => (
                       <div key={i} className="flex items-center gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-indigo-500"></div>

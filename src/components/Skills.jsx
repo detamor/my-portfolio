@@ -27,12 +27,12 @@ const Skills = () => {
       icon: <Code className="w-5 h-5" />,
       description: "Complete web application development from frontend to backend",
       techs: [
-        { name: "Laravel", image: LaravelLogo, focus: true },
+        { name: "React.js", image: ReactLogo, focus: true },
         { name: "Vue.js", image: VueLogo, focus: true },
-        { name: "React.js", image: ReactLogo },
-        { name: "Node.js", image: NodeJsLogo },
+        { name: "Go (Golang)", image: PHPLogo, focus: true },
+        { name: "Laravel", image: LaravelLogo },
         { name: "Tailwind CSS", image: TailwindcssLogo },
-        { name: "MySQL / PostgreSQL", image: MySqlLogo }
+        { name: "PostgreSQL / MySQL", image: MySqlLogo }
       ],
     },
     {
@@ -41,23 +41,23 @@ const Skills = () => {
       icon: <Cpu className="w-5 h-5" />,
       description: "Server-side logic, Scalable API, and Database Architecture",
       techs: [
-        { name: "PHP / Laravel", image: LaravelLogo, focus: true },
-        { name: "FastAPI", image: PythonLogo, focus: true },
-        { name: "Python Experta", image: PythonLogo },
-        { name: "Golang (learning)", image: PHPLogo },
-        { name: "REST API / JWT", image: JSLogo }
+        { name: "Go (Gin)", image: PHPLogo, focus: true },
+        { name: "Laravel (PHP)", image: LaravelLogo, focus: true },
+        { name: "FastAPI (Python)", image: PythonLogo },
+        { name: "PostgreSQL / Redis", image: MySqlLogo },
+        { name: "RabbitMQ / REST API", image: JSLogo }
       ],
     },
     {
       id: "tools",
-      name: "Tools & Platforms",
+      name: "DevOps & Practices",
       icon: <Brain className="w-5 h-5" />,
       description: "Development with modern tooling and workflow integrations",
       techs: [
-        { name: "Git / GitHub", image: GithubLogo, focus: true },
-        { name: "Docker", image: GitLogo },
-        { name: "Google Calendar API", image: JSLogo },
-        { name: "VS Code", image: VscodeLogo }
+        { name: "Docker / Compose", image: GitLogo, focus: true },
+        { name: "GitHub Actions (CI/CD)", image: GithubLogo, focus: true },
+        { name: "Nginx", image: GitLogo },
+        { name: "JWT / Unit Testing", image: JSLogo }
       ],
     },
   ];

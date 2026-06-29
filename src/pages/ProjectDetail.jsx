@@ -7,6 +7,36 @@ import Footer from "../components/Footer";
 
 // Project Data
 const projectData = {
+  "ecommerce": {
+    title: "Scalable E-Commerce Platform — Go Microservices Backend",
+    subtitle: "A containerized 6-service microservices architecture in Go.",
+    stats: "Go, Gin Gonic, GORM, PostgreSQL, Redis, RabbitMQ, Docker, Nginx | Role: Lead Developer",
+    background: "I built this backend to explore production-grade reliability patterns under microservices architectures. The system handles user authentication, product listings, cart management, ordering pipelines, payment mocks, and real-time notification dispatches.",
+    engineering: [
+      {
+        title: "Microservices & API Gateway",
+        desc: "I built 6 separate services (user, product, cart, order, payment, notification) in Go. They are decoupled and run containerized behind an Nginx API gateway to isolate routes and manage server traffic."
+      },
+      {
+        title: "Idempotent Migrations & Retries",
+        desc: "Implemented a custom SQL migration engine in Go to handle idempotent database updates across PostgreSQL instances. Inter-service communications feature retry limits with exponential backoff."
+      },
+      {
+        title: "Stateful Circuit Breaker",
+        desc: "Developed a custom stateful circuit breaker (CLOSED → OPEN → HALF-OPEN) to prevent cascading timeouts and failures when dependent network calls fail, maintaining fallback routines."
+      }
+    ],
+    architecture: [
+      { path: "services/order/main.go", label: "Order Service" },
+      { path: "pkg/middleware/circuitbreaker.go", label: "Fault Tolerance" },
+      { path: "migrations/db_migration.go", label: "SQL Migration Engine" }
+    ],
+    results: [
+      { label: "Reliability Pattern", value: "Circuit Breaker" },
+      { label: "Architecture", value: "6 Go Services" },
+      { label: "Database Isolation", value: "PostgreSQL & Redis" }
+    ]
+  },
   "hopemedia": {
     title: "Hopemedia.id — Enterprise ERP",
     subtitle: "An 18-phase broadcast workflow system serving 32 employees across 22 roles.",
@@ -43,29 +73,29 @@ const projectData = {
       { step: "KPI Ledger Scoring", desc: "Carbon-calculated timeliness and weight updates." }
     ]
   },
-  "musicops": {
-    title: "MusicOps — Strategic Production",
-    subtitle: "Automating production cycles for high-output media teams.",
-    stats: "Laravel, Vue.js, MySQL | Role: Backend Architect",
-    background: "Production cycles are messy. I built this to turn a chaotic 53-week schedule into a predictable, automated workflow where leap years and deadlines are no longer a headache. This system ensures every episode follows a disciplined production cycle without coordination delays.",
+  "yapimedan": {
+    title: "YAPI Medan — Donation Frontend",
+    subtitle: "A donation and social-platform frontend in React + TypeScript.",
+    stats: "React 18, TypeScript, TanStack Query, React Router, Axios | Role: Lead Frontend Developer",
+    background: "YAPI Medan is a donation and social platform in development. I am building the frontend using React and TypeScript to coordinate listings of social programs and handle secure online donation forms.",
     engineering: [
       {
-        title: "Dynamic Episode Generator",
-        desc: "I designed an episode generator that handles the complexity of 53-week production years. The system automatically inherits T-7 and T-9 deadlines based on the primary broadcast date."
+        title: "State & Query Orchestration",
+        desc: "I am using TanStack Query to manage server state and implement cache synchronization. This optimizes network loads and keeps program cards responsive."
       },
       {
-        title: "Multi-Tier QC System",
-        desc: "I implemented logic gates where assets must pass through sequential validation before the next production phase is unlocked. This guarantees zero-error output for professional broadcasting."
+        title: "Type-Safe Client Requests",
+        desc: "Constructed strict TypeScript interfaces mapping donation payloads and social program schemas to ensure interface fields match API requirements exactly."
       }
     ],
     architecture: [
-      { path: "app/Services/Production/TimelineGenerator.php", label: "Schedule Logic" },
-      { path: "app/Models/Episode.php", label: "Data Schema" }
+      { path: "src/hooks/useProgramsQuery.ts", label: "TanStack Hooks" },
+      { path: "src/types/donation.ts", label: "Strict Typing" }
     ],
     results: [
-      { label: "Timeline", value: "53-Week Logic" },
-      { label: "Deadlines", value: "T-7 Automated" },
-      { label: "Errors", value: "Zero Schedule Drift" }
+      { label: "Framework Core", value: "React + TS" },
+      { label: "Caching Layer", value: "TanStack Query" },
+      { label: "Validation", value: "Axios + Zod Gates" }
     ]
   },
   "plantai": {
@@ -95,6 +125,31 @@ const projectData = {
       { label: "Diagnosis Time", value: "< 1s Response" },
       { label: "Accuracy", value: "50% CF Threshold" },
       { label: "Microservices", value: "3 Decoupled Services" }
+    ]
+  },
+  "portfolio": {
+    title: "Portfolio — Engineering Lab",
+    subtitle: "Architecting a high-fidelity gallery with modular React components.",
+    stats: "React 18, Vite, Framer Motion, Tailwind CSS | Role: Frontend Developer",
+    background: "I built this space as an experimental lab for modular architecture and micro-interactions, proving that even a personal portfolio deserves enterprise-grade design standards.",
+    engineering: [
+      {
+        title: "Modular React Architecture",
+        desc: "I engineered this system with a focus on component orchestration and scalable custom hooks. Every element is designed to be reusable and context-aware."
+      },
+      {
+        title: "Deep Navigation Strategy",
+        desc: "I utilized React Router to create seamless transitions between high-level overview perspectives and technical deep-dives into each project's engineering laboratory."
+      }
+    ],
+    architecture: [
+      { path: "src/pages/ProjectDetail.jsx", label: "Dynamic Router" },
+      { path: "src/components/Projects.jsx", label: "Component Orchestrator" }
+    ],
+    results: [
+      { label: "Performance", value: "98% Lighthouse" },
+      { label: "Interactions", value: "Framer Motion" },
+      { label: "Structure", value: "Modular Design" }
     ]
   }
 };

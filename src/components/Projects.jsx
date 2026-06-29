@@ -15,6 +15,9 @@ import PortoImage from "../assets/images/Porto.png";
 import JSLogo from "../assets/images/JS.png";
 import TailwindLogo from "../assets/images/Tailwindcss.png";
 import CaseStudyModal from "./CaseStudyModal";
+import GithubLogo from "../assets/images/Github.png";
+import ecommerceImage from "../assets/images/WebTopUp.jpg";
+import yapiMedanImage from "../assets/images/RentalPlaystation.jpg";
 
 const ProjectCard = ({ project, idx }) => {
   const x = useMotionValue(0);
@@ -170,6 +173,21 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
+      slug: "ecommerce",
+      title: "Scalable E-Commerce Backend",
+      year: "2026",
+      category: "Go Microservices",
+      hook: "I built a containerized 6-service microservices backend in Go to explore production-grade database migrations, retry dynamics, and fault-tolerance.",
+      solution: "Developed custom SQL migrations, exponential backoff retries, stateful circuit breakers, mock unit tests, and GitHub Actions CI/CD pipelines.",
+      techLogos: [NodeJsLogo, MySqlLogo, GithubLogo],
+      demoUrl: "https://github.com/detamor/Scalable-E-CommercePlatform",
+      codeUrls: [{ label: "Repository", url: "https://github.com/detamor/Scalable-E-CommercePlatform" }],
+      stats: "6 Go Microservices & Circuit Breaker",
+      image: ecommerceImage,
+      isPrivate: false
+    },
+    {
+      id: 2,
       slug: "hopemedia",
       title: "Hopemedia.id — Enterprise ERP",
       year: "Jun 2025 - May 2026",
@@ -184,7 +202,22 @@ const Projects = () => {
       isPrivate: true
     },
     {
-      id: 2,
+      id: 3,
+      slug: "yapimedan",
+      title: "YAPI Medan — Donation Frontend",
+      year: "2025 - Present",
+      category: "React & TypeScript",
+      hook: "Developing a responsive donation and social-platform frontend to manage social programs and multi-method donation gateways.",
+      solution: "Built in React 18 and TypeScript, using TanStack Query for caching, Axios for client requests, and React Router for view transitions.",
+      techLogos: [ReactLogo, TailwindLogo, JSLogo],
+      demoUrl: "https://github.com/detamor/YapiFe",
+      codeUrls: [{ label: "Repository", url: "https://github.com/detamor/YapiFe" }],
+      stats: "React 18, TypeScript & TanStack Query",
+      image: yapiMedanImage,
+      isPrivate: false
+    },
+    {
+      id: 4,
       slug: "plantai",
       title: "Plant Disease Diagnosis — Expert System",
       year: "Nov 2025 - Apr 2026",
@@ -203,19 +236,19 @@ const Projects = () => {
       isPrivate: false
     },
     {
-      id: 3,
-      slug: "musicops",
-      title: "MusicOps — Strategic Production",
-      year: "2025",
-      category: "Production Automation",
-      hook: "Production cycles are messy. I built this to turn a chaotic 53-week schedule into a predictable, automated workflow where leap years and deadlines are no longer a headache.",
-      solution: "Engineered a Dynamic Episode Generator with T-7 deadline inheritance and a multi-tier QC system to ensure every episode meets professional broadcasting standards.",
-      techLogos: [LaravelLogo, VueLogo, MySqlLogo],
-      demoUrl: "https://hopemedia.id",
-      codeUrl: null,
-      stats: "Automated 53-Week Strategic Timeline",
-      image: hopemediaMusic,
-      isPrivate: true
+      id: 5,
+      slug: "portfolio",
+      title: "Portfolio — Engineering Lab",
+      year: "2025 - Present",
+      category: "React & Framer Motion",
+      hook: "Built a personal performance-focused portfolio with interactive UI details to present project architectures in recruiter-friendly layouts.",
+      solution: "Engineered React components using Vite and Framer Motion, utilizing 3D perspective transforms and responsive glassmorphism containers.",
+      techLogos: [ReactLogo, TailwindLogo, JSLogo],
+      demoUrl: "https://github.com/detamor/my-portfolio",
+      codeUrls: [{ label: "Repository", url: "https://github.com/detamor/my-portfolio" }],
+      stats: "React 18, Vite & Framer Motion",
+      image: PortoImage,
+      isPrivate: false
     }
   ];
 
