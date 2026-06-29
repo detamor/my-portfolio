@@ -6,7 +6,6 @@ import HeroSection from "./HeroSection";
 import AboutSection from "./AboutSection";
 import Projects from "./Projects";
 import Certificates from "./Certificates";
-import EngineeringLogs from "./EngineeringLogs";
 import Skills from "./Skills";
 import Footer from "./Footer";
 import ScrollToTop from "./ScrollToTop";
@@ -36,7 +35,7 @@ const Portfolio = () => {
       const scrollThreshold = window.innerHeight * 0.8;
       setIsVisible(window.pageYOffset > scrollThreshold);
 
-      const sections = ["hero", "about", "projects", "certificates", "notes", "skills"];
+      const sections = ["hero", "about", "projects", "certificates", "skills"];
       const navbarHeight = 64;
 
       let currentSection = "hero";
@@ -110,9 +109,6 @@ const Portfolio = () => {
 
         <div className="h-px bg-zinc-900 mx-auto max-w-7xl"></div>
         <Certificates />
-
-        <div className="h-px bg-zinc-900 mx-auto max-w-7xl"></div>
-        <EngineeringLogs />
 
         <div className="h-px bg-zinc-900 mx-auto max-w-7xl"></div>
         <Skills />

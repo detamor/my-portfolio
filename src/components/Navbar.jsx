@@ -33,8 +33,7 @@ const Navbar = ({ activeSection }) => {
     { id: "about", label: "01. Profile" },
     { id: "projects", label: "02. Projects" },
     { id: "skills", label: "03. Stack" },
-    { id: "certificates", label: "04. Certificates" },
-    { id: "notes", label: "05. Notes" }
+    { id: "certificates", label: "04. Certificates" }
   ];
 
   return (
