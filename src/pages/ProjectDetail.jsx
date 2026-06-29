@@ -96,31 +96,6 @@ const projectData = {
       { label: "Accuracy", value: "50% CF Threshold" },
       { label: "Microservices", value: "3 Decoupled Services" }
     ]
-  },
-  "portfolio": {
-    title: "Portfolio — Engineering Lab",
-    subtitle: "Architecting a high-fidelity gallery with modular React components.",
-    stats: "React, Vite, Framer Motion | Role: Frontend Architect",
-    background: "I built this space as an experimental lab for modular architecture and micro-interactions, proving that even a personal portfolio deserves enterprise-grade design standards.",
-    engineering: [
-      {
-        title: "Modular React Architecture",
-        desc: "I engineered this system with a focus on component orchestration and scalable custom hooks. Every element is designed to be reusable and context-aware."
-      },
-      {
-        title: "Deep Navigation Strategy",
-        desc: "I utilized React Router to create seamless transitions between high-level overview perspectives and technical deep-dives into each project's engineering laboratory."
-      }
-    ],
-    architecture: [
-      { path: "src/pages/ProjectDetail.jsx", label: "Dynamic Router" },
-      { path: "src/components/Projects.jsx", label: "Component Orchestrator" }
-    ],
-    results: [
-      { label: "Performance", value: "98% Lighthouse" },
-      { label: "Interactions", value: "Framer Motion" },
-      { label: "Structure", value: "Modular Design" }
-    ]
   }
 };
 

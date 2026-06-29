@@ -216,20 +216,6 @@ const Projects = () => {
       stats: "Automated 53-Week Strategic Timeline",
       image: hopemediaMusic,
       isPrivate: true
-    },
-    {
-      id: 4,
-      slug: "portfolio",
-      title: "Portfolio — Engineering Lab",
-      year: "2026",
-      category: "Frontend Architecture",
-      hook: "I built this space to experiment with modular architecture and micro-interactions, proving that even a personal portfolio can benefit from enterprise-grade component design.",
-      solution: "Developed using React + Vite with a focus on orchestration and scalable hooks. Features a custom Case Study system for deep technical transparency.",
-      techLogos: [ReactLogo, TailwindLogo, JSLogo],
-      demoUrl: "https://github.com/detamor/my-portfolio",
-      codeUrl: "https://github.com/detamor/my-portfolio",
-      image: PortoImage,
-      isPrivate: false
     }
   ];
 
