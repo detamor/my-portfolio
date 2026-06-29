@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Send, User, Mail, MessageSquare, Briefcase, CheckCircle } from "lucide-react";
+import { Send, User, Mail, MessageSquare, Briefcase, CheckCircle, Globe } from "lucide-react";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -44,7 +44,7 @@ ${formData.message}
 
   if (showSuccess) {
     return (
-      <section className="py-32 px-6 md:px-12 relative overflow-hidden bg-[#020617]">
+      <section className="py-32 px-6 md:px-12 relative overflow-hidden bg-[#0a0c14]">
         <div className="container mx-auto max-w-2xl text-center">
           <div className="w-20 h-20 bg-indigo-500/10 border border-indigo-500/20 rounded-full flex items-center justify-center mx-auto mb-8 animate-bounce">
             <CheckCircle className="w-10 h-10 text-indigo-400" />
@@ -65,7 +65,7 @@ ${formData.message}
   }
 
   return (
-    <section id="contact" className="py-32 px-6 md:px-12 relative overflow-hidden bg-[#020617]">
+    <section id="contact" className="py-32 px-6 md:px-12 relative overflow-hidden bg-[#0a0c14]">
       {/* Background Glows */}
       <div className="absolute top-[20%] left-[-10%] w-[40%] h-[40%] bg-indigo-600/5 blur-[120px] rounded-full pointer-events-none"></div>
       
@@ -78,11 +78,11 @@ ${formData.message}
                 Get in touch
               </span>
               <h2 className="text-4xl md:text-6xl font-light text-white tracking-tighter leading-tight mb-8">
-                Tanya <br />
-                <span className="text-zinc-500 italic">Apapun</span>
+                Let's work <br />
+                <span className="text-zinc-500 italic">together.</span>
               </h2>
               <p className="text-zinc-400 text-base font-light leading-relaxed max-w-sm">
-                Punya ide proyek, butuh bantuan teknis, atau sekadar ingin menyapa? Hubungi saya kapan saja.
+                Have a project idea, need technical consultation, or want to discuss a full-stack role? Reach out anytime.
               </p>
             </div>
 
@@ -104,6 +104,16 @@ ${formData.message}
                 <div>
                   <div className="text-[10px] font-mono text-zinc-600 tracking-widest uppercase mb-1">Availability</div>
                   <div className="text-white font-light">Open for Full-time Roles</div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-6 group">
+                <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-zinc-500 group-hover:text-indigo-400 transition-all duration-500">
+                  <Globe className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-[10px] font-mono text-zinc-600 tracking-widest uppercase mb-1">Location</div>
+                  <div className="text-white font-light">Jakarta, Indonesia (UTC+7 / GMT+7)</div>
                 </div>
               </div>
             </div>

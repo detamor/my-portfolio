@@ -10,6 +10,7 @@ import Skills from "./Skills";
 import Footer from "./Footer";
 import ScrollToTop from "./ScrollToTop";
 import SocialSidebar from "./SocialSidebar";
+import ContactForm from "./ContactForm";
 
 const Portfolio = () => {
   const [activeSection, setActiveSection] = useState("hero");
@@ -115,6 +116,9 @@ const Portfolio = () => {
 
         <div className="h-px bg-zinc-900 mx-auto max-w-7xl"></div>
         <Skills />
+
+        <div className="h-px bg-zinc-900 mx-auto max-w-7xl"></div>
+        <ContactForm />
       </main>
 
       <Footer />

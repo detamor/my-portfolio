@@ -114,6 +114,26 @@ const AboutSection = () => {
                 <p>
                   My experience ranges from creating <span className="text-indigo-400/80 italic">18-phase broadcast pipelines</span> and automated fingerprint/Zoom attendance integrations to developing decoupled FastAPI diagnostic engines. I enjoy <span className="text-white">bridging the gap</span> between complex requirements and clean, performant engineering solutions.
                 </p>
+
+                {/* Technical Focus List */}
+                <div className="pt-6 space-y-4">
+                  <span className="text-zinc-600 font-mono text-[9px] uppercase tracking-[0.3em] block">Technical Focus</span>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-zinc-400">
+                    {[
+                      "Enterprise ERP Systems",
+                      "HRIS & Workforce Management",
+                      "Workflow Ingestion & Automated Parser",
+                      "Decoupled AI Inference Engines",
+                      "Performance & Query Optimizations (N+1)",
+                      "RESTful API Security (JWT & CSP)"
+                    ].map((focus, i) => (
+                      <div key={i} className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-indigo-500"></div>
+                        <span>{focus}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </motion.div>
             </div>
 
@@ -179,8 +199,9 @@ const AboutSection = () => {
                 <div className="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-indigo-500 border-2 border-[#0a0c14] shadow-[0_0_10px_#6366f1]"></div>
                 <div className="flex flex-wrap items-center justify-between gap-4">
                   <div>
-                    <span className="text-xs font-mono text-indigo-400 uppercase tracking-widest block">Hope Channel Indonesia</span>
+                    <span className="text-[9px] font-mono text-indigo-400 uppercase tracking-widest block">Hope Channel Indonesia</span>
                     <h4 className="text-lg font-medium text-white tracking-tight">Full-Stack Developer (Intern & Freelance)</h4>
+                    <span className="text-[9px] font-mono text-zinc-600 uppercase tracking-wider block mt-1">Jakarta Raya, Indonesia (Hybrid)</span>
                   </div>
                   <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider">Jun 2025 – May 2026</span>
                 </div>
@@ -190,10 +211,17 @@ const AboutSection = () => {
                 <ul className="space-y-2 text-zinc-500 text-xs font-light list-disc pl-4 leading-relaxed">
                   <li>Built a fingerprint attendance system that auto-parses raw TXT exports from fingerprint machines and maps records to the correct employee.</li>
                   <li>Integrated Zoom API to automatically track Morning Reflection attendance, removing manual HR reporting steps.</li>
-                  <li>Architected an 18-phase broadcast production workflow (Song Proposal → Music Arrangement → Vocal/Video Editing → Promo → QC Approval → Broadcasting) with deadline tracking and KPI scoring.</li>
-                  <li>Engineered an HRIS with 3 independent approval hierarchies (HR, PM, DM) for leave requests, dynamic quotas, and auto-generated PDF leave letters.</li>
-                  <li>Implemented JWT authentication with auto-logout, CSP security headers, and Google Calendar API; resolved N+1 queries.</li>
+                  <li>Architected an 18-phase broadcast production workflow with deadline tracking and KPI scoring.</li>
+                  <li>Engineered an HRIS with 3 independent approval hierarchies for leave requests, dynamic quotas, and auto-generated PDF leave letters.</li>
+                  <li>Implemented JWT authentication, CSP security headers, and Google Calendar API; resolved N+1 queries.</li>
                 </ul>
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {["Laravel", "Vue.js", "MySQL", "Tailwind CSS", "Zoom API", "JWT", "PHPUnit"].map((tag) => (
+                    <span key={tag} className="px-3 py-1 bg-white/[0.02] border border-white/5 text-[9px] font-mono text-zinc-500 rounded-full uppercase tracking-wider">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
 
               {/* Timeline Item 2: Education */}
@@ -201,15 +229,23 @@ const AboutSection = () => {
                 <div className="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-zinc-700 border-2 border-[#0a0c14]"></div>
                 <div className="flex flex-wrap items-center justify-between gap-4">
                   <div>
-                    <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest block">Universitas Advent Indonesia</span>
+                    <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest block">Universitas Advent Indonesia</span>
                     <h4 className="text-lg font-medium text-white tracking-tight">Bachelor of Informatics Engineering</h4>
+                    <span className="text-[9px] font-mono text-zinc-600 uppercase tracking-wider block mt-1">Bandung, Indonesia</span>
                   </div>
                   <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider">Aug 2022 – Expected Jun 2026</span>
                 </div>
-                <div className="flex flex-wrap gap-4 text-xs font-light text-zinc-400">
+                <div className="flex flex-wrap gap-4 text-xs font-light text-zinc-400 pb-2">
                   <span><strong>GPA:</strong> 3.61/4.00</span>
                   <span className="text-zinc-700">|</span>
                   <span><strong>Focus:</strong> OOP, Data Structures, DBMS, Web Dev, Cloud Computing, Artificial Intelligence, Business Intelligence</span>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {["OOP", "Data Structures", "DBMS", "Web Development", "Cloud Computing", "Artificial Intelligence"].map((tag) => (
+                    <span key={tag} className="px-3 py-1 bg-white/[0.02] border border-white/5 text-[9px] font-mono text-zinc-500 rounded-full uppercase tracking-wider">
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
