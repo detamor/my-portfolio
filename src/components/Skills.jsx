@@ -14,6 +14,7 @@ import ClaudeLogo from '../assets/images/Claude.png';
 import VscodeLogo from '../assets/images/Vscode.jpg';
 import SqlLogo from '../assets/images/MySql.jpg';
 import PythonLogo from '../assets/images/Pythonicon.png';
+import NodeJsLogo from '../assets/images/NodeJs.png';
 
 const Skills = () => {
   const [activeTab, setActiveTab] = useState("fullstack");
