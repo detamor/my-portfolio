@@ -6,21 +6,39 @@ const Certificates = () => {
   const certifications = [
     {
       title: "IT Specialist: Databases",
-      issuer: "Certiport - Pearson VUE",
-      date: "2024",
+      issuer: "Certiport",
+      date: "Mar 2025",
       id: "Credential ID: wS6Y-uTeA",
       verifyUrl: "/certificates/IT Specialist Database .pdf",
       skills: ["RDBMS", "SQL", "Data Modeling", "DB Administration"],
       color: "from-blue-500/20 to-indigo-500/20"
     },
     {
-      title: "Belajar Dasar SQL",
-      issuer: "Dicoding Indonesia",
-      date: "2024",
-      id: "Credential ID: SQL-DC-2024",
+      title: "Structured Query Language (SQL)",
+      issuer: "Dicoding",
+      date: "Apr 2025",
+      id: "Credential ID: SQL-DC-2025",
       verifyUrl: "https://www.dicoding.com/dicodingassets/coursecertificate/872026d91301cd8f7eadc913ecbe455bc63b4631/view",
       skills: ["Structured Query Language", "Data Manipulation", "DCL & DDL"],
       color: "from-cyan-500/20 to-blue-500/20"
+    },
+    {
+      title: "Basic Back-End with JavaScript",
+      issuer: "Dicoding",
+      date: "Jan 2025",
+      id: "Credential ID: BE-JS-2025",
+      verifyUrl: "/certificates/sertifikat Belajar Back-End Pemula dengan JavaScript.pdf",
+      skills: ["Node.js", "RESTful API", "Server Management"],
+      color: "from-emerald-500/20 to-teal-500/20"
+    },
+    {
+      title: "Basic JavaScript Programming",
+      issuer: "Dicoding",
+      date: "Jan 2025",
+      id: "Credential ID: JS-PRG-2025",
+      verifyUrl: "/certificates/sertifikat belajar dasar pemrograman javascript.pdf",
+      skills: ["Core JS", "Logic Flow", "Functions"],
+      color: "from-purple-500/20 to-pink-500/20"
     },
     {
       title: "AWS Cloud Foundations",
@@ -32,15 +50,6 @@ const Certificates = () => {
       color: "from-amber-500/20 to-orange-500/20"
     },
     {
-      title: "Back-End Developer (Entry)",
-      issuer: "Dicoding Indonesia",
-      date: "2024",
-      id: "Credential ID: BE-JS-2024",
-      verifyUrl: "/certificates/sertifikat Belajar Back-End Pemula dengan JavaScript.pdf",
-      skills: ["Node.js", "RESTful API", "Server Management"],
-      color: "from-emerald-500/20 to-teal-500/20"
-    },
-    {
       title: "AI Fundamentals",
       issuer: "Dicoding Indonesia",
       date: "2024",
@@ -48,15 +57,6 @@ const Certificates = () => {
       verifyUrl: "/certificates/sertifikat belajar dasar ai.pdf",
       skills: ["Machine Learning", "Neural Networks", "AI Ethics"],
       color: "from-indigo-500/20 to-blue-500/20"
-    },
-    {
-      title: "JavaScript Basics",
-      issuer: "Dicoding Indonesia",
-      date: "2024",
-      id: "Credential ID: JS-PRG-2024",
-      verifyUrl: "/certificates/sertifikat belajar dasar pemrograman javascript.pdf",
-      skills: ["Core JS", "Logic Flow", "Functions"],
-      color: "from-purple-500/20 to-pink-500/20"
     }
   ];
 

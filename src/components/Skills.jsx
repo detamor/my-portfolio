@@ -29,10 +29,9 @@ const Skills = () => {
         { name: "Laravel", image: LaravelLogo, focus: true },
         { name: "Vue.js", image: VueLogo, focus: true },
         { name: "React.js", image: ReactLogo },
-        { name: "Golang", image: PHPLogo },
-        { name: "Pinia / Vuex", image: VueLogo },
+        { name: "Node.js", image: NodeJsLogo },
         { name: "Tailwind CSS", image: TailwindcssLogo },
-        { name: "MySQL", image: MySqlLogo }
+        { name: "MySQL / PostgreSQL", image: MySqlLogo }
       ],
     },
     {
@@ -42,22 +41,22 @@ const Skills = () => {
       description: "Server-side logic, Scalable API, and Database Architecture",
       techs: [
         { name: "PHP / Laravel", image: LaravelLogo, focus: true },
-        { name: "FastAPI", image: JSLogo },
+        { name: "FastAPI", image: PythonLogo, focus: true },
         { name: "Python Experta", image: PythonLogo },
-        { name: "MySQL / Postgre", image: MySqlLogo },
+        { name: "Golang (learning)", image: PHPLogo },
         { name: "REST API / JWT", image: JSLogo }
       ],
     },
     {
       id: "tools",
-      name: "Workflow & AI",
+      name: "Tools & Platforms",
       icon: <Brain className="w-5 h-5" />,
-      description: "Development with AI-driven workflows and modern tooling",
+      description: "Development with modern tooling and workflow integrations",
       techs: [
-        { name: "VS Code", image: VscodeLogo, focus: true },
-        { name: "Git / GitHub", image: GithubLogo },
-        { name: "Google API", image: JSLogo },
-        { name: "Framer Motion", image: ReactLogo }
+        { name: "Git / GitHub", image: GithubLogo, focus: true },
+        { name: "Docker", image: GitLogo },
+        { name: "Google Calendar API", image: JSLogo },
+        { name: "VS Code", image: VscodeLogo }
       ],
     },
   ];

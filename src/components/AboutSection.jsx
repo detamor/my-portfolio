@@ -6,7 +6,7 @@ import { ArrowRight, MapPin, GraduationCap, Code2, Cpu, Layout, Sparkles, Databa
 const AboutSection = () => {
   const stats = [
     { value: "10+", label: "Technologies" },
-    { value: "02+", label: "Years Exp" },
+    { value: "01+", label: "Year Exp" },
     { value: "08+", label: "Projects" },
     { value: "3.61", label: "GPA (Informatics)" }
   ];
@@ -109,10 +109,10 @@ const AboutSection = () => {
                 className="space-y-6 text-slate-400 text-sm md:text-base font-light leading-relaxed max-w-[500px]"
               >
                 <p>
-                  I'm Natanael. I spend my days architecting complex systems and my nights wondering how to make them even faster. Currently focused on building the <span className="text-white font-normal">'Discovery Engine'</span> at Hopemedia.id.
+                  I'm Natanael Detamor Karo Karo. I specialize in designing and building end-to-end production systems, having architected the entire <span className="text-white font-normal">Hopemedia.id ERP</span> from scratch to replace fully manual, paper-based workflows.
                 </p>
                 <p>
-                  My experience ranges from developing <span className="text-indigo-400/80 italic">Enterprise ERP modules</span> with Laravel and Vue.js to building AI-driven diagnostic engines with Python. I enjoy <span className="text-white">bridging the gap</span> between messy business requirements and clean, clockwork-like engineering solutions.
+                  My experience ranges from creating <span className="text-indigo-400/80 italic">18-phase broadcast pipelines</span> and automated fingerprint/Zoom attendance integrations to developing decoupled FastAPI diagnostic engines. I enjoy <span className="text-white">bridging the gap</span> between complex requirements and clean, performant engineering solutions.
                 </p>
               </motion.div>
             </div>
@@ -156,6 +156,66 @@ const AboutSection = () => {
           </div>
 
         </div>
+
+        {/* Experience & Education Section */}
+        <div className="mt-32 pt-20 border-t border-white/5">
+          <div className="grid lg:grid-cols-12 gap-20">
+            {/* Left Column: Heading */}
+            <div className="lg:col-span-4">
+              <span className="text-zinc-700 font-mono text-[9px] uppercase tracking-[0.4em] block mb-4">Chronology</span>
+              <h3 className="text-3xl font-light text-white tracking-tighter leading-none mb-8">
+                Experience & <br />
+                <span className="text-zinc-500 italic font-light">Education</span>
+              </h3>
+              <p className="text-zinc-500 text-sm font-light leading-relaxed max-w-xs">
+                A chronicle of my academic foundation and professional milestones in production engineering.
+              </p>
+            </div>
+
+            {/* Right Column: Timeline items */}
+            <div className="lg:col-span-8 space-y-12">
+              {/* Timeline Item 1: Experience */}
+              <div className="relative pl-8 border-l border-white/5 space-y-4">
+                <div className="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-indigo-500 border-2 border-[#0a0c14] shadow-[0_0_10px_#6366f1]"></div>
+                <div className="flex flex-wrap items-center justify-between gap-4">
+                  <div>
+                    <span className="text-xs font-mono text-indigo-400 uppercase tracking-widest block">Hope Channel Indonesia</span>
+                    <h4 className="text-lg font-medium text-white tracking-tight">Full-Stack Developer (Intern & Freelance)</h4>
+                  </div>
+                  <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider">Jun 2025 – May 2026</span>
+                </div>
+                <p className="text-zinc-400 text-sm font-light leading-relaxed">
+                  Designed full system architecture of Hopemedia.id ERP from scratch based on stakeholder requirements, aligning workflows across 3 teams (Program, Broadcasting, HR).
+                </p>
+                <ul className="space-y-2 text-zinc-500 text-xs font-light list-disc pl-4 leading-relaxed">
+                  <li>Built a fingerprint attendance system that auto-parses raw TXT exports from fingerprint machines and maps records to the correct employee.</li>
+                  <li>Integrated Zoom API to automatically track Morning Reflection attendance, removing manual HR reporting steps.</li>
+                  <li>Architected an 18-phase broadcast production workflow (Song Proposal → Music Arrangement → Vocal/Video Editing → Promo → QC Approval → Broadcasting) with deadline tracking and KPI scoring.</li>
+                  <li>Engineered an HRIS with 3 independent approval hierarchies (HR, PM, DM) for leave requests, dynamic quotas, and auto-generated PDF leave letters.</li>
+                  <li>Implemented JWT authentication with auto-logout, CSP security headers, and Google Calendar API; resolved N+1 queries.</li>
+                </ul>
+              </div>
+
+              {/* Timeline Item 2: Education */}
+              <div className="relative pl-8 border-l border-white/5 space-y-4">
+                <div className="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-zinc-700 border-2 border-[#0a0c14]"></div>
+                <div className="flex flex-wrap items-center justify-between gap-4">
+                  <div>
+                    <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest block">Universitas Advent Indonesia</span>
+                    <h4 className="text-lg font-medium text-white tracking-tight">Bachelor of Informatics Engineering</h4>
+                  </div>
+                  <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider">Aug 2022 – Expected Jun 2026</span>
+                </div>
+                <div className="flex flex-wrap gap-4 text-xs font-light text-zinc-400">
+                  <span><strong>GPA:</strong> 3.61/4.00</span>
+                  <span className="text-zinc-700">|</span>
+                  <span><strong>Focus:</strong> OOP, Data Structures, DBMS, Web Dev, Cloud Computing, Artificial Intelligence, Business Intelligence</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   );

@@ -69,16 +69,16 @@ const HeroSection = () => {
             </motion.span>
             <div className="space-y-4">
               <h1 className="text-4xl md:text-6xl font-light text-white tracking-tight leading-tight">
-                Natanael <span className="text-zinc-500">Detamor</span>
+                Natanael Detamor <span className="text-zinc-500 font-normal">Karo Karo</span>
               </h1>
               <p className="text-sm md:text-lg text-zinc-400 font-light tracking-[0.2em] uppercase">
-                Junior Software Engineer
+                Full-Stack Engineer
               </p>
             </div>
           </div>
 
           <p className="text-zinc-500 text-sm md:text-lg max-w-xl font-light leading-relaxed mb-12">
-            I'm a Junior Software Engineer with a deep fascination for complex systems. I thrive on the puzzle of turning messy business requirements into clean, efficient engineering solutions—whether it's building scalable web applications or automating complex operational workflows.
+            Full-Stack Engineer specializing in ERP, HRIS, and workflow automation with Laravel, Vue.js, and MySQL. Experienced in designing end-to-end production systems and decoupled AI engines, currently expanding into Go for back-end development.
           </p>
 
           <div className="flex flex-wrap items-center gap-10">

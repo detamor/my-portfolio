@@ -8,39 +8,39 @@ import Footer from "../components/Footer";
 // Project Data
 const projectData = {
   "hopemedia": {
-    title: "Hopemedia.id — Enterprise System",
-    subtitle: "Scaling workforce management for 20+ specialized roles.",
-    stats: "Laravel, Vue.js, MySQL | Role: Full-Stack Architect",
-    background: "Before this system existed, Hopemedia's operations relied on manual spreadsheets prone to manipulation. Data leakage between departments often occurred due to unclear authorization. I built this ecosystem to eliminate manual reporting for 52-53 episodes per year and replace it with absolute system validation.",
+    title: "Hopemedia.id — Enterprise ERP",
+    subtitle: "An 18-phase broadcast workflow system serving 32 employees across 22 roles.",
+    stats: "Laravel, Vue.js, MySQL, Tailwind CSS, jQuery | Role: Full-Stack Architect",
+    background: "Before this system existed, Hopemedia's operations relied on manual spreadsheets and paper records. Data leakage and reporting manipulation occurred easily. I designed and built this end-to-end ERP to automate workflows and attendance tracking for 32 employees across 22 roles.",
     engineering: [
       {
-        title: "Decoupled Authentication",
-        desc: "I implemented a Silent Token Refresh system using Axios Interceptors. The system rotates tokens in the background without user awareness. The result is a highly secure session with zero user interruption."
+        title: "Automated Ingestion & Attendance",
+        desc: "I built a fingerprint attendance system that auto-parses raw TXT logs exported from fingerprint machines and maps records to the correct employee. I also integrated the Zoom API to automatically track Morning Reflection attendance, completely removing manual entry."
       },
       {
-        title: "The KPI Discovery Engine",
-        desc: "To ensure objective performance reviews, I built a Service Layer that scans digital footprints across the workflow. Validated proof is mandatory for point accrual, featuring custom logic for multi-role support."
+        title: "18-Phase Production Pipeline",
+        desc: "I architected an 18-phase production workflow (Song Proposal → Music Arrangement → Storyboard → Art Set → Recording → Video Editing → Promo → PM Review → QC → Broadcasting → Promo). It features deadline tracking and auto-generated KPI scores for submission timeliness."
       },
       {
-        title: "RBAC Logic",
-        desc: "I managed 20+ specialized roles using a Role Mapping Layer. This ensures strict data isolation while allowing dynamic access for cross-departmental collaboration when specific assignment flags are active."
+        title: "Triple-Tier HRIS Approvals",
+        desc: "I engineered an HRIS with 3 independent approval hierarchies (HR, Program Manager, Distribution Manager) for supervisor leave requests. The module handles dynamic leave quotas and auto-generates official PDF leave letters."
       }
     ],
     architecture: [
-      { path: "app/Services/Kpi/DiscoveryEngine.php", label: "Logic Engine" },
-      { path: "app/Http/Middleware/SecureProtocol.php", label: "Security Layer" },
-      { path: "app/Services/Auth/SilentRefreshService.php", label: "Session Manager" }
+      { path: "app/Services/Attendance/FingerprintParser.php", label: "Attendance Parser" },
+      { path: "app/Services/Production/WorkflowEngine.php", label: "18-Phase Pipeline" },
+      { path: "app/Services/Hris/LeaveManagerService.php", label: "Leave Logic" }
     ],
     results: [
       { label: "Manual Reporting", value: "100% Automated" },
-      { label: "Session Security", value: "JWT Integrity" },
-      { label: "Scalability", value: "20+ Roles" }
+      { label: "Session Security", value: "JWT Integrity & Auto-logout" },
+      { label: "Scalability", value: "32 Employees, 22 Roles" }
     ],
     kpiFlow: [
-      { step: "Trigger", desc: "Submission detected via Event Listener." },
-      { step: "Verify", desc: "Manual & Automated QC Gate." },
-      { step: "Discovery", desc: "Service scanning for digital footprints & metadata." },
-      { step: "Reward", desc: "Automated ledger entry & real-time dashboard update." }
+      { step: "Fingerprint/Zoom Ingest", desc: "Automated parsing of TXT logs and API sessions." },
+      { step: "Production Flow Trigger", desc: "Automatic step unlocks upon valid submission." },
+      { step: "Supervisor Gate", desc: "Triple-tier hierarchy review and verification." },
+      { step: "KPI Ledger Scoring", desc: "Carbon-calculated timeliness and weight updates." }
     ]
   },
   "musicops": {
@@ -69,28 +69,32 @@ const projectData = {
     ]
   },
   "plantai": {
-    title: "PlantAI — Diagnostic Expert System",
-    subtitle: "Decoupling mathematical inference from the core application layer.",
-    stats: "FastAPI, Laravel, Vue.js | Role: AI Systems Engineer",
-    background: "Plant disease diagnostics are often inaccurate due to limited expert availability. I built this system to decouple the mathematical inference engine from the core application to achieve sub-second response times and high precision.",
+    title: "Plant Disease Diagnosis — Expert System",
+    subtitle: "Decoupling Forward Chaining and Certainty Factor diagnostic processing into a FastAPI microservice.",
+    stats: "FastAPI, Python Experta, Laravel, Vue.js, MySQL | Role: Lead Architect & AI Engine",
+    background: "Designed a 3-service decoupled microservice architecture for plant disease diagnostics. Users answer step-by-step symptom questionnaires and receive diagnostics with certainty-percentage labels, keeping heavy calculations away from the main backend thread.",
     engineering: [
       {
-        title: "FastAPI Inference Engine",
-        desc: "I built a FastAPI-based inference engine for Certainty Factor (CF) calculations. This engine is isolated from the Laravel core to ensure that heavy mathematical processing does not impact UI responsiveness."
+        title: "FastAPI & Python Experta Inference",
+        desc: "I designed a decoupled FastAPI rule engine that executes forward-chaining rules and Certainty Factor (CF) calculations. This isolated setup ensures heavy calculations do not block the Laravel web interface or degrade performance."
       },
       {
-        title: "Certainty Factor Algorithm",
-        desc: "I implemented the CF algorithm to calculate diagnostic probabilities based on user symptom inputs, providing more nuanced results than binary true/false diagnostics."
+        title: "Certainty Factor Logic & Reports",
+        desc: "I implemented the Forward Chaining + Certainty Factor (50% threshold) algorithm. It processes user symptom questionnaires, returns diagnostics with certainty coefficients, and compiles downloadable PDF diagnostic reports."
+      },
+      {
+        title: "Admin Knowledge Base & OTP",
+        desc: "I developed an admin panel to manage diseases, symptoms, and CF parameters, along with educational modules, OTP verification via Email/WhatsApp, and WhatsApp expert consultations."
       }
     ],
     architecture: [
-      { path: "engine/Inference/CertaintyFactor.py", label: "AI Logic" },
-      { path: "app/Services/Ai/DiagnosticBridge.php", label: "API Bridge" }
+      { path: "engine/Inference/ExpertSystem.py", label: "AI Rules Engine" },
+      { path: "app/Services/Ai/FastApiBridge.php", label: "API Client Bridge" }
     ],
     results: [
-      { label: "Response Time", value: "< 1s" },
-      { label: "Accuracy", value: "94% CF Rate" },
-      { label: "Architecture", value: "Decoupled AI" }
+      { label: "Diagnosis Time", value: "< 1s Response" },
+      { label: "Accuracy", value: "50% CF Threshold" },
+      { label: "Microservices", value: "3 Decoupled Services" }
     ]
   },
   "portfolio": {
