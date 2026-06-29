@@ -41,18 +41,18 @@ const AboutSection = () => {
 
       <div className="container mx-auto max-w-7xl relative z-10">
 
-        {/* Stats Bar - High Visibility */}
+        {/* Stats Grid - Glassmorphism & Dividers */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20 pb-10 border-b border-white/5"
+          className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20 p-8 rounded-3xl border border-white/5 bg-white/[0.01] backdrop-blur-3xl shadow-2xl"
         >
           {stats.map((stat, i) => (
-            <div key={i} className="text-center md:text-left">
-              <div className="text-xl md:text-3xl font-light text-white tracking-tighter italic mb-1">{stat.value}</div>
-              <div className="text-[8px] font-mono text-zinc-600 uppercase tracking-[0.3em]">{stat.label}</div>
+            <div key={i} className="text-center md:text-left relative md:border-r last:border-0 border-white/5 md:pr-8 last:pr-0">
+              <div className="text-2xl md:text-4xl font-light text-white tracking-tighter italic mb-1">{stat.value}</div>
+              <div className="text-[8px] font-mono text-zinc-500 uppercase tracking-[0.3em]">{stat.label}</div>
             </div>
           ))}
         </motion.div>
@@ -141,35 +141,36 @@ const AboutSection = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-10 border-t border-white/5">
               {[
                 {
-                  icon: <Layout size={18} />,
+                  icon: <Layout size={18} className="group-hover:text-indigo-400 transition-colors" />,
                   title: "Frontend Systems",
                   desc: "Building responsive, state-driven interfaces using Vue.js and React with modern design principles."
                 },
                 {
-                  icon: <Database size={18} />,
+                  icon: <Database size={18} className="group-hover:text-indigo-400 transition-colors" />,
                   title: "Backend Development",
                   desc: "Engineering secure APIs and complex server-side logic using Laravel, Node.js, and Golang."
                 },
                 {
-                  icon: <Code2 size={18} />,
+                  icon: <Code2 size={18} className="group-hover:text-indigo-400 transition-colors" />,
                   title: "Business Logic",
                   desc: "Transforming fragmented business requirements into high-fidelity technical workflows and database schemas."
                 },
                 {
-                  icon: <Cpu size={18} />,
+                  icon: <Cpu size={18} className="group-hover:text-indigo-400 transition-colors" />,
                   title: "AI & Automation",
                   desc: "Integrating intelligent agents and automated workflows to optimize system processing and user experience."
                 }
               ].map((item, idx) => (
                 <div
                   key={idx}
-                  className="group p-6 bg-white/[0.01] border border-white/5 rounded-xl transition-all duration-500 hover:border-white/10"
+                  className="group relative p-8 bg-white/[0.01] border border-white/5 rounded-2xl transition-all duration-500 hover:border-white/10 hover:bg-white/[0.02] shadow-xl overflow-hidden"
                 >
-                  <div className="text-zinc-700 group-hover:text-white transition-colors mb-4">
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-500/[0.02] rounded-full blur-2xl pointer-events-none group-hover:bg-indigo-500/5 transition-colors"></div>
+                  <div className="text-zinc-500 group-hover:text-indigo-400 transition-colors mb-4">
                     {item.icon}
                   </div>
                   <h4 className="text-white font-medium text-base tracking-tight mb-2">{item.title}</h4>
-                  <p className="text-zinc-600 text-xs leading-relaxed">{item.desc}</p>
+                  <p className="text-zinc-500 text-xs font-light leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -195,15 +196,15 @@ const AboutSection = () => {
             {/* Right Column: Timeline items */}
             <div className="lg:col-span-8 space-y-12">
               {/* Timeline Item 1: Experience */}
-              <div className="relative pl-8 border-l border-white/5 space-y-4">
-                <div className="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-indigo-500 border-2 border-[#0a0c14] shadow-[0_0_10px_#6366f1]"></div>
-                <div className="flex flex-wrap items-center justify-between gap-4">
+              <div className="relative pl-10 border-l border-white/5 space-y-6 group/item pb-8">
+                <div className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-indigo-500/20 border border-indigo-500/50 group-hover/item:bg-indigo-500 group-hover/item:shadow-[0_0_12px_#6366f1] transition-all duration-500"></div>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div>
                     <span className="text-[9px] font-mono text-indigo-400 uppercase tracking-widest block">Hope Channel Indonesia</span>
                     <h4 className="text-lg font-medium text-white tracking-tight">Full-Stack Developer (Intern & Freelance)</h4>
                     <span className="text-[9px] font-mono text-zinc-600 uppercase tracking-wider block mt-1">Jakarta Raya, Indonesia (Hybrid)</span>
                   </div>
-                  <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider">Jun 2025 – May 2026</span>
+                  <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider shrink-0">Jun 2025 – May 2026</span>
                 </div>
                 <p className="text-zinc-400 text-sm font-light leading-relaxed">
                   Designed full system architecture of Hopemedia.id ERP from scratch based on stakeholder requirements, aligning workflows across 3 teams (Program, Broadcasting, HR).
@@ -225,15 +226,15 @@ const AboutSection = () => {
               </div>
 
               {/* Timeline Item 2: Education */}
-              <div className="relative pl-8 border-l border-white/5 space-y-4">
-                <div className="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-zinc-700 border-2 border-[#0a0c14]"></div>
-                <div className="flex flex-wrap items-center justify-between gap-4">
+              <div className="relative pl-10 border-l border-white/5 space-y-6 group/item">
+                <div className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-zinc-800 border border-zinc-700 group-hover/item:bg-zinc-500 group-hover/item:shadow-[0_0_12px_#ffffff] transition-all duration-500"></div>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div>
                     <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest block">Universitas Advent Indonesia</span>
                     <h4 className="text-lg font-medium text-white tracking-tight">Bachelor of Informatics Engineering</h4>
                     <span className="text-[9px] font-mono text-zinc-600 uppercase tracking-wider block mt-1">Bandung, Indonesia</span>
                   </div>
-                  <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider">Aug 2022 – Expected Jun 2026</span>
+                  <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider shrink-0">Aug 2022 – Expected Jun 2026</span>
                 </div>
                 <div className="flex flex-wrap gap-4 text-xs font-light text-zinc-400 pb-2">
                   <span><strong>GPA:</strong> 3.61/4.00</span>

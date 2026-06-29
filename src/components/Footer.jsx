@@ -68,20 +68,23 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-40 pt-12 border-t border-indigo-950/30 flex flex-col md:flex-row justify-between items-center gap-8">
+        <div className="mt-40 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex flex-col md:flex-row items-center gap-10">
             <span className="text-zinc-400 text-[10px] font-mono tracking-widest uppercase">
               © 2026 Natanael Detamor
             </span>
             <div className="flex gap-8">
-              <span className="text-zinc-500 text-[10px] font-mono tracking-widest uppercase italic">Bandung, INA</span>
+              <span className="text-zinc-500 text-[10px] font-mono tracking-widest uppercase italic">Jakarta, INA</span>
               <span className="text-zinc-500 text-[10px] font-mono tracking-widest uppercase flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></div>
+                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
                 Available for work
               </span>
             </div>
           </div>
 
+          <div className="text-zinc-600 text-[9px] font-mono tracking-[0.2em] uppercase text-center md:text-right">
+            Handcrafted with <span className="text-indigo-400 font-bold">React</span> + <span className="text-indigo-400 font-bold">Vite</span> + <span className="text-indigo-400 font-bold">Tailwind CSS</span> + <span className="text-indigo-400 font-bold">Framer Motion</span>
+          </div>
         </div>
       </div>
     </footer>
