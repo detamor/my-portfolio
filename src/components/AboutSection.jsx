@@ -121,10 +121,10 @@ const AboutSection = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-zinc-400">
                     {[
                       "Go Microservices (Gin, GORM)",
+                      "Full-Stack MERN Platforms (React, Express)",
                       "Enterprise ERP Systems (Laravel, Vue)",
-                      "Workflow Ingestion & Automation",
-                      "DevOps & CI/CD Pipelines (Docker, Actions)",
-                      "Reliability & Resilience (Circuit Breaker)",
+                      "Hardened API Security & JWT Protocols",
+                      "Dual Payment Gateways (Midtrans, Xendit)",
                       "API Gateways & Message Brokers (Nginx, RabbitMQ)"
                     ].map((focus, i) => (
                       <div key={i} className="flex items-center gap-2">

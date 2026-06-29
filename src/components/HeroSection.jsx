@@ -10,7 +10,7 @@ import TailwindLogo from "../assets/images/Tailwindcss.png";
 import PythonLogo from "../assets/images/Pythonicon.png";
 
 const HeroSection = () => {
-  const cvFile = "/certificates/CV-Natanael Detamor.pdf";
+  const cvFile = "/certificates/CV_Natanael_Detamor_FullStack_Developer.pdf";
   const particles = Array.from({ length: 15 });
   const techStack = [
     { name: "Laravel", logo: LaravelLogo, desc: "Hopemedia.id ERP" },
@@ -79,13 +79,13 @@ const HeroSection = () => {
                 Natanael Detamor <span className="text-zinc-500 font-normal">Karo Karo</span>
               </h1>
               <p className="text-sm md:text-lg text-zinc-400 font-light tracking-[0.2em] uppercase">
-                Full-Stack Developer
+                Full-Stack Developer (React.js & Golang)
               </p>
             </div>
           </div>
 
           <p className="text-zinc-500 text-sm md:text-lg max-w-xl font-light leading-relaxed">
-            Full-Stack Developer with 1 year of production experience building ERP, HRIS, and AI-driven systems using Vue.js, Laravel, and MySQL, now extending the stack with React.js and Go (Golang).
+            Full-Stack Developer with 1 year of production experience building ERP, HRIS, and AI-driven systems using Vue.js, Laravel, and MySQL, now extending the stack with React.js, Go, and the MERN stack.
           </p>
 
           {/* Contextual Tech Stack Cards */}

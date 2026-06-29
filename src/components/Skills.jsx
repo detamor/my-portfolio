@@ -30,9 +30,9 @@ const Skills = () => {
         { name: "React.js", image: ReactLogo, focus: true },
         { name: "Vue.js", image: VueLogo, focus: true },
         { name: "Go (Golang)", image: PHPLogo, focus: true },
+        { name: "Node.js (Express)", image: NodeJsLogo },
         { name: "Laravel", image: LaravelLogo },
-        { name: "Tailwind CSS", image: TailwindcssLogo },
-        { name: "PostgreSQL / MySQL", image: MySqlLogo }
+        { name: "MongoDB / PostgreSQL", image: MySqlLogo }
       ],
     },
     {
@@ -42,10 +42,11 @@ const Skills = () => {
       description: "Server-side logic, Scalable API, and Database Architecture",
       techs: [
         { name: "Go (Gin)", image: PHPLogo, focus: true },
-        { name: "Laravel (PHP)", image: LaravelLogo, focus: true },
+        { name: "Node.js (Express)", image: NodeJsLogo, focus: true },
+        { name: "Laravel (PHP)", image: LaravelLogo },
         { name: "FastAPI (Python)", image: PythonLogo },
-        { name: "PostgreSQL / Redis", image: MySqlLogo },
-        { name: "RabbitMQ / REST API", image: JSLogo }
+        { name: "MongoDB / PostgreSQL", image: MySqlLogo },
+        { name: "Redis / RabbitMQ", image: JSLogo }
       ],
     },
     {
@@ -56,7 +57,7 @@ const Skills = () => {
       techs: [
         { name: "Docker / Compose", image: GitLogo, focus: true },
         { name: "GitHub Actions (CI/CD)", image: GithubLogo, focus: true },
-        { name: "Nginx", image: GitLogo },
+        { name: "Security Middleware", image: JSLogo },
         { name: "JWT / Unit Testing", image: JSLogo }
       ],
     },

@@ -180,8 +180,8 @@ const Projects = () => {
       hook: "I built a containerized 6-service microservices backend in Go to explore production-grade database migrations, retry dynamics, and fault-tolerance.",
       solution: "Developed custom SQL migrations, exponential backoff retries, stateful circuit breakers, mock unit tests, and GitHub Actions CI/CD pipelines.",
       techLogos: [NodeJsLogo, MySqlLogo, GithubLogo],
-      demoUrl: "https://github.com/detamor/Scalable-E-CommercePlatform",
-      codeUrls: [{ label: "Repository", url: "https://github.com/detamor/Scalable-E-CommercePlatform" }],
+      demoUrl: "https://github.com/detamor/Scalable-E-Commerce-Platform",
+      codeUrls: [{ label: "Repository", url: "https://github.com/detamor/Scalable-E-Commerce-Platform" }],
       stats: "6 Go Microservices & Circuit Breaker",
       image: ecommerceImage,
       isPrivate: false
@@ -204,15 +204,18 @@ const Projects = () => {
     {
       id: 3,
       slug: "yapimedan",
-      title: "YAPI Medan — Donation Frontend",
-      year: "2025 - Present",
-      category: "React & TypeScript",
-      hook: "Developing a responsive donation and social-platform frontend to manage social programs and multi-method donation gateways.",
-      solution: "Built in React 18 and TypeScript, using TanStack Query for caching, Axios for client requests, and React Router for view transitions.",
-      techLogos: [ReactLogo, TailwindLogo, JSLogo],
+      title: "YAPI Medan — Donation Platform",
+      year: "Aug 2025 – Present",
+      category: "Full-Stack MERN",
+      hook: "Built a volunteer full-stack MERN platform for a children's foundation to coordinate beneficiary listings and manage webhooks.",
+      solution: "Integrated React/TS frontend with Express/MongoDB. Configured dual Midtrans Snap and Xendit Invoices, webhooks verification, aggregate pipelines, and CryptoJS security token encryption.",
+      techLogos: [ReactLogo, NodeJsLogo, GithubLogo],
       demoUrl: "https://github.com/detamor/YapiFe",
-      codeUrls: [{ label: "Repository", url: "https://github.com/detamor/YapiFe" }],
-      stats: "React 18, TypeScript & TanStack Query",
+      codeUrls: [
+        { label: "Frontend", url: "https://github.com/detamor/YapiFe" },
+        { label: "Backend", url: "https://github.com/detamor/Yapi_medanBE" }
+      ],
+      stats: "MERN Stack, Midtrans Snap & Xendit",
       image: yapiMedanImage,
       isPrivate: false
     },
@@ -233,21 +236,6 @@ const Projects = () => {
         { label: "Engine", url: "https://github.com/detamor/engine_SistemPakar" }
       ],
       image: spakarImage,
-      isPrivate: false
-    },
-    {
-      id: 5,
-      slug: "portfolio",
-      title: "Portfolio — Engineering Lab",
-      year: "2025 - Present",
-      category: "React & Framer Motion",
-      hook: "Built a personal performance-focused portfolio with interactive UI details to present project architectures in recruiter-friendly layouts.",
-      solution: "Engineered React components using Vite and Framer Motion, utilizing 3D perspective transforms and responsive glassmorphism containers.",
-      techLogos: [ReactLogo, TailwindLogo, JSLogo],
-      demoUrl: "https://github.com/detamor/my-portfolio",
-      codeUrls: [{ label: "Repository", url: "https://github.com/detamor/my-portfolio" }],
-      stats: "React 18, Vite & Framer Motion",
-      image: PortoImage,
       isPrivate: false
     }
   ];

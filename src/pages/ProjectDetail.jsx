@@ -18,21 +18,21 @@ const projectData = {
         desc: "I built 6 separate services (user, product, cart, order, payment, notification) in Go. They are decoupled and run containerized behind an Nginx API gateway to isolate routes and manage server traffic."
       },
       {
-        title: "Idempotent Migrations & Retries",
-        desc: "Implemented a custom SQL migration engine in Go to handle idempotent database updates across PostgreSQL instances. Inter-service communications feature retry limits with exponential backoff."
+        title: "sync.Mutex Circuit Breaker",
+        desc: "Developed a thread-safe custom stateful circuit breaker (CLOSED → OPEN → HALF-OPEN) from scratch in Go (secured using sync.Mutex) alongside exponential-backoff retries to prevent cascading failures."
       },
       {
-        title: "Stateful Circuit Breaker",
-        desc: "Developed a custom stateful circuit breaker (CLOSED → OPEN → HALF-OPEN) to prevent cascading timeouts and failures when dependent network calls fail, maintaining fallback routines."
+        title: "Idempotent SQL Migrations",
+        desc: "Implemented a custom SQL migration engine in Go to handle idempotent database updates across PostgreSQL instances, with Mock repositories testing in a GitHub Actions pipeline."
       }
     ],
     architecture: [
       { path: "services/order/main.go", label: "Order Service" },
-      { path: "pkg/middleware/circuitbreaker.go", label: "Fault Tolerance" },
+      { path: "pkg/middleware/circuitbreaker.go", label: "Thread-safe Circuit Breaker" },
       { path: "migrations/db_migration.go", label: "SQL Migration Engine" }
     ],
     results: [
-      { label: "Reliability Pattern", value: "Circuit Breaker" },
+      { label: "Reliability Pattern", value: "sync.Mutex Circuit Breaker" },
       { label: "Architecture", value: "6 Go Services" },
       { label: "Database Isolation", value: "PostgreSQL & Redis" }
     ]
@@ -74,28 +74,33 @@ const projectData = {
     ]
   },
   "yapimedan": {
-    title: "YAPI Medan — Donation Frontend",
-    subtitle: "A donation and social-platform frontend in React + TypeScript.",
-    stats: "React 18, TypeScript, TanStack Query, React Router, Axios | Role: Lead Frontend Developer",
-    background: "YAPI Medan is a donation and social platform in development. I am building the frontend using React and TypeScript to coordinate listings of social programs and handle secure online donation forms.",
+    title: "YAPI Medan — Donation & Social Platform",
+    subtitle: "A volunteer MERN stack platform built for a children's foundation.",
+    stats: "React 18, TypeScript, Node.js, Express.js, MongoDB | Role: Full-Stack Volunteer Architect",
+    background: "Built as a volunteer full-stack donation and social platform for a children's foundation. It coordinates lists of beneficiaries (children), manages administrative reports, and implements secure API checkouts using dual gateway checkouts (Midtrans Snap & Xendit Invoices).",
     engineering: [
       {
-        title: "State & Query Orchestration",
-        desc: "I am using TanStack Query to manage server state and implement cache synchronization. This optimizes network loads and keeps program cards responsive."
+        title: "Dual Gateway & Webhooks",
+        desc: "Integrated Midtrans Snap and Xendit Invoice checkouts, utilizing webhook signature verification to handle automated sandbox donation status updates."
       },
       {
-        title: "Type-Safe Client Requests",
-        desc: "Constructed strict TypeScript interfaces mapping donation payloads and social program schemas to ensure interface fields match API requirements exactly."
+        title: "API Hardening & Token Encryption",
+        desc: "Secured Node.js REST routes using API hardening middlewares (Helmet, mongo-sanitize, xss-clean, hpp, and rate limiting), alongside AES token encryption via CryptoJS."
+      },
+      {
+        title: "MongoDB Aggregation & RBAC",
+        desc: "Constructed complex MongoDB aggregation pipelines for admin analytical reporting, guarded behind a strict JSON Web Token Role-Based Access Control (RBAC) middleware."
       }
     ],
     architecture: [
-      { path: "src/hooks/useProgramsQuery.ts", label: "TanStack Hooks" },
-      { path: "src/types/donation.ts", label: "Strict Typing" }
+      { path: "backend/middleware/auth.js", label: "RBAC JWT Middleware" },
+      { path: "backend/utils/signature.js", label: "Webhook Signature Validation" },
+      { path: "frontend/src/utils/crypto.ts", label: "AES CryptoJS Wrapper" }
     ],
     results: [
-      { label: "Framework Core", value: "React + TS" },
-      { label: "Caching Layer", value: "TanStack Query" },
-      { label: "Validation", value: "Axios + Zod Gates" }
+      { label: "Payment Integrations", value: "Midtrans snap & Xendit" },
+      { label: "API Protection", value: "Helmet, Sanitizers & Rate Limiters" },
+      { label: "Database & Query", value: "MongoDB Aggregations" }
     ]
   },
   "plantai": {
@@ -125,31 +130,6 @@ const projectData = {
       { label: "Diagnosis Time", value: "< 1s Response" },
       { label: "Accuracy", value: "50% CF Threshold" },
       { label: "Microservices", value: "3 Decoupled Services" }
-    ]
-  },
-  "portfolio": {
-    title: "Portfolio — Engineering Lab",
-    subtitle: "Architecting a high-fidelity gallery with modular React components.",
-    stats: "React 18, Vite, Framer Motion, Tailwind CSS | Role: Frontend Developer",
-    background: "I built this space as an experimental lab for modular architecture and micro-interactions, proving that even a personal portfolio deserves enterprise-grade design standards.",
-    engineering: [
-      {
-        title: "Modular React Architecture",
-        desc: "I engineered this system with a focus on component orchestration and scalable custom hooks. Every element is designed to be reusable and context-aware."
-      },
-      {
-        title: "Deep Navigation Strategy",
-        desc: "I utilized React Router to create seamless transitions between high-level overview perspectives and technical deep-dives into each project's engineering laboratory."
-      }
-    ],
-    architecture: [
-      { path: "src/pages/ProjectDetail.jsx", label: "Dynamic Router" },
-      { path: "src/components/Projects.jsx", label: "Component Orchestrator" }
-    ],
-    results: [
-      { label: "Performance", value: "98% Lighthouse" },
-      { label: "Interactions", value: "Framer Motion" },
-      { label: "Structure", value: "Modular Design" }
     ]
   }
 };
