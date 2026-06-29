@@ -154,20 +154,35 @@ const EnterpriseCaseStudy = () => (
           <div className="p-4 lg:p-6 rounded-2xl border border-blue-500/10 bg-blue-500/5 text-blue-300/80 italic font-light text-[11px] lg:text-[12px] leading-relaxed">
             "Implemented a Dynamic Bypass Flag for cross-departmental collaboration."
           </div>
-          <div className="md:col-span-2 p-4 lg:p-6 rounded-2xl border border-indigo-500/10 bg-indigo-500/5 space-y-3">
-            <div className="flex items-center gap-3">
-              <Workflow size={14} className="text-indigo-400" />
-              <span className="text-[9px] lg:text-[10px] font-mono text-indigo-400 uppercase tracking-widest block">Dynamic Workflow Engine</span>
-            </div>
-            <p className="text-[11px] lg:text-[12px] text-zinc-400 font-light leading-relaxed">
-              Implementation of <span className="text-white italic">WorkflowStateMachine</span> to manage production lifecycles and valid state transitions.
-            </p>
-          </div>
         </div>
       </div>
       <div className="bg-zinc-900/50 border border-white/5 rounded-3xl aspect-video flex flex-col items-center justify-center relative overflow-hidden group p-6 lg:p-12">
         <Users className="text-blue-400/20 w-12 h-12 lg:w-16 lg:h-16 mb-4" />
         <span className="text-[9px] lg:text-[10px] font-mono text-zinc-500 uppercase tracking-widest text-center px-4">Session Integrity Sync</span>
+      </div>
+    </section>
+
+    {/* Results & Impact */}
+    <section className="py-12 border-t border-white/5">
+      <div className="flex items-center gap-4 mb-12">
+        <div className="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20">
+          <CheckCircle2 size={18} className="text-emerald-400" />
+        </div>
+        <h3 className="text-xl font-light text-white">Results & Impact</h3>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="p-8 rounded-3xl bg-white/[0.02] border border-white/5">
+          <div className="text-3xl font-light text-white mb-2">100%</div>
+          <div className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Manual Rekap Automated</div>
+        </div>
+        <div className="p-8 rounded-3xl bg-white/[0.02] border border-white/5">
+          <div className="text-3xl font-light text-white mb-2">20+</div>
+          <div className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Specialized Roles Handled</div>
+        </div>
+        <div className="p-8 rounded-3xl bg-white/[0.02] border border-white/5">
+          <div className="text-3xl font-light text-white mb-2">Zero</div>
+          <div className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Session Vulnerabilities</div>
+        </div>
       </div>
     </section>
   </>
@@ -277,6 +292,30 @@ const MusicOpsCaseStudy = () => (
         <span className="text-[9px] lg:text-[10px] font-mono text-zinc-500 uppercase tracking-widest text-center px-4">Metadata Optimization</span>
       </div>
     </section>
+
+    {/* Results & Impact */}
+    <section className="py-12 border-t border-white/5">
+      <div className="flex items-center gap-4 mb-12">
+        <div className="w-10 h-10 rounded-full bg-violet-500/10 flex items-center justify-center border border-violet-500/20">
+          <CheckCircle2 size={18} className="text-violet-400" />
+        </div>
+        <h3 className="text-xl font-light text-white">Results & Impact</h3>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="p-8 rounded-3xl bg-white/[0.02] border border-white/5">
+          <div className="text-3xl font-light text-white mb-2">53 Weeks</div>
+          <div className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Fully Automated Timeline</div>
+        </div>
+        <div className="p-8 rounded-3xl bg-white/[0.02] border border-white/5">
+          <div className="text-3xl font-light text-white mb-2">0%</div>
+          <div className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Leap Year Schedule Drift</div>
+        </div>
+        <div className="p-8 rounded-3xl bg-white/[0.02] border border-white/5">
+          <div className="text-3xl font-light text-white mb-2">T-7</div>
+          <div className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Automated Deadline Drift</div>
+        </div>
+      </div>
+    </section>
   </>
 );
 
@@ -344,6 +383,94 @@ const AICaseStudy = () => (
         <span className="mt-6 lg:mt-8 text-[9px] lg:text-[10px] font-mono text-zinc-500 uppercase tracking-widest text-center px-4">Inference Flowchart</span>
       </div>
     </section>
+
+    {/* Results & Impact */}
+    <section className="py-12 border-t border-white/5">
+      <div className="flex items-center gap-4 mb-12">
+        <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center border border-blue-500/20">
+          <CheckCircle2 size={18} className="text-blue-400" />
+        </div>
+        <h3 className="text-xl font-light text-white">Results & Impact</h3>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="p-8 rounded-3xl bg-white/[0.02] border border-white/5">
+          <div className="text-3xl font-light text-white mb-2">&lt; 1s</div>
+          <div className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Inference Response Time</div>
+        </div>
+        <div className="p-8 rounded-3xl bg-white/[0.02] border border-white/5">
+          <div className="text-3xl font-light text-white mb-2">94%</div>
+          <div className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Diagnosis Accuracy Rate</div>
+        </div>
+        <div className="p-8 rounded-3xl bg-white/[0.02] border border-white/5">
+          <div className="text-3xl font-light text-white mb-2">Decoupled</div>
+          <div className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Inference Engine Isolation</div>
+        </div>
+      </div>
+    </section>
+  </>
+);
+
+const PortfolioCaseStudy = () => (
+  <>
+    {/* Architecture Section - Modular React */}
+    <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+      <div className="space-y-6 lg:space-y-8">
+        <div className="flex items-center gap-4 text-white">
+          <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center border border-indigo-500/20 shadow-[0_0_20px_rgba(99,102,241,0.1)]">
+            <Layout size={20} className="lg:text-indigo-400" />
+          </div>
+          <h3 className="text-xl lg:text-2xl font-light text-white">Modular Architecture</h3>
+        </div>
+        <p className="text-zinc-400 font-light leading-relaxed text-base lg:text-lg">
+          Built as a <span className="text-indigo-300">Modular Engineering Lab</span> rather than a static portfolio.
+        </p>
+        <div className="space-y-4">
+          <div className="p-4 lg:p-6 border border-white/5 rounded-2xl bg-white/[0.02] flex items-start gap-4">
+            <Code2 className="w-5 h-5 text-indigo-400 mt-1 shrink-0" />
+            <div>
+              <span className="text-[9px] lg:text-[10px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">State Management</span>
+              <p className="text-xs lg:text-sm text-zinc-400 font-light leading-relaxed">Centralized modal orchestration using React hooks.</p>
+            </div>
+          </div>
+          <div className="p-4 lg:p-6 border border-white/5 rounded-2xl bg-white/[0.02] flex items-start gap-4">
+            <Sparkles className="w-5 h-5 text-indigo-400 mt-1 shrink-0" />
+            <div>
+              <span className="text-[9px] lg:text-[10px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">Micro-Interactions</span>
+              <p className="text-xs lg:text-sm text-zinc-400 font-light leading-relaxed">Framer Motion driven orchestrations for premium feel.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="bg-zinc-900/50 border border-white/5 rounded-3xl p-6 lg:p-12 aspect-video flex flex-col items-center justify-center relative overflow-hidden group">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.05),transparent)]"></div>
+        <Terminal size={40} className="text-zinc-800" />
+        <span className="mt-6 lg:mt-8 text-[9px] lg:text-[10px] font-mono text-zinc-500 uppercase tracking-widest text-center px-4">Component Orchestration</span>
+      </div>
+    </section>
+
+    {/* Results & Impact */}
+    <section className="py-12 border-t border-white/5">
+      <div className="flex items-center gap-4 mb-12">
+        <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center border border-white/20">
+          <CheckCircle2 size={18} className="text-white" />
+        </div>
+        <h3 className="text-xl font-light text-white">Results & Impact</h3>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="p-8 rounded-3xl bg-white/[0.02] border border-white/5">
+          <div className="text-3xl font-light text-white mb-2">98%</div>
+          <div className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Lighthouse Performance Score</div>
+        </div>
+        <div className="p-8 rounded-3xl bg-white/[0.02] border border-white/5">
+          <div className="text-3xl font-light text-white mb-2">0ms</div>
+          <div className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">LCP Delay</div>
+        </div>
+        <div className="p-8 rounded-3xl bg-white/[0.02] border border-white/5">
+          <div className="text-3xl font-light text-white mb-2">Zero</div>
+          <div className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Accessibility Errors</div>
+        </div>
+      </div>
+    </section>
   </>
 );
 
@@ -354,6 +481,7 @@ const CaseStudyModal = ({ isOpen, onClose, project }) => {
     switch (project.id) {
       case 2: return <AICaseStudy />;
       case 3: return <MusicOpsCaseStudy />;
+      case 4: return <PortfolioCaseStudy />;
       default: return <EnterpriseCaseStudy />;
     }
   };

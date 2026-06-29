@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Github, Eye, ArrowUpRight, Calendar, ArrowRight, ExternalLink, Lock, ShieldCheck, Terminal, Zap } from "lucide-react";
 import LaravelLogo from "../assets/images/Laravel.jpg";
@@ -98,15 +99,13 @@ const ProjectCard = ({ project, idx }) => {
 
         <div className="flex flex-wrap items-center gap-10 pt-10">
           {/* Case Study Toggle */}
-          {(project.isPrivate || project.id === 2) && (
-            <button
-              onClick={() => project.onOpenCaseStudy(project)}
-              className="group/link flex items-center gap-3 text-white text-[10px] font-mono tracking-[0.4em] uppercase border-b border-white/10 pb-3 hover:border-white transition-all"
-            >
-              Dive into the Lab
-              <ArrowUpRight size={14} className="group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
-            </button>
-          )}
+          <Link
+            to={`/projects/${project.slug}`}
+            className="group/link flex items-center gap-3 text-white text-[10px] font-mono tracking-[0.4em] uppercase border-b border-white/10 pb-3 hover:border-white transition-all"
+          >
+            View Project Details
+            <ArrowUpRight size={14} className="group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
+          </Link>
 
           {/* Live Link Toggle */}
           {project.demoUrl && project.demoUrl !== "#" && (
@@ -171,6 +170,7 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
+      slug: "hopemedia",
       title: "Hopemedia.id — Enterprise System",
       year: "2025 - Present",
       category: "Enterprise ERP",
@@ -185,6 +185,7 @@ const Projects = () => {
     },
     {
       id: 2,
+      slug: "plantai",
       title: "PlantAI — Diagnostic Expert System",
       year: "2025 - 2026",
       category: "Hybrid AI Architecture",
@@ -203,6 +204,7 @@ const Projects = () => {
     },
     {
       id: 3,
+      slug: "musicops",
       title: "MusicOps — Strategic Production",
       year: "2025",
       category: "Production Automation",
@@ -217,6 +219,7 @@ const Projects = () => {
     },
     {
       id: 4,
+      slug: "portfolio",
       title: "Portfolio — Engineering Lab",
       year: "2026",
       category: "Frontend Architecture",
@@ -249,18 +252,17 @@ const Projects = () => {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-zinc-600 font-mono text-[10px] tracking-[0.4em] uppercase block mb-6"
           >
-            Engineering Showcase
+            Engineering Lab
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-7xl font-light text-white tracking-tighter leading-none mb-10"
+            className="text-3xl md:text-5xl font-light text-white tracking-tighter leading-none mb-8"
           >
-            Turning Complexity into <br />
-            <span className="text-zinc-500 italic">Elegance</span>
+            Featured <span className="text-zinc-500 italic">Projects</span>
           </motion.h2>
-          <p className="text-zinc-500 text-lg md:text-xl font-light leading-relaxed max-w-2xl">
-            A documentation of my journey in building scalable, resilient systems that solve real-world operational puzzles.
+          <p className="text-zinc-500 text-base md:text-lg font-light leading-relaxed max-w-xl">
+            A collection of systems and technical solutions I've built to solve real-world problems.
           </p>
         </div>
 

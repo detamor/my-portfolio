@@ -72,13 +72,13 @@ const HeroSection = () => {
                 Natanael <span className="text-zinc-500">Detamor</span>
               </h1>
               <p className="text-sm md:text-lg text-zinc-400 font-light tracking-[0.2em] uppercase">
-                Software Engineer
+                Junior Software Engineer
               </p>
             </div>
           </div>
 
           <p className="text-zinc-500 text-sm md:text-lg max-w-xl font-light leading-relaxed mb-12">
-            I have a deep fascination with <span className="text-zinc-300 italic">complex systems</span>. Whether it's architecting a 53-week production cycle or building a hybrid AI inference engine, I thrive on the puzzle of turning messy business requirements into elegant, clockwork-like engineering solutions.
+            I'm a Junior Software Engineer with a deep fascination for complex systems. I thrive on the puzzle of turning messy business requirements into clean, efficient engineering solutions—whether it's building scalable web applications or automating complex operational workflows.
           </p>
 
           <div className="flex flex-wrap items-center gap-10">

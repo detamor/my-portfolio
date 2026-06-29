@@ -28,7 +28,11 @@ body {
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-h1, h2, h3, h4, .font-heading {
+h1,
+h2,
+h3,
+h4,
+.font-heading {
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
@@ -119,9 +123,17 @@ section {
 
 /* Animations */
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 .animate-float {
@@ -142,15 +154,35 @@ section {
 }
 
 @keyframes float-ethereal {
-  0% { transform: translateY(0px) rotate(0deg); }
-  33% { transform: translateY(-15px) rotate(1deg); }
-  66% { transform: translateY(5px) rotate(-1deg); }
-  100% { transform: translateY(0px) rotate(0deg); }
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  33% {
+    transform: translateY(-15px) rotate(1deg);
+  }
+
+  66% {
+    transform: translateY(5px) rotate(-1deg);
+  }
+
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
 }
 
 @keyframes glow-subtle {
-  0%, 100% { opacity: 0.3; filter: blur(20px); }
-  50% { opacity: 0.6; filter: blur(40px); }
+
+  0%,
+  100% {
+    opacity: 0.3;
+    filter: blur(20px);
+  }
+
+  50% {
+    opacity: 0.6;
+    filter: blur(40px);
+  }
 }
 
 .animate-float-ethereal {
@@ -160,7 +192,9 @@ section {
 .animate-glow-subtle {
   animation: glow-subtle 4s ease-in-out infinite;
 }
+
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
