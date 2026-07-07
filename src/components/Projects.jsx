@@ -1,7 +1,7 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Github, Eye, ArrowUpRight, Calendar, ArrowRight, ExternalLink, Lock, ShieldCheck, Terminal, Zap } from "lucide-react";
+import { Github, ArrowUpRight, ExternalLink, Lock } from "lucide-react";
 import LaravelLogo from "../assets/images/Laravel.jpg";
 import ReactLogo from "../assets/images/React.png";
 import VueLogo from "../assets/images/Vue.png";
@@ -10,14 +10,66 @@ import PythonLogo from "../assets/images/Pythonicon.png";
 import NodeJsLogo from "../assets/images/NodeJs.png";
 import spakarImage from "../assets/images/S_pakar.webp";
 import hopemediaDashboard from "../assets/images/hopemedia_dashboard.webp";
-import hopemediaMusic from "../assets/images/hopemedia_music.webp";
-import PortoImage from "../assets/images/Porto.png";
-import JSLogo from "../assets/images/JS.png";
-import TailwindLogo from "../assets/images/Tailwindcss.png";
-import CaseStudyModal from "./CaseStudyModal";
 import GithubLogo from "../assets/images/Github.png";
-import ecommerceImage from "../assets/images/WebTopUp.jpg";
-import yapiMedanImage from "../assets/images/RentalPlaystation.jpg";
+import yapiMedanImage from "../assets/images/Yapi.png";
+
+const EcommerceMockup = () => (
+  <div className="w-full h-full bg-[#030712] flex flex-col p-6 font-mono text-[9px] text-[#38bdf8] select-none">
+    {/* Window Header */}
+    <div className="flex items-center justify-between border-b border-white/5 pb-4 mb-4">
+      <div className="flex items-center gap-2">
+        <div className="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
+        <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
+        <div className="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
+        <span className="text-[8px] text-zinc-500 ml-2">microservices-mesh@core</span>
+      </div>
+      <div className="flex items-center gap-2 px-2 py-0.5 rounded bg-sky-500/10 border border-sky-500/20 text-sky-400 text-[8px]">
+        ACTIVE
+      </div>
+    </div>
+    
+    {/* Schema grid */}
+    <div className="flex-1 grid grid-cols-3 gap-3 items-center justify-center relative py-4">
+      {/* Service Nodes */}
+      <div className="flex flex-col items-center justify-center p-2 rounded-xl bg-white/[0.02] border border-white/5">
+        <span className="text-zinc-600 mb-1 text-[7px]">Service 01</span>
+        <span className="text-white font-bold text-[8px]">User Serv</span>
+        <span className="text-emerald-400 mt-2 text-[7px] animate-pulse">● online</span>
+      </div>
+      <div className="flex flex-col items-center justify-center p-2 rounded-xl bg-white/[0.02] border border-white/5">
+        <span className="text-zinc-600 mb-1 text-[7px]">Service 02</span>
+        <span className="text-white font-bold text-[8px]">Cart Serv</span>
+        <span className="text-emerald-400 mt-2 text-[7px] animate-pulse">● online</span>
+      </div>
+      <div className="flex flex-col items-center justify-center p-2 rounded-xl bg-white/[0.02] border border-white/5">
+        <span className="text-zinc-600 mb-1 text-[7px]">Service 03</span>
+        <span className="text-white font-bold text-[8px]">Order Serv</span>
+        <span className="text-emerald-400 mt-2 text-[7px] animate-pulse">● online</span>
+      </div>
+      <div className="flex flex-col items-center justify-center p-2 rounded-xl bg-white/[0.02] border border-white/5">
+        <span className="text-zinc-600 mb-1 text-[7px]">Service 04</span>
+        <span className="text-white font-bold text-[8px]">Pay Serv</span>
+        <span className="text-emerald-400 mt-2 text-[7px] animate-pulse">● online</span>
+      </div>
+      <div className="flex flex-col items-center justify-center p-2 rounded-xl bg-white/[0.02] border border-white/5">
+        <span className="text-zinc-600 mb-1 text-[7px]">Service 05</span>
+        <span className="text-white font-bold text-[8px]">Notify Serv</span>
+        <span className="text-emerald-400 mt-2 text-[7px] animate-pulse">● online</span>
+      </div>
+      <div className="flex flex-col items-center justify-center p-2 rounded-xl bg-[#6366f1]/5 border border-[#6366f1]/20">
+        <span className="text-indigo-400/80 mb-1 text-[7px]">Gateway</span>
+        <span className="text-indigo-300 font-bold text-[8px]">Nginx API</span>
+        <span className="text-emerald-400 mt-2 text-[7px]">● active</span>
+      </div>
+    </div>
+
+    {/* Terminal footer */}
+    <div className="border-t border-white/5 pt-4 mt-auto flex items-center justify-between text-zinc-600 text-[8px]">
+      <span>Ingress routed // RabbitMQ active</span>
+      <span>Cluster: localhost:8080</span>
+    </div>
+  </div>
+);
 
 const getTechLogoIcon = (name) => {
   switch (name) {
@@ -186,12 +238,18 @@ const ProjectCard = ({ project, idx }) => {
       >
         <Link to={`/projects/${project.slug}`} className="block w-full h-full">
           <div className="relative aspect-[16/10] bg-zinc-950 rounded-[3rem] p-2 md:p-3 border border-white/5 overflow-hidden group-hover:border-white/10 transition-all duration-1000 shadow-2xl">
-            <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-full object-top object-cover transition-all duration-1000 group-hover:scale-105"
-              />
+            <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden bg-[#030712]">
+              {typeof project.image === "string" ? (
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-top object-cover transition-all duration-1000 group-hover:scale-105"
+                />
+              ) : (
+                <div className="w-full h-full transition-all duration-1000 group-hover:scale-105">
+                  {project.image}
+                </div>
+              )}
             </div>
           </div>
         </Link>
@@ -214,7 +272,7 @@ const Projects = () => {
       demoUrl: null,
       codeUrls: [{ label: "Repository", url: "https://github.com/detamor/Scalable-E-Commerce-Platform" }],
       stats: "6 Go Microservices & Circuit Breaker",
-      image: ecommerceImage,
+      image: <EcommerceMockup />,
       isPrivate: false
     },
     {
@@ -271,14 +329,6 @@ const Projects = () => {
     }
   ];
 
-  const [selectedProject, setSelectedProject] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleOpenCaseStudy = (project) => {
-    setSelectedProject(project);
-    setIsModalOpen(true);
-  };
-
   return (
     <section id="projects" className="py-40 px-6 md:px-12 lg:px-24 bg-[#0a0c14] relative overflow-hidden">
       <div className="absolute top-[10%] right-[-5%] w-[40%] h-[40%] bg-indigo-600/5 blur-[120px] rounded-full pointer-events-none"></div>
@@ -308,17 +358,11 @@ const Projects = () => {
           {projects.map((project, idx) => (
             <ProjectCard
               key={project.id}
-              project={{ ...project, onOpenCaseStudy: handleOpenCaseStudy }}
+              project={project}
               idx={idx}
             />
           ))}
         </div>
-
-        <CaseStudyModal
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-          project={selectedProject}
-        />
       </div>
     </section>
   );
