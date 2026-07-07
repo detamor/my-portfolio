@@ -11,7 +11,7 @@ const SocialSidebar = () => {
     },
     {
       icon: <Linkedin size={16} />,
-      url: "https://linkedin.com/in/natanael-detamor-karo-karo-567b86318/",
+      url: "https://www.linkedin.com/in/natanael-detamor-karo-karo-567b86318/",
       label: "LinkedIn"
     },
     {

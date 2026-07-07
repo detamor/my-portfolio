@@ -156,15 +156,35 @@ const Navbar = ({ activeSection }) => {
             ))}
           </div>
 
-          <div className="absolute bottom-0 left-0 right-0 p-8 border-t border-white/[0.05]">
+          <div className="absolute bottom-0 left-0 right-0 p-8 border-t border-white/[0.05] space-y-4">
+            <div className="grid grid-cols-2 gap-4">
+              <a
+                href="https://github.com/detamor"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 py-4 bg-white/[0.03] border border-white/10 rounded-2xl hover:bg-white/[0.08] hover:border-white/20 transition-all text-zinc-400 hover:text-white"
+              >
+                <Github size={14} />
+                <span className="text-[9px] font-mono uppercase tracking-widest">GitHub</span>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/natanael-detamor-karo-karo-567b86318/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 py-4 bg-white/[0.03] border border-white/10 rounded-2xl hover:bg-white/[0.08] hover:border-white/20 transition-all text-zinc-400 hover:text-white"
+              >
+                <Linkedin size={14} />
+                <span className="text-[9px] font-mono uppercase tracking-widest">LinkedIn</span>
+              </a>
+            </div>
             <a
               href="https://wa.me/6281376485766"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-4 p-6 bg-white/[0.03] border border-white/10 rounded-2xl hover:bg-white/[0.08] transition-all duration-500 group"
+              className="w-full flex items-center justify-center gap-3 py-4.5 bg-white text-black rounded-2xl hover:bg-zinc-200 transition-all duration-500 group"
             >
-              <img src={waLogo} alt="WA" className="w-5 h-5 object-contain grayscale group-hover:grayscale-0 transition-all" />
-              <span className="text-[10px] font-mono text-zinc-300 group-hover:text-white uppercase tracking-[0.3em]">Initialize Secure Chat</span>
+              <img src={waLogo} alt="WA" className="w-4 h-4 object-contain" />
+              <span className="text-[9px] font-mono font-bold uppercase tracking-[0.2em]">WhatsApp Chat</span>
             </a>
           </div>
         </div>

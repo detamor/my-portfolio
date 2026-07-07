@@ -17,12 +17,12 @@ const Social = () => {
     {
       name: "LinkedIn",
       icon: <Linkedin className="w-5 h-5" />,
-      url: "https://linkedin.com/in/natanael-detamor-karo-karo-567b86318/",
+      url: "https://www.linkedin.com/in/natanael-detamor-karo-karo-567b86318/",
     },
     {
       name: "GitHub",
       icon: <Github className="w-5 h-5" />,
-      url: "https://github.com/nael123karo",
+      url: "https://github.com/detamor",
     },
   ];
 

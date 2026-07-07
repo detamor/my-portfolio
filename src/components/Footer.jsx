@@ -45,9 +45,9 @@ const Footer = () => {
             </a>
 
             {/* Social Links */}
-            <div className="flex gap-8">
+            <div className="flex flex-wrap gap-6 md:gap-8">
               {[
-                { icon: <Linkedin className="w-4 h-4" />, link: "https://linkedin.com/in/natanael-detamor-karo-karo-567b86318/", name: "LinkedIn" },
+                { icon: <Linkedin className="w-4 h-4" />, link: "https://www.linkedin.com/in/natanael-detamor-karo-karo-567b86318/", name: "LinkedIn" },
                 { icon: <Github className="w-4 h-4" />, link: "https://github.com/detamor", name: "GitHub" },
                 { icon: <img src={waLogo} alt="WA" className="w-4 h-4 object-contain" />, link: "https://wa.me/6281376485766/", name: "WhatsApp" },
                 { icon: <Instagram className="w-4 h-4" />, link: "https://instagram.com/nael_detamor/", name: "Instagram" }
@@ -57,9 +57,9 @@ const Footer = () => {
                   href={social.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-indigo-300/30 hover:text-white transition-colors text-[10px] font-mono tracking-widest uppercase flex items-center gap-2 group/social"
+                  className="text-zinc-400 hover:text-white transition-colors text-[10px] font-mono tracking-widest uppercase flex items-center gap-2 group/social"
                 >
-                  <span className="opacity-0 group-hover/social:opacity-100 transition-opacity duration-500">{social.name}</span>
+                  <span className="opacity-60 group-hover/social:opacity-100 transition-opacity">{social.name}</span>
                   {social.icon}
                 </a>
               ))}

@@ -376,7 +376,7 @@ const ProjectDetail = () => {
           <div className="flex gap-12">
             {[
               { name: "GitHub", url: "https://github.com/detamor" },
-              { name: "LinkedIn", url: "https://linkedin.com/in/natanael-detamor-karo-karo-567b86318/" },
+              { name: "LinkedIn", url: "https://www.linkedin.com/in/natanael-detamor-karo-karo-567b86318/" },
               { name: "Instagram", url: "https://instagram.com/nael_detamor/" }
             ].map((social) => (
               <a 
@@ -384,7 +384,7 @@ const ProjectDetail = () => {
                 href={social.url} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="text-[10px] font-mono text-zinc-800 hover:text-white uppercase tracking-widest transition-colors"
+                className="text-[10px] font-mono text-zinc-500 hover:text-white uppercase tracking-widest transition-colors"
               >
                 {social.name}
               </a>
