@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Github, ArrowUpRight, ExternalLink, Lock } from "lucide-react";
+import { Github, ArrowUpRight, ExternalLink, Lock, Zap } from "lucide-react";
 import LaravelLogo from "../assets/images/Laravel.jpg";
 import ReactLogo from "../assets/images/React.png";
 import VueLogo from "../assets/images/Vue.png";
