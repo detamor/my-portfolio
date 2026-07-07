@@ -85,8 +85,8 @@ const HeroSection = () => {
             </div>
           </div>
 
-          <p className="text-zinc-500 text-sm md:text-lg max-w-xl font-light leading-relaxed">
-            Software Engineer with 1 year of production experience building ERP, HRIS, and AI-driven systems using Vue.js, Laravel, and MySQL, now extending the stack with React.js, Go, and the MERN stack.
+          <p className="text-zinc-400 text-sm md:text-lg max-w-xl font-light leading-relaxed">
+            Built an ERP from scratch that replaced paper workflows for 32 staff — now building with Go microservices and React.
           </p>
 
           {/* Contextual Tech Stack Cards */}
@@ -142,7 +142,7 @@ const HeroSection = () => {
                 className="group relative p-6 bg-white/[0.01] border border-white/5 rounded-2xl backdrop-blur-3xl flex items-center justify-between hover:bg-white/[0.02] hover:border-white/10 transition-all duration-500"
               >
                 <div className="space-y-1">
-                  <div className="text-3xl font-light text-white tracking-tighter group-hover:text-indigo-400 transition-colors">
+                  <div className="text-4xl sm:text-5xl font-extralight text-white tracking-tighter group-hover:text-indigo-400 transition-colors">
                     {stat.value}
                   </div>
                   <div className="text-[9px] font-mono text-zinc-500 uppercase tracking-[0.2em]">

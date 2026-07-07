@@ -322,9 +322,19 @@ const ProjectDetail = () => {
             Natanael Detamor © 2026
           </div>
           <div className="flex gap-12">
-            {["GitHub", "LinkedIn", "Instagram"].map((social) => (
-              <a key={social} href="#" className="text-[10px] font-mono text-zinc-800 hover:text-white uppercase tracking-widest transition-colors">
-                {social}
+            {[
+              { name: "GitHub", url: "https://github.com/detamor" },
+              { name: "LinkedIn", url: "https://linkedin.com/in/natanael-detamor-karo-karo-567b86318/" },
+              { name: "Instagram", url: "https://instagram.com/nael_detamor/" }
+            ].map((social) => (
+              <a 
+                key={social.name} 
+                href={social.url} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-[10px] font-mono text-zinc-800 hover:text-white uppercase tracking-widest transition-colors"
+              >
+                {social.name}
               </a>
             ))}
           </div>

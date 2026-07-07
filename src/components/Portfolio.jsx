@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useLayoutEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 // Import components
 import Navbar from "./Navbar";
@@ -13,6 +14,7 @@ import SocialSidebar from "./SocialSidebar";
 import ContactForm from "./ContactForm";
 
 const Portfolio = () => {
+  const location = useLocation();
   const [activeSection, setActiveSection] = useState("hero");
   const [isVisible, setIsVisible] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
@@ -90,6 +92,25 @@ const Portfolio = () => {
 
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    if (location.state && location.state.scrollTo) {
+      const sectionId = location.state.scrollTo;
+      const timer = setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const navbarHeight = 80;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
+        }
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [location]);
 
   return (
     <div className="min-h-screen bg-[#0a0c14] text-white relative overflow-x-hidden selection:bg-indigo-500/30">
