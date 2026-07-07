@@ -19,6 +19,33 @@ import GithubLogo from "../assets/images/Github.png";
 import ecommerceImage from "../assets/images/WebTopUp.jpg";
 import yapiMedanImage from "../assets/images/RentalPlaystation.jpg";
 
+const getTechLogoIcon = (name) => {
+  switch (name) {
+    case "golang":
+      return (
+        <svg className="w-6 h-6 transition-all duration-500 group-hover:scale-115" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1.812 11.238c-.378.077-.732.184-1.042.316-.271.115-.494.271-.628.455a.925.925 0 00-.142.502c0 .484.343.896.953 1.14.549.22 1.272.33 2.052.33.65 0 1.256-.076 1.764-.213.25-.067.433-.277.46-.532a.81.81 0 00-.317-.743 6.94 6.94 0 00-1.782-.916 5.862 5.862 0 00-1.318-.339zm7.042-4.004c-1.84 0-3.272.545-4.148 1.579-.844 1.002-1.25 2.451-1.25 4.316 0 1.745.39 3.125 1.182 4.14.774.996 1.996 1.503 3.654 1.503 1.332 0 2.378-.363 3.167-.998.67-.542 1.047-1.321 1.112-2.31H9.068v-2.36h6.41c.045.362.068.742.068 1.139 0 2.08-.636 3.738-1.908 4.975-1.22 1.186-2.923 1.783-5.11 1.783-2.613 0-4.636-.838-6.07-2.513C.985 16.326.25 14.078.25 11.25c0-2.825.753-5.068 2.257-6.73 1.488-1.644 3.559-2.466 6.213-2.466 1.782 0 3.284.417 4.507 1.25.965.656 1.636 1.542 2.013 2.656.096.28.026.592-.18.802-.24.24-.609.288-.901.127a5.556 5.556 0 00-2.559-.763 6.012 6.012 0 00-2.747.36zm11.272.766c-.33 0-.623.13-.88.39a1.2 1.2 0 00-.387.882c0 .343.13.639.387.89.257.25.55.376.88.376.342 0 .638-.125.889-.376.251-.25.376-.547.376-.89 0-.342-.125-.636-.376-.882a1.216 1.216 0 00-.889-.39zm0 4.195c-.33 0-.623.13-.88.39a1.2 1.2 0 00-.387.882c0 .342.13.638.387.888.257.251.55.377.88.377.342 0 .638-.126.889-.377.251-.25.376-.546.376-.888 0-.342-.125-.636-.376-.882a1.216 1.216 0 00-.889-.39z" fill="#00ADD8"/>
+        </svg>
+      );
+    case "laravel":
+      return <img src={LaravelLogo} alt="Laravel" className="w-6 h-6 object-contain opacity-100 transition-all duration-500 group-hover:scale-115" />;
+    case "react":
+      return <img src={ReactLogo} alt="React" className="w-6 h-6 object-contain opacity-100 transition-all duration-500 group-hover:scale-115" />;
+    case "vue":
+      return <img src={VueLogo} alt="Vue" className="w-6 h-6 object-contain opacity-100 transition-all duration-500 group-hover:scale-115" />;
+    case "mysql":
+      return <img src={MySqlLogo} alt="MySQL" className="w-6 h-6 object-contain opacity-100 transition-all duration-500 group-hover:scale-115" />;
+    case "python":
+      return <img src={PythonLogo} alt="Python" className="w-6 h-6 object-contain opacity-100 transition-all duration-500 group-hover:scale-115" />;
+    case "node":
+      return <img src={NodeJsLogo} alt="Node.js" className="w-6 h-6 object-contain opacity-100 transition-all duration-500 group-hover:scale-115" />;
+    case "github":
+      return <img src={GithubLogo} alt="GitHub" className="w-6 h-6 object-contain opacity-100 transition-all duration-500 group-hover:scale-115" />;
+    default:
+      return null;
+  }
+};
+
 const ProjectCard = ({ project, idx }) => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -95,9 +122,9 @@ const ProjectCard = ({ project, idx }) => {
 
         {/* Tech Stack */}
         <div className="flex flex-wrap gap-4 pt-4">
-          {project.techLogos.map((logo, i) => (
-            <div key={i} className="p-4 border border-white/5 rounded-2xl bg-white/[0.01] hover:border-white/10 transition-all">
-              <img src={logo} alt="tech" className="w-6 h-6 object-contain" />
+          {project.techLogos.map((logoName, i) => (
+            <div key={i} className="p-4 border border-white/5 rounded-2xl bg-white/[0.01] hover:border-white/10 transition-all group">
+              {getTechLogoIcon(logoName)}
             </div>
           ))}
         </div>
@@ -183,8 +210,8 @@ const Projects = () => {
       category: "Go Microservices",
       hook: "I built a containerized 6-service microservices backend in Go to explore production-grade database migrations, retry dynamics, and fault-tolerance.",
       solution: "Developed custom SQL migrations, exponential backoff retries, stateful circuit breakers, mock unit tests, and GitHub Actions CI/CD pipelines.",
-      techLogos: [NodeJsLogo, MySqlLogo, GithubLogo],
-      demoUrl: "https://github.com/detamor/Scalable-E-Commerce-Platform",
+      techLogos: ["golang", "mysql", "github"],
+      demoUrl: null,
       codeUrls: [{ label: "Repository", url: "https://github.com/detamor/Scalable-E-Commerce-Platform" }],
       stats: "6 Go Microservices & Circuit Breaker",
       image: ecommerceImage,
@@ -198,7 +225,7 @@ const Projects = () => {
       category: "Enterprise ERP",
       hook: "I designed and built this end-to-end ERP from scratch to replace fully manual, paper-based workflows for 32 employees across 22 roles.",
       solution: "Architected using Laravel Service Layers and Vue.js. Developed an 18-phase broadcast production workflow, fingerprint raw data ingestion automation, Zoom API tracker, and a triple-tier approval HRIS.",
-      techLogos: [LaravelLogo, VueLogo, MySqlLogo],
+      techLogos: ["laravel", "vue", "mysql"],
       demoUrl: "https://hopemedia.id",
       codeUrl: null,
       stats: "18-Phase Workflow & Automated HRIS",
@@ -213,11 +240,11 @@ const Projects = () => {
       category: "Full-Stack MERN",
       hook: "Built a volunteer full-stack MERN platform for a children's foundation to coordinate beneficiary listings and manage webhooks.",
       solution: "Integrated React/TS frontend with Express/MongoDB. Configured dual Midtrans Snap and Xendit Invoices, webhooks verification, aggregate pipelines, and CryptoJS security token encryption.",
-      techLogos: [ReactLogo, NodeJsLogo, GithubLogo],
-      demoUrl: "https://github.com/detamor/YapiFe",
+      techLogos: ["react", "node", "github"],
+      demoUrl: "https://yapi-medan.vercel.app/",
       codeUrls: [
         { label: "Frontend", url: "https://github.com/detamor/YapiFe" },
-        { label: "Backend", url: "https://github.com/detamor/Yapi_medanBE" }
+        { label: "Backend", url: "https://github.com/detamor/YapiBe" }
       ],
       stats: "MERN Stack, Midtrans Snap & Xendit",
       image: yapiMedanImage,
@@ -231,7 +258,7 @@ const Projects = () => {
       category: "Microservice AI Engine",
       hook: "I wanted to build a high-precision diagnostic system. I designed a 3-service decoupled architecture to keep heavy mathematical logic away from the UI.",
       solution: "Built FastAPI diagnostic engine using Forward Chaining + Certainty Factor (50% threshold) symptom questionnaires, integrated with Laravel core, OTP auth, and admin knowledge base.",
-      techLogos: [PythonLogo, LaravelLogo, VueLogo, NodeJsLogo],
+      techLogos: ["python", "laravel", "vue", "node"],
       demoUrl: null,
       status: "Research Validated",
       codeUrls: [

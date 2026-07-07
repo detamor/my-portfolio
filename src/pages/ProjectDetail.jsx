@@ -12,6 +12,7 @@ const projectData = {
     subtitle: "A containerized 6-service microservices architecture in Go.",
     stats: "Go, Gin Gonic, GORM, PostgreSQL, Redis, RabbitMQ, Docker, Nginx | Role: Lead Developer",
     background: "I built this backend to explore production-grade reliability patterns under microservices architectures. The system handles user authentication, product listings, cart management, ordering pipelines, payment mocks, and real-time notification dispatches.",
+    githubUrl: "https://github.com/detamor/Scalable-E-Commerce-Platform",
     engineering: [
       {
         title: "Microservices & API Gateway",
@@ -42,6 +43,8 @@ const projectData = {
     subtitle: "An 18-phase broadcast workflow system serving 32 employees across 22 roles.",
     stats: "Laravel, Vue.js, MySQL, Tailwind CSS, jQuery | Role: Full-Stack Architect",
     background: "Before this system existed, Hopemedia's operations relied on manual spreadsheets and paper records. Data leakage and reporting manipulation occurred easily. I designed and built this end-to-end ERP to automate workflows and attendance tracking for 32 employees across 22 roles.",
+    demoUrl: "https://hopemedia.id",
+    isPrivate: true,
     engineering: [
       {
         title: "Automated Ingestion & Attendance",
@@ -78,6 +81,11 @@ const projectData = {
     subtitle: "A volunteer MERN stack platform built for a children's foundation.",
     stats: "React 18, TypeScript, Node.js, Express.js, MongoDB | Role: Full-Stack Volunteer Architect",
     background: "Built as a volunteer full-stack donation and social platform for a children's foundation. It coordinates lists of beneficiaries (children), manages administrative reports, and implements secure API checkouts using dual gateway checkouts (Midtrans Snap & Xendit Invoices).",
+    demoUrl: "https://yapi-medan.vercel.app/",
+    codeUrls: [
+      { label: "Frontend Repo", url: "https://github.com/detamor/YapiFe" },
+      { label: "Backend Repo", url: "https://github.com/detamor/YapiBe" }
+    ],
     engineering: [
       {
         title: "Dual Gateway & Webhooks",
@@ -108,6 +116,11 @@ const projectData = {
     subtitle: "Decoupling Forward Chaining and Certainty Factor diagnostic processing into a FastAPI microservice.",
     stats: "FastAPI, Python Experta, Laravel, Vue.js, MySQL | Role: Lead Architect & AI Engine",
     background: "Designed a 3-service decoupled microservice architecture for plant disease diagnostics. Users answer step-by-step symptom questionnaires and receive diagnostics with certainty-percentage labels, keeping heavy calculations away from the main backend thread.",
+    codeUrls: [
+      { label: "Backend Repo", url: "https://github.com/detamor/backend_SistemPakar" },
+      { label: "Frontend Repo", url: "https://github.com/detamor/frontend_SistemPakar" },
+      { label: "Engine Repo", url: "https://github.com/detamor/engine_SistemPakar" }
+    ],
     engineering: [
       {
         title: "FastAPI & Python Experta Inference",
@@ -180,6 +193,40 @@ const ProjectDetail = () => {
                 <div className="text-[10px] font-mono text-zinc-600 uppercase tracking-[0.4em] border-l border-zinc-800 pl-8">
                   {project.stats}
                 </div>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-6 mt-12">
+                {project.githubUrl && (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-3 px-8 py-4 bg-white text-black text-[10px] font-mono tracking-widest uppercase hover:bg-zinc-200 transition-all rounded-full"
+                  >
+                    Explore Repository <ExternalLink size={12} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  </a>
+                )}
+                {project.demoUrl && (
+                  <a
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-3 px-8 py-4 border border-white/20 text-white text-[10px] font-mono tracking-widest uppercase hover:border-white transition-all rounded-full"
+                  >
+                    {project.isPrivate ? "Live Website" : "Explore Live"} <ExternalLink size={12} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  </a>
+                )}
+                {project.codeUrls && project.codeUrls.map((code, idx) => (
+                  <a
+                    key={idx}
+                    href={code.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-3 px-6 py-3.5 border border-white/10 hover:border-white/30 bg-white/[0.02] text-zinc-300 hover:text-white text-[10px] font-mono tracking-widest uppercase transition-all rounded-full"
+                  >
+                    {code.label} <ExternalLink size={11} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </a>
+                ))}
               </div>
             </motion.div>
           </div>

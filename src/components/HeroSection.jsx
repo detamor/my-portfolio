@@ -80,7 +80,7 @@ const HeroSection = () => {
                 Natanael Detamor <span className="text-zinc-500 font-normal">Karo Karo</span>
               </h1>
               <p className="text-sm md:text-lg text-zinc-400 font-light tracking-[0.2em] uppercase">
-                Software Engineer (React.js & Golang)
+                Software Engineer
               </p>
             </div>
           </div>
