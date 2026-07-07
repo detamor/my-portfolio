@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { X, Menu, Github, Linkedin, ShieldCheck } from "lucide-react";
+import { X, Menu, Github, Linkedin, ShieldCheck, Mail } from "lucide-react";
 import waLogo from "../assets/images/wa.webp";
 
 const Navbar = ({ activeSection }) => {
@@ -156,35 +156,42 @@ const Navbar = ({ activeSection }) => {
             ))}
           </div>
 
-          <div className="absolute bottom-0 left-0 right-0 p-8 border-t border-white/[0.05] space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+          <div className="absolute bottom-0 left-0 right-0 p-8 border-t border-white/[0.05] flex flex-col items-center justify-center gap-6">
+            <div className="flex items-center justify-center gap-6">
               <a
                 href="https://github.com/detamor"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 py-4 bg-white/[0.03] border border-white/10 rounded-2xl hover:bg-white/[0.08] hover:border-white/20 transition-all text-zinc-400 hover:text-white"
+                className="w-12 h-12 rounded-full bg-white/[0.03] border border-white/10 flex items-center justify-center hover:bg-white/[0.08] hover:border-white/20 transition-all text-zinc-400 hover:text-white"
+                aria-label="GitHub"
               >
-                <Github size={14} />
-                <span className="text-[9px] font-mono uppercase tracking-widest">GitHub</span>
+                <Github size={18} />
               </a>
               <a
                 href="https://www.linkedin.com/in/natanael-detamor-karo-karo-567b86318/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 py-4 bg-white/[0.03] border border-white/10 rounded-2xl hover:bg-white/[0.08] hover:border-white/20 transition-all text-zinc-400 hover:text-white"
+                className="w-12 h-12 rounded-full bg-white/[0.03] border border-white/10 flex items-center justify-center hover:bg-white/[0.08] hover:border-white/20 transition-all text-zinc-400 hover:text-white"
+                aria-label="LinkedIn"
               >
-                <Linkedin size={14} />
-                <span className="text-[9px] font-mono uppercase tracking-widest">LinkedIn</span>
+                <Linkedin size={18} />
+              </a>
+              <a
+                href="mailto:natanaeldetamorkarokaro@gmail.com"
+                className="w-12 h-12 rounded-full bg-white/[0.03] border border-white/10 flex items-center justify-center hover:bg-white/[0.08] hover:border-white/20 transition-all text-zinc-400 hover:text-white"
+                aria-label="Gmail"
+              >
+                <Mail size={18} />
               </a>
             </div>
             <a
               href="https://wa.me/6281376485766"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-3 py-4.5 bg-white text-black rounded-2xl hover:bg-zinc-200 transition-all duration-500 group"
+              className="w-full flex items-center justify-center gap-3 py-4 bg-white text-black rounded-2xl hover:bg-zinc-200 transition-all duration-500 font-mono text-[9px] font-bold uppercase tracking-[0.2em]"
             >
               <img src={waLogo} alt="WA" className="w-4 h-4 object-contain" />
-              <span className="text-[9px] font-mono font-bold uppercase tracking-[0.2em]">WhatsApp Chat</span>
+              WhatsApp Chat
             </a>
           </div>
         </div>

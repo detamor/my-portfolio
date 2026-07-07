@@ -237,8 +237,8 @@ const ProjectCard = ({ project, idx }) => {
         className={`relative group perspective-1000 ${idx % 2 !== 0 ? 'lg:order-1' : 'lg:order-2'}`}
       >
         <Link to={`/projects/${project.slug}`} className="block w-full h-full">
-          <div className="relative aspect-[16/10] bg-zinc-950 rounded-[3rem] p-2 md:p-3 border border-white/5 overflow-hidden group-hover:border-white/10 transition-all duration-1000 shadow-2xl">
-            <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden bg-[#030712]">
+          <div className="relative aspect-[16/10] bg-zinc-950 rounded-[3rem] p-2 md:p-3 border border-white/5 overflow-hidden isolation-isolate group-hover:border-white/10 transition-all duration-1000 shadow-2xl">
+            <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden isolation-isolate bg-[#030712]">
               {typeof project.image === "string" ? (
                 <img
                   src={project.image}
