@@ -94,7 +94,13 @@ const HeroSection = () => {
             {techStack.map((tech) => (
               <div key={tech.name} className="flex items-center gap-4 p-4 bg-white/[0.01] border border-white/5 rounded-2xl hover:border-white/10 hover:bg-white/[0.02] transition-all duration-300 group">
                 <div className="w-10 h-10 rounded-xl bg-white/[0.03] flex items-center justify-center overflow-hidden shrink-0">
-                  <img src={tech.logo} alt={tech.name} className="w-6 h-6 object-contain opacity-100 transition-all duration-500 group-hover:scale-115" />
+                  {tech.name === "Go (Golang)" ? (
+                    <svg className="w-6 h-6 transition-all duration-500 group-hover:scale-115" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M1.812 11.238c-.378.077-.732.184-1.042.316-.271.115-.494.271-.628.455a.925.925 0 00-.142.502c0 .484.343.896.953 1.14.549.22 1.272.33 2.052.33.65 0 1.256-.076 1.764-.213.25-.067.433-.277.46-.532a.81.81 0 00-.317-.743 6.94 6.94 0 00-1.782-.916 5.862 5.862 0 00-1.318-.339zm7.042-4.004c-1.84 0-3.272.545-4.148 1.579-.844 1.002-1.25 2.451-1.25 4.316 0 1.745.39 3.125 1.182 4.14.774.996 1.996 1.503 3.654 1.503 1.332 0 2.378-.363 3.167-.998.67-.542 1.047-1.321 1.112-2.31H9.068v-2.36h6.41c.045.362.068.742.068 1.139 0 2.08-.636 3.738-1.908 4.975-1.22 1.186-2.923 1.783-5.11 1.783-2.613 0-4.636-.838-6.07-2.513C.985 16.326.25 14.078.25 11.25c0-2.825.753-5.068 2.257-6.73 1.488-1.644 3.559-2.466 6.213-2.466 1.782 0 3.284.417 4.507 1.25.965.656 1.636 1.542 2.013 2.656.096.28.026.592-.18.802-.24.24-.609.288-.901.127a5.556 5.556 0 00-2.559-.763 6.012 6.012 0 00-2.747.36zm11.272.766c-.33 0-.623.13-.88.39a1.2 1.2 0 00-.387.882c0 .343.13.639.387.89.257.25.55.376.88.376.342 0 .638-.125.889-.376.251-.25.376-.547.376-.89 0-.342-.125-.636-.376-.882a1.216 1.216 0 00-.889-.39zm0 4.195c-.33 0-.623.13-.88.39a1.2 1.2 0 00-.387.882c0 .342.13.638.387.888.257.251.55.377.88.377.342 0 .638-.126.889-.377.251-.25.376-.546.376-.888 0-.342-.125-.636-.376-.882a1.216 1.216 0 00-.889-.39z" fill="#00ADD8"/>
+                    </svg>
+                  ) : (
+                    <img src={tech.logo} alt={tech.name} className="w-6 h-6 object-contain opacity-100 transition-all duration-500 group-hover:scale-115" />
+                  )}
                 </div>
                 <div className="flex flex-col min-w-0">
                   <span className="text-[10px] font-mono text-zinc-300 tracking-wider font-bold uppercase truncate">{tech.name}</span>
