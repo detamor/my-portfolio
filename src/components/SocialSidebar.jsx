@@ -26,7 +26,7 @@ const SocialSidebar = () => {
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 1, ease: "easeOut" }}
-      className="hidden lg:flex fixed left-8 bottom-0 z-40 flex-col items-center gap-8 pb-12"
+      className="hidden lg:flex fixed left-8 bottom-0 z-40 flex-col items-center gap-6"
     >
       {/* Social Links */}
       <div className="flex flex-col gap-6">
@@ -44,25 +44,8 @@ const SocialSidebar = () => {
         ))}
       </div>
 
-      {/* Vertical Divider line */}
-      <div className="w-px h-16 bg-zinc-800"></div>
-
-      {/* Rotated Status Container */}
-      <div className="flex items-center gap-4 py-8 select-none">
-        {/* Pulsing Status Dot */}
-        <div className="relative w-1.5 h-1.5 flex items-center justify-center -rotate-90">
-          <div className="absolute w-2.5 h-2.5 bg-emerald-500/30 rounded-full animate-ping"></div>
-          <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
-        </div>
-
-        {/* Text rotated 90 degrees counter-clockwise */}
-        <span className="text-[8px] font-mono font-bold tracking-[0.3em] text-zinc-500 uppercase whitespace-nowrap [writing-mode:vertical-lr] rotate-180">
-          Available for new projects
-        </span>
-      </div>
-
-      {/* Bottom connecting line */}
-      <div className="w-px h-12 bg-gradient-to-b from-zinc-800 to-transparent"></div>
+      {/* Vertical connecting line to the bottom of the screen */}
+      <div className="w-px h-32 bg-gradient-to-b from-zinc-800 to-transparent"></div>
     </motion.div>
   );
 };
