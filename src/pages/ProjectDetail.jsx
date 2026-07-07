@@ -142,6 +142,11 @@ const ProjectDetail = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  // Split title robustly by em-dash, en-dash, or standard hyphen, trimming whitespace
+  const titleParts = (project?.title || "").split(/\s*[\u2014\u2013-]\s*/);
+  const mainTitle = titleParts[0] || "";
+  const subtitlePart = titleParts.slice(1).join(" — ");
+
   return (
     <div className="min-h-screen bg-black text-white selection:bg-indigo-500/30 font-jakarta">
       <Navbar />
@@ -164,8 +169,8 @@ const ProjectDetail = () => {
               transition={{ duration: 1.2, ease: "easeOut" }}
             >
               <h1 className="text-4xl md:text-7xl font-light tracking-tighter leading-none mb-10 md:mb-12">
-                {project.title.split('—')[0]} <br />
-                <span className="text-zinc-600 italic">{project.title.split('—')[1]}</span>
+                {mainTitle} <br />
+                {subtitlePart && <span className="text-zinc-600 italic">{subtitlePart}</span>}
               </h1>
               
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 md:gap-12 mt-12 md:mt-20">

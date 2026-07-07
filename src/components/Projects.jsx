@@ -60,7 +60,9 @@ const ProjectCard = ({ project, idx }) => {
 
         <div className="space-y-8">
           <h3 className="text-3xl md:text-5xl font-light text-white tracking-tight leading-tight">
-            {project.title}
+            <Link to={`/projects/${project.slug}`} className="hover:text-indigo-400 transition-colors duration-300">
+              {project.title}
+            </Link>
           </h3>
 
           <div className="space-y-10 max-w-xl">
@@ -155,15 +157,17 @@ const ProjectCard = ({ project, idx }) => {
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
         className={`relative group perspective-1000 ${idx % 2 !== 0 ? 'lg:order-1' : 'lg:order-2'}`}
       >
-        <div className="relative aspect-[16/10] bg-zinc-950 rounded-[3rem] p-2 md:p-3 border border-white/5 overflow-hidden group-hover:border-white/10 transition-all duration-1000 shadow-2xl">
-          <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden">
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-full object-top object-cover transition-all duration-1000 group-hover:scale-105"
-            />
+        <Link to={`/projects/${project.slug}`} className="block w-full h-full">
+          <div className="relative aspect-[16/10] bg-zinc-950 rounded-[3rem] p-2 md:p-3 border border-white/5 overflow-hidden group-hover:border-white/10 transition-all duration-1000 shadow-2xl">
+            <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-top object-cover transition-all duration-1000 group-hover:scale-105"
+              />
+            </div>
           </div>
-        </div>
+        </Link>
       </motion.div>
     </motion.div>
   );
