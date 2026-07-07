@@ -162,7 +162,6 @@ const Navbar = ({ activeSection }) => {
                 href="https://github.com/detamor"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => setIsMenuOpen(false)}
                 className="flex items-center justify-center gap-2 py-4 bg-white/[0.03] border border-white/10 rounded-2xl hover:bg-white/[0.08] hover:border-white/20 transition-all text-zinc-400 hover:text-white"
               >
                 <Github size={14} />
@@ -172,7 +171,6 @@ const Navbar = ({ activeSection }) => {
                 href="https://www.linkedin.com/in/natanael-detamor-karo-karo-567b86318/"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => setIsMenuOpen(false)}
                 className="flex items-center justify-center gap-2 py-4 bg-white/[0.03] border border-white/10 rounded-2xl hover:bg-white/[0.08] hover:border-white/20 transition-all text-zinc-400 hover:text-white"
               >
                 <Linkedin size={14} />
@@ -183,7 +181,6 @@ const Navbar = ({ activeSection }) => {
               href="https://wa.me/6281376485766"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => setIsMenuOpen(false)}
               className="w-full flex items-center justify-center gap-3 py-4.5 bg-white text-black rounded-2xl hover:bg-zinc-200 transition-all duration-500 group"
             >
               <img src={waLogo} alt="WA" className="w-4 h-4 object-contain" />
