@@ -1,6 +1,124 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ShieldCheck, CheckCircle2 } from "lucide-react";
+import { ShieldCheck, CheckCircle2, ExternalLink } from "lucide-react";
+
+// Certificate PDF Renderer component using PDF.js
+const PDFThumbnail = ({ pdfUrl }) => {
+  const canvasRef = useRef(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    let isMounted = true;
+    let renderTask = null;
+
+    const loadAndRender = async () => {
+      try {
+        setLoading(true);
+        setError(false);
+
+        // Load PDF.js script dynamically if not already available
+        if (!window.pdfjsLib) {
+          await new Promise((resolve, reject) => {
+            const script = document.createElement("script");
+            script.src = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js";
+            script.async = true;
+            script.onload = () => {
+              if (window.pdfjsLib) resolve();
+              else reject(new Error("pdfjsLib not found after load"));
+            };
+            script.onerror = () => reject(new Error("Failed to load PDF.js script"));
+            document.head.appendChild(script);
+          });
+        }
+
+        const pdfjsLib = window.pdfjsLib;
+        // Configure worker
+        pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js";
+
+        // Load the document
+        const loadingTask = pdfjsLib.getDocument(pdfUrl);
+        const pdf = await loadingTask.promise;
+
+        if (!isMounted) return;
+
+        // Get the first page
+        const page = await pdf.getPage(1);
+
+        if (!isMounted) return;
+
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+
+        const context = canvas.getContext("2d");
+        
+        // We want to scale the page to get good quality on high-DPI screens
+        const dpr = window.devicePixelRatio || 1;
+        const originalViewport = page.getViewport({ scale: 1.0 });
+        
+        // Target about 600px width for rendering quality
+        const targetWidth = 600;
+        const scale = targetWidth / originalViewport.width;
+        const viewport = page.getViewport({ scale: scale * dpr });
+
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+        
+        canvas.style.width = "100%";
+        canvas.style.height = "100%";
+
+        const renderContext = {
+          canvasContext: context,
+          viewport: viewport,
+        };
+
+        renderTask = page.render(renderContext);
+        await renderTask.promise;
+
+        if (isMounted) {
+          setLoading(false);
+        }
+      } catch (err) {
+        console.error("Error rendering PDF:", err);
+        if (isMounted) {
+          setError(true);
+          setLoading(false);
+        }
+      }
+    };
+
+    loadAndRender();
+
+    return () => {
+      isMounted = false;
+      if (renderTask && renderTask.cancel) {
+        renderTask.cancel();
+      }
+    };
+  }, [pdfUrl]);
+
+  if (error) {
+    return (
+      <div className="w-full h-full flex flex-col items-center justify-center bg-zinc-900 border border-white/5 rounded-lg p-5 text-center text-zinc-400 select-none">
+        <ExternalLink size={24} className="text-zinc-500 mb-2" />
+        <span className="text-[10px] uppercase tracking-wider font-mono">View Live Certificate</span>
+        <span className="text-[8px] text-zinc-500 mt-1 max-w-[150px]">Verification URL is an external web link.</span>
+      </div>
+    );
+  }
+
+  return (
+    <div className="relative w-full h-full bg-zinc-950 flex items-center justify-center overflow-hidden">
+      {loading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-zinc-950/80 z-10">
+          <div className="w-6 h-6 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+        </div>
+      )}
+      <canvas ref={canvasRef} className="w-full h-full object-contain" />
+    </div>
+  );
+};
+
 
 // Certificate CSS Mockup component that renders like a real paper certificate
 const CertificateMockup = ({ title, issuer, date }) => {
@@ -92,14 +210,7 @@ const Certificates = () => {
       verifyUrl: "/certificates/IT Specialist Database .pdf",
       skills: ["RDBMS", "SQL", "Data Modeling", "DB Administration"]
     },
-    {
-      title: "Structured Query Language (SQL)",
-      issuer: "Dicoding",
-      date: "Apr 2025",
-      id: "Credential ID: SQL-DC-2025",
-      verifyUrl: "https://www.dicoding.com/dicodingassets/coursecertificate/872026d91301cd8f7eadc913ecbe455bc63b4631/view",
-      skills: ["Structured Query Language", "Data Manipulation", "DCL & DDL"]
-    },
+
     {
       title: "Basic Back-End with JavaScript",
       issuer: "Dicoding",
@@ -211,7 +322,11 @@ const Certificates = () => {
                 className="relative aspect-[1.414/1] w-full rounded-2xl border border-white/5 bg-zinc-950 p-2 md:p-3 overflow-hidden group-hover:border-white/10 transition-all duration-700 shadow-2xl block isolation-isolate"
               >
                 <div className="w-full h-full rounded-xl overflow-hidden isolation-isolate">
-                  <CertificateMockup title={cert.title} issuer={cert.issuer} date={cert.date} />
+                  {cert.verifyUrl.toLowerCase().endsWith(".pdf") ? (
+                    <PDFThumbnail pdfUrl={cert.verifyUrl} />
+                  ) : (
+                    <CertificateMockup title={cert.title} issuer={cert.issuer} date={cert.date} />
+                  )}
                 </div>
               </a>
 
